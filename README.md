@@ -1,7 +1,14 @@
 
 sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 
+Вопросы:
+1. Иконки: fontawesome (нужны названия) / рандомные скачанные (нужны исходники).
+2. Ховер состояния для элементов.
+
 Названия секций
+
+slick_-_lg - начиная с больших экранов
+slick_mb - только на мобильных
 
 header
 	logo
@@ -14,7 +21,7 @@ header
 	languages - Языки
 
 footer
-	clients (slick)
+	clients (slick-lg)
 	nav
 		mobile - expand
 	copyright
