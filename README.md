@@ -4,10 +4,11 @@ sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 Вопросы:
 1. Иконки: fontawesome (нужны названия) / рандомные скачанные (нужны исходники).
 2. Ховер состояния для элементов.
+3. home folio - когда слайдер сдвигается влево, должны ли карточки быть видны слева так же, как и справа?
 
 Названия секций
 
-slick_-_lg - начиная с больших экранов
+slick_lg - начиная с больших экранов
 slick_mb - только на мобильных
 
 header
@@ -35,7 +36,7 @@ footer
 	facts
 		mobile - slider
 	portfolio - категория "Наши работы"/"Портфолио"
-		mobile - slider
+		lg - slider
 	reviews
 		mobile - slider
 	blog - категория Блог

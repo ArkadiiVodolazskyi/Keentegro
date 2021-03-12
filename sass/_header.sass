@@ -6,6 +6,16 @@ header
 	top: 0
 	width: 100%
 	border-bottom: 2px solid rgba($w, 0.2)
+	background-color: $w
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06)
+	&.home
+		background-color: transparent
+		box-shadow: none
+		.hamburger svg
+			fill: $w
+		.consult
+			color: $w
+			border-bottom: 2px solid $w
 	*
 		line-height: 1.3
 		font-weight: 500
@@ -33,6 +43,8 @@ header
 		width: 60px
 		height: 33px
 		margin: 0 48px 0 95px
+		svg
+			fill: $b
 	.navigation
 		li
 			font-size: 20px
@@ -52,7 +64,8 @@ header
 			margin-left: 48px
 			font-size: 24px
 			padding: 8px 0
-			border-bottom: 2px solid $w
+			color: $blue
+			border-bottom: 2px solid $blue
 	.languages
 		margin-left: 96px
 		position: relative
