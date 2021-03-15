@@ -61,7 +61,9 @@ svg
 
 // ---------------------------------------------------------------- Variables
 $w: 		#fff
+$dw: 		#f2f2f2
 $b: 		#333333
+$db: 		#1a1f21
 $grey: 	#999999
 $pink: 	#9e1260
 $cyan: 	#116f84
@@ -90,6 +92,8 @@ $blue: 	#26a2be
 		transform: translate(-50%, -50%)
 		width: 100%
 		height: 100%
+.bg-w
+	background-color: $w
 
 // ---------------------------------------------------------------- Figures
 
@@ -168,7 +172,42 @@ $blue: 	#26a2be
 		left: 72px
 		top: 0
 
+// <div class="figure_5">
+// 	<span class="date">
+// 		28 октября 2020
+// 	</span>
+// </div>
+.figure_5
+	position: absolute
+	left: 0
+	top: 0
+	&:before
+		content: ''
+		position: absolute
+		background-color: $pink
+		width: 24px
+		height: 24px
+		left: 0
+		top: 0
+	> span
+		position: absolute
+		background-color: $w
+		display: block
+		left: 24px
+		top: 24px
+		padding: 18px
+		color: $grey
+		font-size: 24px
+		line-height: 1
+		width: max-content
+
 // ---------------------------------------------------------------- Mixins
+
+
+// ---------------------------------------------------------------- Slick
+.slick-track
+	max-width: 100%
+	max-height: 100%
 
 
 // ---------------------------------------------------------------- Common styles
@@ -184,13 +223,29 @@ a, button, svg, img
 
 html
 	width: 100vw
+	// height: 100%
 	overflow-x: hidden
 	scroll-behavior: smooth
 
 body
+	width: 100%
+	height: 100%
 	position: relative
 	z-index: 1
 	overflow: hidden
+	background-color: $dw
+	&:not(.home)
+		padding-top: 85px
+		&::before
+			content: ''
+			background-image: url(../img/keentegro_bg.svg)
+			width: 100%
+			display: block
+			height: 377px
+			position: absolute
+			z-index: 2
+			transform: translateY(-24px)
+
 
 // <h3>
 // 	<span>
@@ -203,7 +258,7 @@ body
 
 section
 	position: relative
-	z-index: 1
+	z-index: 5
 	transition: all 0.2s linear
 	&:not(.banner)
 		padding: 120px 0
@@ -225,6 +280,47 @@ section
 		position: relative
 .wrapper
 	width: 1416px // 74%
+	height: 100%
 	margin: 0 auto
 	position: relative
 	z-index: 5
+
+
+// <div class="list_block">
+// 	<h6>
+// 		Первоначально в новом городе будет жить около 360 человек, в том числе разработчики и пожилые люди. Ожидается, что этот город будет способствовать появлению полезных для общества инноваций.
+// 	</h6>
+// 	<ul>
+// 		<li>
+// 			Данные о состоянии здоровья жителей, записанные с помощью датчиков
+// 		</li>
+// 		<li>
+// 			Будут изучаться с помощью технологий искусственного интеллекта
+// 		</li>
+// 		<li>
+// 			Роботы будут помогать жителям в повседневной жизни
+// 		</li>
+// 	</ul>
+// </div>
+
+.list_block
+	margin-top: 24px
+	h6
+		font-size: 24px
+		font-weight: normal
+	ul
+		margin-top: 18px
+	li
+		display: flex
+		align-items: center
+		font-size: 24px
+		&:before
+			content: ''
+			display: block
+			width: 12px
+			height: 12px
+			background-color: $blue
+			flex: 0 0 auto
+			margin-right: 24px
+		&:not(:first-child)
+			margin-top: 12px

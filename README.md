@@ -1,12 +1,21 @@
 
 sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 
+https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
+
 Вопросы:
 1. Иконки: fontawesome (нужны названия) / рандомные скачанные (нужны исходники).
 2. Ховер состояния для элементов.
 3. home folio - когда слайдер сдвигается влево, должны ли карточки быть видны слева так же, как и справа?
+4. header fixed?
 
-Названия секций
+Не забыть доделки:
+1. page-reviews
+2. пагинация на страницах архивов
+3. single-folio - gallery - slick
+4. single-service - form
+
+Названия секций:
 
 slick_lg - начиная с больших экранов
 slick_mb - только на мобильных
@@ -29,7 +38,7 @@ footer
 
 
 
-1. page-main
+1. + page-main
 	banner
 		mobile - slider
 	services - категория "Сервисы"
@@ -48,19 +57,19 @@ footer
 	review img - fullscreen
 	pagination
 
-4. archive-blog
+4. + archive-blog
 	pagination
 
-5. single-blog
+5. + single-blog
 	prev/next post
 	share buttons
 	also read - blog
 		mobile - slider
 
-6. archive-folio
+6. + archive-folio
 	pagination
 
-7. single-folio
+7. + single-folio
 	gallery
 		mobile - slider
 	prev/next post
@@ -68,15 +77,15 @@ footer
 	also read - folio
 		mobile - slider
 
-8. archive-service
+8. + archive-service
 	pagination
 
-9. archive-service_category
+9. + archive-service_category
 
-10. single-service
+10. + single-service
 	consult - Форма Консультация Static - Gravity Forms
 
-11. page-about
+11. + page-about
 	banner
 	history
 		mobile - slider

@@ -1,6 +1,7 @@
+
 section.banner
 	height: 960px
-	background-color: $b
+	background-color: #000
 	padding: 200px 0 160px
 	text-align: center
 	> img
@@ -44,6 +45,7 @@ section.banner
 			&:nth-child(2)
 				font-size: 18px
 				bottom: -22px
+
 section.services
 	.cards
 		margin: 60px -12px 0 -12px
@@ -75,16 +77,19 @@ section.services
 			position: relative
 			z-index: 10
 			font-size: 36px
+			padding-bottom: 25px
 		.links
 			position: relative
 			z-index: 10
-			margin-top: 50px
+			padding-top: 25px
+			border-top: 1px solid rgba($w, 0.2)
 			display: flex
 			justify-content: space-between
 			align-items: center
 			a
 				font-size: 20px
 				font-weight: 500
+
 section.facts
 	background-color: $cyan
 	.cards
@@ -101,6 +106,7 @@ section.facts
 		p
 			margin-top: 24px
 			font-size: 24px
+
 section.folio
 	.wrapper
 	.cards
@@ -137,6 +143,7 @@ section.folio
 			padding-left: 48px
 			font-size: 18px
 			color: $grey
+
 section.reviews
 	background-color: $cyan
 	.cards
@@ -174,12 +181,19 @@ section.reviews
 		p
 			margin-top: 24px
 			font-size: 36px
+
 section.blog
 	.cards
 		margin: 60px -12px 0
 	.card
 		width: calc( 100% / 3 - 24px )
 		margin: 0 12px
+		&:hover
+			.title
+				text-decoration-color: $blue
+				> i
+					transform: translate(0, -50%)
+					opacity: 1
 		.bg
 			height: 360px
 		.title
@@ -187,10 +201,277 @@ section.blog
 			padding-left: 48px
 			font-size: 24px
 			font-weight: bold
+			position: relative
+			padding-right: 36px
+			transition: all 0.2s linear
+			text-decoration: underline
+			text-decoration-color: transparent
+			> i
+				position: absolute
+				color: $blue
+				font-size: 36px
+				font-weight: normal
+				top: 50%
+				right: 0
+				opacity: 0
+				transform: translate(-20px, -50%)
+				transition: all 0.2s linear
 		.date
 			margin-top: 6px
 			padding-left: 48px
 			font-size: 18px
 			color: $grey
+
 section.archive_blog
-	background-color: #f2f2f2
+	.cards
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin: 30px -12px -30px
+	.card
+		margin-top: 30px
+		margin-bottom: 30px
+
+section.post
+	.wrapper
+	.thumbnail
+		position: relative
+		margin: 60px 0
+	.content
+		width: 66%
+		margin: 0 auto
+		padding-bottom: 60px
+	h4
+		font-size: 48px
+	p
+		margin-top: 36px
+		font-size: 24px
+		line-height: 1.42
+		&.accent
+			font-size: 36px
+	.navsharing
+		padding-top: 60px
+		border-top: 1px solid rgba($b, 0.1)
+		display: flex
+		align-items: center
+		justify-content: space-between
+		.prev, .next
+			font-size: 24px
+			font-weight: 500
+			transition: all 0.2s linear
+			display: flex
+			align-items: center
+			&:hover
+				color: $blue
+			> i
+				font-size: 36px
+				color: $blue
+		.prev > i
+			margin-right: 18px
+		.next > i
+			margin-left: 18px
+		.share
+			display: flex
+			align-items: center
+			justify-content: center
+			span
+				font-size: 24px
+				font-weight: 500
+			.buttons
+				display: flex
+				align-items: center
+			button
+				margin-left: 18px
+				fill: $blue
+
+section.archive_folio
+	.cards
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin: 30px -12px -30px
+	.card
+		margin-top: 30px
+		margin-bottom: 30px
+
+section.folio_post
+	width: 100%
+	height: 100%
+	.wrapper
+		height: 100%
+	.gallery
+		margin-top: 60px
+		width: 100%
+		height: 100%
+		.big
+			width: 100%
+			height: 722px
+			overflow: hidden
+			display: inline-flex
+			img
+				display: inline-block
+				width: auto
+				max-width: 100%
+				max-height: 100%
+				// width: 1416px
+				// height: 722px
+		.tape
+			margin-top: 12px
+			max-width: 100%
+			overflow: hidden
+			position: relative
+			display: inline-flex
+			img
+				width: 240px
+				height: 122px
+				cursor: pointer
+				border: 4px solid transparent
+				transition: all 0.2s linear
+				display: inline-block
+				&:not(:first-child)
+					margin-left: 18px
+				&[aria-hidden=true]
+					opacity: 0.5
+				&:hover, &.slick-current
+					border: 4px solid $blue
+			> button
+				position: absolute
+				z-index: 10
+				background-color: $w
+				top: 50%
+				transform: translateY(-50%)
+				transition: all 0.2s linear
+				&:nth-of-type(1)
+					left: 0
+				&:nth-of-type(2)
+					right: 0
+				&:hover > i
+					color: $blue
+				&[aria-disabled=true]
+					opacity: 0
+					visibility: hidden
+				> i
+					padding: 18px 24px
+					font-size: 24px
+					font-weight: normal
+					color: $b
+					transition: all 0.2s linear
+	.content
+		width: 100%
+		padding: 60px 0
+		display: flex
+		justify-content: space-between
+		.left
+			width: calc( 100% / 3 )
+			padding-right: 20px
+			ul
+				margin-top: 36px
+				border-right: 2px solid $blue
+			li
+				display: flex
+				align-items: center
+				&:not(:first-child)
+					margin-top: 18px
+				svg
+					width: 36px
+					height: 36px
+					fill: $blue
+				span
+					margin-left: 24px
+					font-size: 24px
+					font-weight: 500
+		.right
+			width: calc( 100% / 3 * 2 )
+			padding-left: 100px
+			.list_block h6
+				font-weight: 500
+
+section.archive_services
+	p
+		margin-top: -60px
+		font-size: 24px
+	.cards
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin: 30px -12px -30px
+	.card
+		margin-top: 12px
+		margin-bottom: 12px
+
+section.service_banner
+	height: 600px
+	padding: 85px 0 60px
+	.wrapper
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+	h2
+		font-size: 72px
+
+section.consult
+	background-color: $cyan
+	.wrapper
+		display: flex
+		justify-content: space-between
+		.left
+			width: 50%
+			padding-right: 72px
+			h4
+				font-size: 48px
+			p
+				margin-top: 36px
+				font-size: 24px
+		.right
+			width: 50%
+			padding: 96px 0 0 72px
+			font-size: 20px
+
+section.about_banner
+	height: 600px
+	padding-bottom: 60px
+	> img
+		height: auto
+
+section.history
+	background-color: $db
+	.wrapper
+		width: 50%
+	h2
+		font-size: 72px
+	p
+		margin-top: 36px
+		font-size: 24px
+		&.accent
+			margin-top: 60px
+			font-size: 36px
+
+section.mission
+	.wrapper
+		display: flex
+		justify-content: space-between
+	h3
+		font-size: 48px
+	.left
+		width: 50%
+		padding-right: 72px
+		.cards
+			margin-top: 36px
+			flex-direction: column
+		.card
+			width: 100%
+			display: flex
+			&:not(:first-child)
+				margin-top: 36px
+			p
+				margin: 0 0 0 24px
+			.figure_2
+				transform: none
+				top: 0
+				left: 0
+				&::before
+					transform: translate(0, 0)
+	.right
+		width: 50%
+		padding-left: 72px
+		p
+			margin-top: 36px
+			font-size: 24px
+
