@@ -160,6 +160,26 @@ svg {
     left: 72px;
     top: 0; }
 
+.figure_6 {
+  position: absolute;
+  z-index: 20; }
+  .figure_6:before {
+    content: "";
+    position: absolute;
+    background-color: #26a2be;
+    width: 72px;
+    height: 72px;
+    top: 24px;
+    right: 24px; }
+  .figure_6:after {
+    content: "";
+    position: absolute;
+    background-color: #9e1260;
+    width: 24px;
+    height: 24px;
+    top: 0;
+    right: 0; }
+
 .figure_5 {
   position: absolute;
   left: 0;
@@ -183,10 +203,6 @@ svg {
     font-size: 24px;
     line-height: 1;
     width: max-content; }
-
-.slick-track {
-  max-width: 100%;
-  max-height: 100%; }
 
 * {
   color: inherit;
@@ -648,6 +664,75 @@ section.blog .card {
     font-size: 18px;
     color: #999999; }
 
+section.archive_reviews .cards {
+  margin-top: 60px;
+  display: block; }
+section.archive_reviews .card {
+  height: 480px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between; }
+  section.archive_reviews .card:nth-of-type(odd) {
+    margin-left: 72px; }
+    section.archive_reviews .card:nth-of-type(odd) .figure_6 {
+      left: 24px; }
+  section.archive_reviews .card:nth-of-type(even) {
+    margin-right: 72px; }
+    section.archive_reviews .card:nth-of-type(even) .figure_6 {
+      right: 24px;
+      transform: scale(-1, 1); }
+    section.archive_reviews .card:nth-of-type(even) .text {
+      order: 2;
+      padding: 36px 48px 36px 36px; }
+    section.archive_reviews .card:nth-of-type(even) .image {
+      order: 1;
+      padding: 0 36px 0 0; }
+      section.archive_reviews .card:nth-of-type(even) .image:before {
+        left: unset;
+        right: 0; }
+  section.archive_reviews .card:not(:first-child) {
+    margin-top: 60px; }
+  section.archive_reviews .card .figure_6 {
+    top: 0; }
+  section.archive_reviews .card .text {
+    padding: 36px 36px 36px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 73%; }
+    section.archive_reviews .card .text .date {
+      font-size: 18px;
+      color: #999999; }
+    section.archive_reviews .card .text .name {
+      margin-top: 6px;
+      font-size: 24px;
+      font-weight: 500; }
+    section.archive_reviews .card .text p {
+      margin-top: 24px;
+      font-size: 36px; }
+    section.archive_reviews .card .text a {
+      display: block;
+      margin-top: auto;
+      font-size: 18px;
+      color: #999999; }
+  section.archive_reviews .card .image {
+    width: 27%;
+    padding: 0 0 0 36px;
+    position: relative; }
+    section.archive_reviews .card .image:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      border-left: 2px solid #26a2be;
+      height: 85%; }
+    section.archive_reviews .card .image a {
+      display: block;
+      width: 100%;
+      height: 100%; }
+
 section.archive_blog .cards {
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -892,6 +977,47 @@ section.mission .right {
   section.mission .right p {
     margin-top: 36px;
     font-size: 24px; }
+
+section.contacts {
+  padding-bottom: 0; }
+  section.contacts .wrapper {
+    width: 1668px;
+    margin: 0 0 0 auto; }
+    section.contacts .wrapper > div {
+      padding-top: 120px;
+      display: flex;
+      justify-content: space-between; }
+      section.contacts .wrapper > div .left {
+        width: 35%; }
+        section.contacts .wrapper > div .left li {
+          display: block;
+          font-size: 36px;
+          font-weight: 500; }
+          section.contacts .wrapper > div .left li:not(:first-child) {
+            margin-top: 36px; }
+          section.contacts .wrapper > div .left li:last-child {
+            display: flex;
+            align-items: center; }
+        section.contacts .wrapper > div .left button {
+          font-size: 24px;
+          font-weight: 500;
+          padding-bottom: 8px;
+          color: #26a2be;
+          border-bottom: 2px solid #26a2be;
+          transition: all 0.2s linear; }
+        section.contacts .wrapper > div .left .socials {
+          margin-left: 48px;
+          display: flex;
+          align-items: center; }
+          section.contacts .wrapper > div .left .socials a:not(:first-child) {
+            margin-left: 18px; }
+          section.contacts .wrapper > div .left .socials a:hover svg {
+            fill: #26a2be; }
+          section.contacts .wrapper > div .left .socials a svg {
+            fill: #333333; }
+      section.contacts .wrapper > div .right {
+        width: 65%;
+        height: 550px; }
 
 footer {
   background-image: url("../img/footer_bg.png");

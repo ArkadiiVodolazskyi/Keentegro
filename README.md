@@ -8,12 +8,22 @@ https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
 2. Ховер состояния для элементов.
 3. home folio - когда слайдер сдвигается влево, должны ли карточки быть видны слева так же, как и справа?
 4. header fixed?
+5. reviews - какой из двух вариантов шаблона верстать?
 
 Не забыть доделки:
 1. page-reviews
 2. пагинация на страницах архивов
 3. single-folio - gallery - slick
 4. single-service - form
+
+Ориентировочные брейкпоинты:
+1920
+1600
+1440
+1280
+1024
+768
+320
 
 Названия секций:
 
@@ -51,7 +61,7 @@ footer
 	blog - категория Блог
 		mobile - slider
 
-2-3. ? page-reviews
+2-3. + ? page-reviews
 	? Какая сущность будет у review?
 	review text
 	review img - fullscreen
@@ -92,7 +102,7 @@ footer
 	mission
 	history
 
-12. ? page-contacts
+12. + ? page-contacts
 	map
 	connect with us - Форма Консультация Popup или другая? - Gravity Forms
 

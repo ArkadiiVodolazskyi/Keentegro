@@ -222,6 +222,77 @@ section.blog
 			font-size: 18px
 			color: $grey
 
+section.archive_reviews
+	.wrapper
+	.cards
+		margin-top: 60px
+		display: block
+	.card
+		height: 480px
+		background-color: $w
+		display: flex
+		justify-content: space-between
+		&:nth-of-type(odd)
+			margin-left: 72px
+			.figure_6
+				left: 24px
+		&:nth-of-type(even)
+			margin-right: 72px
+			.figure_6
+				right: 24px
+				transform: scale(-1, 1)
+			.text
+				order: 2
+				padding: 36px 48px 36px 36px
+			.image
+				order: 1
+				padding: 0 36px 0 0
+				&:before
+					left: unset
+					right: 0
+		&:not(:first-child)
+			margin-top: 60px
+		.figure_6
+			top: 0
+		.text
+			padding: 36px 36px 36px 48px
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+			width: 73%
+			.date
+				font-size: 18px
+				color: $grey
+			.name
+				margin-top: 6px
+				font-size: 24px
+				font-weight: 500
+			p
+				margin-top: 24px
+				font-size: 36px
+			a
+				display: block
+				margin-top: auto
+				font-size: 18px
+				color: $grey
+		.image
+			width: 27%
+			padding: 0 0 0 36px
+			position: relative
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				left: 0
+				top: 50%
+				transform: translate(0, -50%)
+				border-left: 2px solid $blue
+				height: 85%
+			a
+				display: block
+				width: 100%
+				height: 100%
+
 section.archive_blog
 	.cards
 		flex-wrap: wrap
@@ -475,3 +546,44 @@ section.mission
 			margin-top: 36px
 			font-size: 24px
 
+section.contacts
+	padding-bottom: 0
+	.wrapper
+		width: 1668px // 87%
+		margin: 0 0 0 auto
+		> div
+			padding-top: 120px
+			display: flex
+			justify-content: space-between
+			.left
+				width: 35%
+				li
+					display: block
+					font-size: 36px
+					font-weight: 500
+					&:not(:first-child)
+						margin-top: 36px
+					&:last-child
+						display: flex
+						align-items: center
+				button
+					font-size: 24px
+					font-weight: 500
+					padding-bottom: 8px
+					color: $blue
+					border-bottom: 2px solid $blue
+					transition: all 0.2s linear
+				.socials
+					margin-left: 48px
+					display: flex
+					align-items: center
+					a
+						&:not(:first-child)
+							margin-left: 18px
+						&:hover svg
+							fill: $blue
+						svg
+							fill: $b
+			.right
+				width: 65%
+				height: 550px
