@@ -6,7 +6,6 @@ header
 	top: 0
 	width: 100%
 	height: 85px
-	border-bottom: 2px solid rgba($w, 0.2)
 	background-color: $w
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06)
 	&.home
@@ -27,6 +26,7 @@ header
 		justify-content: space-between
 		align-items: center
 		padding: 14px 0 20px
+		border-bottom: 2px solid rgba($w, 0.2)
 	.fa-chevron-down
 		position: absolute
 		left: 50%
@@ -38,6 +38,8 @@ header
 		display: flex
 		justify-content: space-between
 		align-items: center
+		> *
+			width: max-content
 	.logo
 		width: 235px
 		height: 46px
@@ -58,6 +60,8 @@ header
 		display: flex
 		justify-content: space-between
 		align-items: center
+		> *
+			width: max-content
 	.contact_phone
 		position: relative
 		span

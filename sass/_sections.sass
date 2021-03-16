@@ -18,16 +18,20 @@ section.banner
 			text-align: center
 		> div
 			display: flex
-			justify-content: space-around
+			justify-content: center
 			width: 100%
-			span
-				font-size: 72px
-				font-weight: bold
-				letter-spacing: 8.64px
-				opacity: 0.5
-				text-transform: uppercase
-				&.active
-					opacity: 1
+			> span
+				width: 100%
+				display: flex
+				justify-content: space-around
+				> span
+					font-size: 72px
+					font-weight: bold
+					letter-spacing: 8.64px
+					opacity: 0.5
+					text-transform: uppercase
+					&.active
+						opacity: 1
 	.next
 		font-size: 18px
 		position: absolute
@@ -54,6 +58,7 @@ section.services
 	.card
 		margin: 0 12px
 		width: calc( 100% / 3 - 24px)
+		min-width: 324px
 		height: 600px
 		padding: 48px
 		display: flex
@@ -89,6 +94,8 @@ section.services
 			a
 				font-size: 20px
 				font-weight: 500
+				&:last-child
+					font-size: 18px
 
 section.facts
 	background-color: $cyan
@@ -116,10 +123,10 @@ section.folio
 			top: 238px
 			&:nth-of-type(1)
 				left: 0
-				transform: translate(-174px, -50%)
+				transform: translate(-9vw, -50%)
 			&:nth-of-type(2)
 				right: 0
-				transform: translate(174px, -50%)
+				transform: translate(9vw, -50%)
 			&.slick-disabled
 				opacity: 0
 			> i
@@ -127,7 +134,8 @@ section.folio
 				color: $w
 				font-weight: normal
 	.card
-		width: 696px
+		// width: 696px
+		width: 36vw
 		margin: 0 12px
 		&[aria-hidden=true]
 			opacity: 0.5
@@ -153,10 +161,10 @@ section.reviews
 			top: 238px
 			&:nth-of-type(1)
 				left: 0
-				transform: translate(-174px, -50%)
+				transform: translate(-9vw, -50%)
 			&:nth-of-type(2)
 				right: 0
-				transform: translate(174px, -50%)
+				transform: translate(9vw, -50%)
 			&.slick-disabled
 				opacity: 0
 			> i

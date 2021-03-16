@@ -1,0 +1,224 @@
+@media (max-width: 1920px)
+
+
+@media (max-width: 1800px)
+	section.folio .cards, section.reviews .cards
+		button:nth-of-type(1), button:nth-of-type(2)
+			transform: translate(0, -50%)
+
+@media (max-width: 1600px)
+	.wrapper
+		width: 90%
+	header
+		.hamburger
+			margin: 0 36px
+		.consult, .languages
+			margin-left: 36px
+
+	section.banner .wrapper > div > span > span
+		font-size: 48px
+
+
+@media (max-width: 1440px)
+	section
+		&:not(.banner)
+			padding: 96px 0
+		h3 span
+			font-size: 48px
+
+	header
+		.logo
+			width: 205px
+			height: auto
+		.hamburger
+			margin: 0 24px
+			width: 48px
+			height: auto
+		.navigation li:not(:first-child)
+			margin-left: 24px
+		.contact_phone span, .consult
+			font-size: 20px
+		.consult, .languages
+			margin-left: 24px
+	footer
+		.wrapper
+			padding-top: 96px
+		.clients h2
+			font-size: 48px
+
+	.figure_3
+		transform: scale(0.75)
+
+	section.services .card
+		height: 520px
+		padding: 24px 24px 36px
+		.title
+			font-size: 30px
+	section.facts .cards
+		margin-top: 60px
+	section.folio .card
+		.bg
+			height: 400px
+		.title
+			font-size: 24px
+	section.reviews
+		.card p
+			font-size: 24px
+		.cards button
+			top: 50%
+	section.blog .card
+		.title
+			padding: 0 24px 0 36px
+		.date
+			padding-left: 36px
+
+@media (max-width: 1280px)
+	section:not(.banner)
+		padding: 72px 0
+		.cards
+			margin-top: 36px
+
+	.figure_4
+		transform: scale(0.75)
+
+	header
+		height: auto
+		.logo
+			width: 156px
+		.hamburger
+			width: 36px
+		.navigation li:not(:first-child)
+			margin-left: 18px
+		.consult, .languages
+			margin-left: 18px
+	footer
+		nav
+			justify-content: space-between
+			> div
+				&:nth-child(1), &:nth-child(2), &:nth-child(3)
+					width: 30%
+					padding-right: 0
+
+	section.banner
+		height: 600px
+		padding-bottom: 120px
+		> img
+			width: auto
+			transform: translate(-40%, -50%)
+	section.reviews .card
+		width: 800px
+		padding: 18px 0 0 96px
+
+
+@media (max-width: 1024px)
+	section:not(.banner) .cards
+		flex-wrap: wrap
+
+	header
+		.navigation
+			display: none
+	footer nav > div
+		width: auto
+		flex: 1 0 auto
+
+	section.banner
+		overflow: hidden
+		.wrapper > div
+			width: 120vw
+			> span
+				width: min-content
+				position: relative
+				> span
+					&:nth-child(1)
+						position: absolute
+						left: -36px
+						transform: translate(-100%, 0)
+					&:nth-child(3)
+						position: absolute
+						right: -36px
+						transform: translate(100%, 0)
+	section.services .card
+		width: calc( 100% / 2 - 24px)
+		margin: 12px
+	section.facts .card
+		width: calc( 100% / 2 - 24px )
+		margin: 12px
+	section.folio
+		.card
+			width: 50vw
+		.cards button
+			top: 45%
+	section.reviews
+		.card
+			width: 60vw
+			margin: 0 30px
+	section.blog .card
+		width: calc( 100% / 2 - 24px )
+		margin: 12px
+
+@media (max-width: 768px)
+	.watch_all_mobile
+		display: inline-block
+
+	section h3
+		span
+			font-size: 40px
+		a
+			display: none
+
+	header
+		.wrapper
+			padding: 14px 0 10px
+		.left
+			width: 100%
+		.right
+			display: none
+	footer
+		.clients
+			padding: 0
+			.slick_lg
+				padding: 36px 0
+		nav
+			flex-direction: column
+			padding: 0
+			div
+				width: 100% !important
+				padding: 24px 0 !important
+				.figure_1
+					display: none
+		.copyright
+			flex-direction: column
+			align-items: flex-start
+			padding: 24px 0
+			span
+				width: 100% !important
+				&:nth-child(2)
+					margin-top: 12px
+				&:nth-child(3)
+					margin-top: 36px
+
+	section.banner
+		.wrapper
+			h3, > div > span > span
+				font-size: 36px
+		.next
+			font-size: 14px
+	section.services .card
+		width: calc( 100% / 2 - 24px)
+		height: 360px
+		.title
+			font-size: 24px
+			padding-bottom: 20px
+		.links
+			padding-top: 20px
+	section.folio .card
+		width: 60vw
+		&[aria-hidden="true"]
+			opacity: 1
+	section.reviews .card
+		width: 90vw
+		&[aria-hidden="true"]
+			opacity: 0
+
+@media (max-width: 320px)
+

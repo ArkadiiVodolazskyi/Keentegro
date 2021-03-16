@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,9 +64,11 @@
 		<div class="wrapper">
 			<h3>Precision engineering and construction</h3>
 			<div>
-				<span class="active">Идея</span>
-				<span>Решение</span>
-				<span>Результат</span>
+				<span>
+					<span class="active">Идея</span>
+					<span>Решение</span>
+					<span>Результат</span>
+				</span>
 			</div>
 		</div>
 		<a href="#" class="next">
@@ -119,7 +121,7 @@
 						<img src="./img/home_services_3.png" alt="">
 					</a>
 					<h4 class="title">
-						Интегрированные системы безопасностиs
+						Интегрированные системы безопасности
 					</h4>
 					<div class="links">
 						<a href="#">Консультация</a>
@@ -128,6 +130,10 @@
 				</div>
 
 			</div>
+
+			<a href="#" class="watch_all_mobile">
+				Смотреть все услуги
+			</a>
 		</div>
 	</section>
 
@@ -220,6 +226,10 @@
 				</a>
 
 			</div>
+
+			<a href="#" class="watch_all_mobile">
+				Смотреть все работы
+			</a>
 		</div>
 	</section>
 
@@ -253,6 +263,10 @@
 				</div>
 
 			</div>
+
+			<a href="#" class="watch_all_mobile">
+				Смотреть все отзывы
+			</a>
 		</div>
 	</section>
 
@@ -306,6 +320,10 @@
 				</a>
 
 			</div>
+
+			<a href="#" class="watch_all_mobile">
+				Читать все статьи
+			</a>
 		</div>
 	</section>
 
@@ -424,6 +442,28 @@
 						<i class="fas fa-chevron-right"></i>
 					</button>
 				`,
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							arrows: true,
+							draggable: true,
+							touchThreshold: 300,
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							arrows: false,
+							draggable: true,
+							touchThreshold: 300,
+						}
+					},
+				]
 			});
 
 			$("section.reviews .slick_lg").not('.slick-initialized').slick({
@@ -448,6 +488,18 @@
 						<i class="fas fa-chevron-right"></i>
 					</button>
 				`,
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							arrows: false,
+							draggable: true,
+							touchThreshold: 300,
+						}
+					},
+				]
 			});
 
 
