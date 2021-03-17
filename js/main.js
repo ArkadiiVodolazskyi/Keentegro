@@ -108,10 +108,58 @@ document.addEventListener("DOMContentLoaded", () => {
           touchThreshold: 300,
         }
       },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+          draggable: true,
+          touchThreshold: 300,
+        }
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          draggable: true,
+          touchThreshold: 300,
+        }
+      },
     ]
   });
 });
 
 window.addEventListener("load", () => {
+
+  if (window.innerWidth <= 768) {
+    // Expand footer menus on 768px-
+    (function() {
+      const fuls = [...document.querySelectorAll('footer nav > div:not(:last-child)')];
+      const fexpands = [...document.querySelectorAll('footer nav > div:not(:last-child) > h3 > .expand')];
+
+      if (fuls.length && fexpands.length) {
+
+        for (let i = 0; i < fexpands.length; i++) {
+
+          fexpands[i].addEventListener('click', () => {
+            if (fuls[i].classList.contains('expanded')) {
+              fuls[i].classList.remove('expanded');
+            } else {
+              for (let j = 0; j < fuls.length; j++) {
+                fuls[j].classList.remove('expanded');
+              }
+              fuls[i].classList.add('expanded');
+            }
+
+          });
+
+        }
+
+      }
+    })();
+  }
 
 });

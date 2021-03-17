@@ -4,17 +4,15 @@ sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
 
 Вопросы:
-1. Иконки: fontawesome (нужны названия) / рандомные скачанные (нужны исходники).
 2. Ховер состояния для элементов.
 3. home folio - когда слайдер сдвигается влево, должны ли карточки быть видны слева так же, как и справа?
 4. header fixed?
 5. reviews - какой из двух вариантов шаблона верстать?
 
 Не забыть доделки:
-1. page-reviews
-2. пагинация на страницах архивов
-3. single-folio - gallery - slick
-4. single-service - form
+1. пагинация на страницах архивов
+2. single-folio - gallery - slick
+3. single-service - form
 
 Ориентировочные брейкпоинты:
 1920
@@ -48,7 +46,7 @@ footer
 
 
 
-1. + page-main
+1. + + page-main
 	banner
 		mobile - slider
 	services - категория "Сервисы"
@@ -61,25 +59,24 @@ footer
 	blog - категория Блог
 		mobile - slider
 
-2-3. + ? page-reviews
-	? Какая сущность будет у review?
+2-3. + + archive-reviews
 	review text
 	review img - fullscreen
 	pagination
 
-4. + archive-blog
+4. + + archive-blog
 	pagination
 
-5. + single-blog
+5. + + single-blog
 	prev/next post
 	share buttons
 	also read - blog
 		mobile - slider
 
-6. + archive-folio
+6. + + archive-folio
 	pagination
 
-7. + single-folio
+7. + + single-folio
 	gallery
 		mobile - slider
 	prev/next post
@@ -102,7 +99,7 @@ footer
 	mission
 	history
 
-12. + ? page-contacts
+12. + page-contacts
 	map
-	connect with us - Форма Консультация Popup или другая? - Gravity Forms
+	connect with us - Форма Консультация Popup
 

@@ -101,8 +101,11 @@ section.facts
 	background-color: $cyan
 	.cards
 		margin: 84px -12px 0
+	.slide
+		width: 50%
+		display: inline-flex
 	.card
-		width: calc( 100% / 4 - 24px )
+		width: calc( 100% / 2 - 24px )
 		margin: 0 12px
 		padding: 24px 0 0 24px
 		img
@@ -240,6 +243,9 @@ section.archive_reviews
 		background-color: $w
 		display: flex
 		justify-content: space-between
+		img
+			height: 100%
+			width: auto
 		&:nth-of-type(odd)
 			margin-left: 72px
 			.figure_6
@@ -291,6 +297,7 @@ section.archive_reviews
 				content: ''
 				display: block
 				position: absolute
+				z-index: 200
 				left: 0
 				top: 50%
 				transform: translate(0, -50%)
@@ -368,6 +375,7 @@ section.archive_folio
 		justify-content: flex-start
 		margin: 30px -12px -30px
 	.card
+		width: calc( 100% / 2 - 24px )
 		margin-top: 30px
 		margin-bottom: 30px
 
@@ -375,23 +383,24 @@ section.folio_post
 	width: 100%
 	height: 100%
 	.wrapper
+		width: 73vw
 		height: 100%
 	.gallery
-		margin-top: 60px
-		width: 100%
+		margin: 60px auto 0
 		height: 100%
 		.big
 			width: 100%
 			height: 722px
 			overflow: hidden
 			display: inline-flex
+			position: relative
 			img
 				display: inline-block
-				width: auto
+				width: 73vw
 				max-width: 100%
 				max-height: 100%
-				// width: 1416px
-				// height: 722px
+		.slick-track
+			height: 100%
 		.tape
 			margin-top: 12px
 			max-width: 100%
@@ -411,28 +420,28 @@ section.folio_post
 					opacity: 0.5
 				&:hover, &.slick-current
 					border: 4px solid $blue
-			> button
-				position: absolute
-				z-index: 10
-				background-color: $w
-				top: 50%
-				transform: translateY(-50%)
-				transition: all 0.2s linear
-				&:nth-of-type(1)
-					left: 0
-				&:nth-of-type(2)
-					right: 0
-				&:hover > i
-					color: $blue
-				&[aria-disabled=true]
-					opacity: 0
-					visibility: hidden
-				> i
-					padding: 18px 24px
-					font-size: 24px
-					font-weight: normal
-					color: $b
-					transition: all 0.2s linear
+	button.slick-arrow
+		position: absolute
+		z-index: 10
+		background-color: $w
+		top: 50%
+		transform: translateY(-50%)
+		transition: all 0.2s linear
+		&:nth-of-type(1)
+			left: 0
+		&:nth-of-type(2)
+			right: 0
+		&:hover > i
+			color: $blue
+		&[aria-disabled=true]
+			opacity: 0
+			visibility: hidden
+		> i
+			padding: 18px 24px
+			font-size: 24px
+			font-weight: normal
+			color: $b
+			transition: all 0.2s linear
 	.content
 		width: 100%
 		padding: 60px 0
@@ -440,7 +449,6 @@ section.folio_post
 		justify-content: space-between
 		.left
 			width: calc( 100% / 3 )
-			padding-right: 20px
 			ul
 				margin-top: 36px
 				border-right: 2px solid $blue
@@ -459,9 +467,12 @@ section.folio_post
 					font-weight: 500
 		.right
 			width: calc( 100% / 3 * 2 )
-			padding-left: 100px
+			padding-left: 60px
 			.list_block h6
 				font-weight: 500
+
+section.folio.other .card
+	width: calc( 100% / 2 - 24px )
 
 section.archive_services
 	p

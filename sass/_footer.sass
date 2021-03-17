@@ -1,5 +1,5 @@
 footer
-	background-image: url('../img/footer_bg.png')
+	// background-image: url('../img/footer_bg.png')
 	background-color: #000
 	.wrapper
 		padding-top: 120px
@@ -38,6 +38,16 @@ footer
 			font-size: 24px
 			font-weight: 500
 			line-height: 1.25
+			display: flex
+			justify-content: space-between
+			align-items: center
+		.expand
+			display: none
+			padding: 5px
+			&:hover
+				color: $blue
+			i
+				font-weight: normal
 		ul
 			margin-top: 24px
 		li
@@ -49,6 +59,8 @@ footer
 			font-size: 20px
 			line-height: 1.3
 			color: #bcbcbc
+			&:hover
+				color: $blue
 		> div
 			padding: 48px 0 0 36px
 			position: relative
@@ -66,6 +78,9 @@ footer
 					font-weight: 500
 					line-height: 1.25
 					fill: $w
+				a:hover
+					color: $blue
+					fill: $blue
 				li:last-child a:not(:first-child)
 					margin-left: 18px
 			.figure_1

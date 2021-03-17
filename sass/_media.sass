@@ -17,6 +17,8 @@
 
 	section.banner .wrapper > div > span > span
 		font-size: 48px
+	section.folio_post .content .left
+		padding-right: 0
 
 
 @media (max-width: 1440px)
@@ -71,12 +73,41 @@
 			padding: 0 24px 0 36px
 		.date
 			padding-left: 36px
+	section.archive_reviews
+		.card
+			height: 380px
+			&:nth-of-type(odd)
+				margin-left: 60px
+				.figure_6
+					transform: scale(0.75)
+					left: 18px
+			&:nth-of-type(even)
+				margin-right: 60px
+				.figure_6
+					transform: scale(-0.75, 0.75)
+					right: 18px
+			&:not(:first-child)
+				margin-top: 48px
+			.text p
+				font-size: 24px
+	section.post
+		h4
+			font-size: 36px
+	section.folio_post
+		.gallery .big
+			height: auto
+		.content .left li span
+			font-size: 20px
 
 @media (max-width: 1280px)
+	.bg > img
+		width: auto
 	section:not(.banner)
 		padding: 72px 0
 		.cards
 			margin-top: 36px
+	body:not(.home)::before
+		transform: translateY(-85px)
 
 	.figure_4
 		transform: scale(0.75)
@@ -105,14 +136,41 @@
 		> img
 			width: auto
 			transform: translate(-40%, -50%)
+	section.facts
+		.cards
+			flex-wrap: wrap
+		.slide
+			width: calc( 50% - 24px )
+			flex-wrap: wrap
+			&:not(:first-child)
+				margin-left: 24px
+		.card
+			width: 100%
+			height: 50%
 	section.reviews .card
 		width: 800px
 		padding: 18px 0 0 96px
-
+	section.archive_reviews
+		.card
+			height: 340px
+			.text
+				.name, p
+					font-size: 20px
+				.date, a
+					font-size: 16px
+	section.folio_post .wrapper
+		width: 83vw
+		.gallery .big img
+			width: 83vw
 
 @media (max-width: 1024px)
 	section:not(.banner) .cards
 		flex-wrap: wrap
+	.figure_5 > span
+		font-size: 20px
+	.list_block
+		h6, li
+			font-size: 21px
 
 	header
 		.navigation
@@ -140,9 +198,6 @@
 	section.services .card
 		width: calc( 100% / 2 - 24px)
 		margin: 12px
-	section.facts .card
-		width: calc( 100% / 2 - 24px )
-		margin: 12px
 	section.folio
 		.card
 			width: 50vw
@@ -155,16 +210,98 @@
 	section.blog .card
 		width: calc( 100% / 2 - 24px )
 		margin: 12px
+	section.archive_reviews
+		.card
+			height: 300px
+			&:nth-of-type(odd)
+				margin-left: 24px
+				.figure_6
+					transform: scale(0.5)
+					left: 12px
+			&:nth-of-type(even)
+				margin-right: 24px
+				.figure_6
+					transform: scale(-0.5, 0.5)
+					right: 12px
+			&:not(:first-child)
+				margin-top: 36px
+			.text
+				padding: 24px !important
+				p
+					margin-top: 18px
+					font-size: 20px
+				.name
+					font-size: 18px
+				.date, a
+					font-size: 14px
+			.image
+				padding-left: 24px
+	section.post
+		.thumbnail
+			margin: 30px 0
+		.content
+			width: 100%
+			padding-bottom: 36px
+			p
+				margin-top: 24px
+				font-size: 21px
+				&.accent
+					font-size: 27px
+		.navsharing
+			padding-top: 36px
+			justify-content: center
+			.prev, .next
+				display: none
+	section.archive_folio .cards
+		justify-content: center
+	section.folio_post
+		.content
+			padding-top: 36px
+			flex-wrap: wrap
+			.left
+				width: 100%
+				padding: 0 0 36px 0
+				border-right: none
+				border-bottom: 2px solid $blue
+				ul
+					margin-top: 18px
+					border: none
+				li svg
+					width: 24px
+					height: 24px
+			.right
+				width: 100%
+				padding: 36px 0 0 0
 
 @media (max-width: 768px)
 	.watch_all_mobile
 		display: inline-block
+	.figure_4
+		transform: scale(0.5)
+	body:not(.home)::before
+		transform: translateY(-130px)
+	.figure_5 > span
+		font-size: 16px
+	.list_block
+		ul
+			margin-top: 12px
+		h6
+			font-size: 16px
+			line-height: 1.5
+		li
+			font-size: 16px
+			line-height: 1.5
+			&:before
+				margin-right: 12px
+			&:not(:first-child)
+				margin-top: 4px
 
-	section h3
-		span
-			font-size: 40px
-		a
-			display: none
+	section
+		h3
+			span
+				font-size: 40px
+			a
+				display: none
 
 	header
 		.wrapper
@@ -174,18 +311,50 @@
 		.right
 			display: none
 	footer
+		overflow: hidden
+		> img
+			width: 2700px !important
+			height: auto !important
 		.clients
 			padding: 0
+			h2
+				font-size: 40px
 			.slick_lg
 				padding: 36px 0
+			img
+				width: 156px
+				height: 86px
 		nav
 			flex-direction: column
 			padding: 0
+			*:not(h3)
+				font-size: 18px !important
+			h3 .expand
+				display: block
 			div
 				width: 100% !important
 				padding: 24px 0 !important
+				&:not(:first-child)
+					border-top: 1px solid rgba($w, 0.2)
 				.figure_1
 					display: none
+				&:not(:last-child)
+					ul
+						opacity: 0
+						visibility: hidden
+						max-height: 0
+						margin-top: 0
+						transition: all 0.2s linear
+					.expand
+						transform: rotate(0)
+				&:not(:last-child).expanded
+					ul
+						opacity: 1
+						visibility: visible
+						max-height: 1000px
+						margin-top: 24px
+					.expand
+						transform: rotate(180deg)
 		.copyright
 			flex-direction: column
 			align-items: flex-start
@@ -203,22 +372,95 @@
 				font-size: 36px
 		.next
 			font-size: 14px
-	section.services .card
-		width: calc( 100% / 2 - 24px)
-		height: 360px
-		.title
-			font-size: 24px
-			padding-bottom: 20px
-		.links
-			padding-top: 20px
+	section.services
+		.cards
+			justify-content: center
+		.card
+			width: calc( 100% / 2 - 24px)
+			height: 360px
+			.title
+				font-size: 24px
+				padding-bottom: 20px
+			.links
+				padding-top: 20px
+	section.facts
+		.slide
+			width: 85vw
+		.card:not(:first-child)
+			margin-top: 24px
 	section.folio .card
-		width: 60vw
+		width: 75vw
 		&[aria-hidden="true"]
 			opacity: 1
+		.date
+			font-size: 14px
 	section.reviews .card
 		width: 90vw
+		padding: 12px 0 0 60px
 		&[aria-hidden="true"]
 			opacity: 0
+	section.blog .card, section.folio.other .card
+		width: 75vw
+		margin: 0 12px
+		vertical-align: top
+	section.archive_reviews
+		.card
+			height: auto
+			.text
+				width: 100%
+				a
+					margin-top: 18px
+			.image
+				display: none
+	section.archive_blog .cards
+		justify-content: center
+		.card
+			width: 100%
+			&:not(:first-child)
+				margin-top: 36px
+	section.post
+		.content
+			p
+				font-size: 16px
+				line-height: 1.5
+				&.accent
+					font-size: 20px
+					line-height: 1.3
+		.navsharing
+			.share
+				width: 100%
+				span
+					font-size: 18px
+					text-align: right
+	section.archive_folio .cards .card
+		width: 100%
+		margin: 18px 12px
+		.bg
+			height: 223px
+	section.folio_post
+		.wrapper
+			width: 90vw
+			.gallery
+				width: 100vw
+				margin-left: -5vw
+				margin-top: 36px
+				.tape
+					display: none
+				.big img
+					width: 100vw
+			button.slick-arrow > i
+				padding: 12px 16px
 
-@media (max-width: 320px)
+@media (max-width: 480px)
+	body:not(.home)::before
+		transform: translateY(-150px)
 
+	section.folio .card .bg
+		height: 208px
+	section.blog .card .bg
+		height: 234px
+	section.post .navsharing .share
+		span
+			flex: 0 0 60%
+		.buttons
+			flex: 0 0 40%

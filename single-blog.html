@@ -142,7 +142,7 @@
 					Читайте также
 				</span>
 			</h3>
-			<div class="cards">
+			<div class="cards slick_mb">
 
 				<a href="#" class="card">
 					<div class="bg" style="background-image: url(./img/home_blog_1.png);">
@@ -274,5 +274,33 @@
 	<script src="./js/libs/jquery-3.5.1.min.js"></script>
 	<script src="./js/libs/slick.min.js"></script>
 	<script src="./js/main.js"></script>
+
+	<script>
+		 document.addEventListener("DOMContentLoaded", () => {
+
+			// Adaptive slick
+			if (window.innerWidth <= 768) {
+
+				$("section.blog .slick_mb")
+					.not(".slick-initialized")
+					.slick({
+						arrows: false,
+						draggable: true,
+						touchThreshold: 300,
+						focusOnSelect: false,
+						infinite: false,
+						autoplay: false,
+						dots: false,
+						variableWidth: true,
+						vertical: false,
+						verticalSwiping: false,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+				});
+
+			}
+
+		 });
+	</script>
 </body>
 </html>
