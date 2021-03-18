@@ -547,7 +547,7 @@ section.mission
 			flex-direction: column
 		.card
 			width: 100%
-			display: flex
+			display: inline-flex
 			&:not(:first-child)
 				margin-top: 36px
 			p
@@ -568,7 +568,7 @@ section.mission
 section.contacts
 	padding-bottom: 0
 	.wrapper
-		width: 1668px // 87%
+		width: 87% // 1668px
 		margin: 0 0 0 auto
 		> div
 			padding-top: 120px
@@ -576,6 +576,7 @@ section.contacts
 			justify-content: space-between
 			.left
 				width: 35%
+				padding-right: 60px
 				li
 					display: block
 					font-size: 36px
@@ -592,11 +593,13 @@ section.contacts
 					color: $blue
 					border-bottom: 2px solid $blue
 					transition: all 0.2s linear
+					min-width: max-content
 				.socials
 					margin-left: 48px
 					display: flex
 					align-items: center
 					a
+						flex: 1 0 auto
 						&:not(:first-child)
 							margin-left: 18px
 						&:hover svg

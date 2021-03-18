@@ -4,15 +4,21 @@ sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
 
 Вопросы:
-2. Ховер состояния для элементов.
-3. home folio - когда слайдер сдвигается влево, должны ли карточки быть видны слева так же, как и справа?
-4. header fixed?
-5. reviews - какой из двух вариантов шаблона верстать?
+1. Ховер состояния для элементов.
+2. header fixed?
+3. reviews - какой из двух вариантов шаблона верстать?
+4. Почему на странице 010 и 012 в footer нет слайдера с компаниями? Так и задумано?
 
 Не забыть доделки:
+0. slick_mb banner spans
 1. пагинация на страницах архивов
-2. single-folio - gallery - slick
-3. single-service - form
+2. single-service - form
+3. header navmenu
+4. footer navmenu
+5. header mobile menu
+6. cpt, taxonomies
+7. forms: static, popup, validation
+
 
 Ориентировочные брейкпоинты:
 1920
@@ -84,22 +90,22 @@ footer
 	also read - folio
 		mobile - slider
 
-8. + archive-service
+8. + +  archive-service
 	pagination
 
-9. + archive-service_category
+9. + + archive-service_category
 
-10. + single-service
+10. + + single-service
 	consult - Форма Консультация Static - Gravity Forms
 
-11. + page-about
+11. + + page-about
 	banner
 	history
 		mobile - slider
 	mission
 	history
 
-12. + page-contacts
+12. + + page-contacts
 	map
 	connect with us - Форма Консультация Popup
 

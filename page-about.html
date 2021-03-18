@@ -64,9 +64,11 @@
 		<div class="wrapper">
 			<h3>Precision engineering and construction</h3>
 			<div>
-				<span class="active">Идея</span>
-				<span>Решение</span>
-				<span>Результат</span>
+				<span class="slick_mb">
+					<span class="active">Идея</span>
+					<span>Решение</span>
+					<span>Результат</span>
+				</span>
 			</div>
 		</div>
 	</section>
@@ -94,7 +96,7 @@
 				<h3>
 					Достижения
 				</h3>
-				<div class="cards">
+				<div class="cards slick_mb">
 
 					<div class="card">
 						<div class="figure_2"></div>
@@ -299,6 +301,46 @@
 					</button>
 				`,
 			});
+
+			if (window.innerWidth <= 768) {
+
+
+
+			}
+
+			if (window.innerWidth <= 480) {
+
+				// $("section.about_banner .slick_mb").not('.slick-initialized').slick({
+				// 	arrows: false,
+				// 	draggable: true,
+				// 	touchThreshold: 300,
+				// 	focusOnSelect: false,
+				// 	infinite: false,
+				// 	autoplay: false,
+				// 	dots: false,
+				// 	variableWidth: true,
+				// 	vertical: false,
+				// 	verticalSwiping: false,
+				// 	slidesToShow: 1,
+				// 	slidesToScroll: 1,
+				// });
+
+				$("section.mission .slick_mb").not('.slick-initialized').slick({
+					arrows: false,
+					draggable: true,
+					touchThreshold: 300,
+					focusOnSelect: false,
+					infinite: false,
+					autoplay: false,
+					dots: false,
+					variableWidth: true,
+					vertical: false,
+					verticalSwiping: false,
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				});
+
+			}
 
 
 		});

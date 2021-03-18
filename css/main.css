@@ -997,7 +997,7 @@ section.mission .left {
     flex-direction: column; }
   section.mission .left .card {
     width: 100%;
-    display: flex; }
+    display: inline-flex; }
     section.mission .left .card:not(:first-child) {
       margin-top: 36px; }
     section.mission .left .card p {
@@ -1018,14 +1018,15 @@ section.mission .right {
 section.contacts {
   padding-bottom: 0; }
   section.contacts .wrapper {
-    width: 1668px;
+    width: 87%;
     margin: 0 0 0 auto; }
     section.contacts .wrapper > div {
       padding-top: 120px;
       display: flex;
       justify-content: space-between; }
       section.contacts .wrapper > div .left {
-        width: 35%; }
+        width: 35%;
+        padding-right: 60px; }
         section.contacts .wrapper > div .left li {
           display: block;
           font-size: 36px;
@@ -1041,17 +1042,20 @@ section.contacts {
           padding-bottom: 8px;
           color: #26a2be;
           border-bottom: 2px solid #26a2be;
-          transition: all 0.2s linear; }
+          transition: all 0.2s linear;
+          min-width: max-content; }
         section.contacts .wrapper > div .left .socials {
           margin-left: 48px;
           display: flex;
           align-items: center; }
-          section.contacts .wrapper > div .left .socials a:not(:first-child) {
-            margin-left: 18px; }
-          section.contacts .wrapper > div .left .socials a:hover svg {
-            fill: #26a2be; }
-          section.contacts .wrapper > div .left .socials a svg {
-            fill: #333333; }
+          section.contacts .wrapper > div .left .socials a {
+            flex: 1 0 auto; }
+            section.contacts .wrapper > div .left .socials a:not(:first-child) {
+              margin-left: 18px; }
+            section.contacts .wrapper > div .left .socials a:hover svg {
+              fill: #26a2be; }
+            section.contacts .wrapper > div .left .socials a svg {
+              fill: #333333; }
       section.contacts .wrapper > div .right {
         width: 65%;
         height: 550px; }
@@ -1245,7 +1249,17 @@ footer {
   section.folio_post .gallery .big {
     height: auto; }
   section.folio_post .content .left li span {
-    font-size: 20px; } }
+    font-size: 20px; }
+
+  section.archive_services p {
+    margin-top: 0; }
+
+  section.contacts {
+    padding-bottom: 0 !important; }
+    section.contacts .wrapper {
+      width: 95%; }
+      section.contacts .wrapper > div .left li {
+        font-size: 30px; } }
 @media (max-width: 1280px) {
   .bg > img {
     width: auto; }
@@ -1283,7 +1297,8 @@ footer {
     padding-bottom: 120px; }
     section.banner > img {
       width: auto;
-      transform: translate(-40%, -50%); }
+      height: 120%;
+      transform: translate(-50%, -50%); }
 
   section.facts .cards {
     flex-wrap: wrap; }
@@ -1310,7 +1325,20 @@ footer {
   section.folio_post .wrapper {
     width: 83vw; }
     section.folio_post .wrapper .gallery .big img {
-      width: 83vw; } }
+      width: 83vw; }
+
+  section.archive_services .cards {
+    margin: 30px -18px -30px; }
+    section.archive_services .cards .card {
+      height: 450px; }
+
+  section.history .wrapper {
+    width: 90%; }
+
+  section.contacts .wrapper > div .left {
+    width: 40%; }
+  section.contacts .wrapper > div .right {
+    width: 60%; } }
 @media (max-width: 1024px) {
   section:not(.banner) .cards {
     flex-wrap: wrap; }
@@ -1320,6 +1348,9 @@ footer {
 
   .list_block h6, .list_block li {
     font-size: 21px; }
+
+  body:not(.home) {
+    padding-top: 80px; }
 
   header .navigation {
     display: none; }
@@ -1422,7 +1453,37 @@ footer {
         height: 24px; }
     section.folio_post .content .right {
       width: 100%;
-      padding: 36px 0 0 0; } }
+      padding: 36px 0 0 0; }
+
+  section.service_banner {
+    height: 480px; }
+    section.service_banner h2 {
+      font-size: 54px; }
+
+  section.history h2 {
+    font-size: 54px; }
+  section.history p.accent {
+    margin-top: 36px;
+    font-size: 30px; }
+
+  section.mission h3 {
+    font-size: 36px; }
+  section.mission .left .card p, section.mission .right p {
+    font-size: 20px; }
+
+  section.contacts .wrapper {
+    width: 90%;
+    margin: 0 auto; }
+    section.contacts .wrapper > div {
+      flex-direction: column;
+      padding-top: 72px; }
+      section.contacts .wrapper > div .left {
+        width: 100%;
+        padding: 0; }
+      section.contacts .wrapper > div .right {
+        width: 100vw;
+        margin-left: -5vw;
+        margin-top: 72px; } }
 @media (max-width: 768px) {
   .watch_all_mobile {
     display: inline-block; }
@@ -1448,6 +1509,9 @@ footer {
       margin-right: 12px; }
     .list_block li:not(:first-child) {
       margin-top: 4px; }
+
+  body:not(.home) {
+    padding-top: 60px; }
 
   section h3 span {
     font-size: 40px; }
@@ -1599,7 +1663,51 @@ footer {
       section.folio_post .wrapper .gallery .big img {
         width: 100vw; }
     section.folio_post .wrapper button.slick-arrow > i {
-      padding: 12px 16px; } }
+      padding: 12px 16px; }
+
+  section.service_banner h2 {
+    font-size: 40px; }
+
+  section.archive_services p {
+    margin-top: -36px;
+    font-size: 20px; }
+
+  section.post .thumbnail {
+    width: 100vw;
+    margin-left: -5vw; }
+
+  section.about_banner {
+    height: 480px;
+    padding-bottom: 36px; }
+
+  section.history h2 {
+    font-size: 40px; }
+  section.history p {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 1.5; }
+    section.history p.accent {
+      font-size: 20px; }
+
+  section.mission .wrapper {
+    flex-direction: column; }
+  section.mission h3 {
+    font-size: 30px; }
+  section.mission .left {
+    width: 100%;
+    padding: 0; }
+    section.mission .left .card p {
+      font-size: 18px; }
+  section.mission .right {
+    width: 100%;
+    padding: 0;
+    margin-top: 72px; }
+    section.mission .right p {
+      font-size: 16px;
+      line-height: 1.5; }
+
+  section.contacts .wrapper > div .left li {
+    font-size: 24px; } }
 @media (max-width: 480px) {
   body:not(.home)::before {
     transform: translateY(-150px); }
@@ -1613,4 +1721,31 @@ footer {
   section.post .navsharing .share span {
     flex: 0 0 60%; }
   section.post .navsharing .share .buttons {
-    flex: 0 0 40%; } }
+    flex: 0 0 40%; }
+
+  section.archive_services .cards {
+    margin: 30px 0; }
+    section.archive_services .cards .card {
+      width: 100%; }
+  section.archive_services p {
+    font-size: 16px;
+    line-height: 1.5; }
+
+  section.mission .cards {
+    margin: 0 !important; }
+  section.mission .left .card {
+    width: 80vw;
+    flex-direction: column;
+    margin: 0 9px; }
+    section.mission .left .card:not(:first-child) {
+      margin-left: 18px; }
+    section.mission .left .card p {
+      margin: 18px 0 0 0;
+      line-height: 1.33; }
+  section.mission .right {
+    margin-top: 36px; }
+
+  section.contacts .wrapper > div .left li {
+    font-size: 20px; }
+  section.contacts .wrapper > div .left button {
+    font-size: 18px; } }

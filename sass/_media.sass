@@ -98,6 +98,14 @@
 			height: auto
 		.content .left li span
 			font-size: 20px
+	section.archive_services p
+		margin-top: 0
+	section.contacts
+		padding-bottom: 0 !important
+		.wrapper
+			width: 95%
+			> div .left li
+				font-size: 30px
 
 @media (max-width: 1280px)
 	.bg > img
@@ -135,7 +143,8 @@
 		padding-bottom: 120px
 		> img
 			width: auto
-			transform: translate(-40%, -50%)
+			height: 120%
+			transform: translate(-50%, -50%)
 	section.facts
 		.cards
 			flex-wrap: wrap
@@ -162,6 +171,18 @@
 		width: 83vw
 		.gallery .big img
 			width: 83vw
+	section.archive_services
+		.cards
+			margin: 30px -18px -30px
+			.card
+				height: 450px
+	section.history .wrapper
+		width: 90%
+	section.contacts .wrapper > div
+		.left
+			width: 40%
+		.right
+			width: 60%
 
 @media (max-width: 1024px)
 	section:not(.banner) .cards
@@ -171,6 +192,8 @@
 	.list_block
 		h6, li
 			font-size: 21px
+	body:not(.home)
+		padding-top: 80px
 
 	header
 		.navigation
@@ -272,6 +295,35 @@
 			.right
 				width: 100%
 				padding: 36px 0 0 0
+	section.service_banner
+		height: 480px
+		h2
+			font-size: 54px
+	section.history
+		h2
+			font-size: 54px
+		p.accent
+			margin-top: 36px
+			font-size: 30px
+	section.mission
+		h3
+			font-size: 36px
+		.left .card p, .right p
+			font-size: 20px
+	section.contacts
+		.wrapper
+			width: 90%
+			margin: 0 auto
+			> div
+				flex-direction: column
+				padding-top: 72px
+				.left
+					width: 100%
+					padding: 0
+				.right
+					width: 100vw
+					margin-left: -5vw
+					margin-top: 72px
 
 @media (max-width: 768px)
 	.watch_all_mobile
@@ -295,6 +347,8 @@
 				margin-right: 12px
 			&:not(:first-child)
 				margin-top: 4px
+	body:not(.home)
+		padding-top: 60px
 
 	section
 		h3
@@ -450,6 +504,46 @@
 					width: 100vw
 			button.slick-arrow > i
 				padding: 12px 16px
+	section.service_banner h2
+		font-size: 40px
+	section.archive_services p
+		margin-top: -36px
+		font-size: 20px
+	section.post .thumbnail
+		width: 100vw
+		margin-left: -5vw
+	section.about_banner
+		height: 480px
+		padding-bottom: 36px
+	section.history
+		h2
+			font-size: 40px
+		p
+			margin-top: 24px
+			font-size: 16px
+			line-height: 1.5
+			&.accent
+				font-size: 20px
+	section.mission
+		.wrapper
+			flex-direction: column
+		h3
+			font-size: 30px
+		.left
+			width: 100%
+			padding: 0
+			.card p
+				font-size: 18px
+		.right
+			width: 100%
+			padding: 0
+			margin-top: 72px
+			p
+				font-size: 16px
+				line-height: 1.5
+	section.contacts .wrapper > div .left li
+		font-size: 24px
+
 
 @media (max-width: 480px)
 	body:not(.home)::before
@@ -464,3 +558,31 @@
 			flex: 0 0 60%
 		.buttons
 			flex: 0 0 40%
+	section.archive_services
+		.cards
+			margin: 30px 0
+			.card
+				width: 100%
+		p
+			font-size: 16px
+			line-height: 1.5
+	section.mission
+		.cards
+			margin: 0 !important
+		.left .card
+			width: 80vw
+			flex-direction: column
+			margin: 0 9px
+			&:not(:first-child)
+				margin-left: 18px
+			p
+				margin: 18px 0 0 0
+				line-height: 1.33
+		.right
+			margin-top: 36px
+	section.contacts .wrapper
+		> div .left
+			li
+				font-size: 20px
+			button
+				font-size: 18px
