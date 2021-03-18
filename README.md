@@ -9,14 +9,14 @@ https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
 3. reviews - какой из двух вариантов шаблона верстать?
 4. Почему на странице 010 и 012 в footer нет слайдера с компаниями? Так и задумано?
 
-Не забыть доделки:
+Доделки:
 0. slick_mb banner spans
 1. пагинация на страницах архивов
 2. single-service - form
 3. header navmenu
 4. footer navmenu
 5. header mobile menu
-6. cpt, taxonomies
+6. cpt, taxonomies, testimonials
 7. forms: static, popup, validation
 
 
@@ -109,3 +109,21 @@ footer
 	map
 	connect with us - Форма Консультация Popup
 
+
+
+
+<?php
+	/*
+	* Template Name: Keentegro | page-home
+	* Template Post Type: page
+	*/
+?>
+
+<?php get_header(); ?>
+
+
+<?= B_IMG_DIR; ?>
+
+
+<?php wp_footer(); ?>
+<?php get_footer(); ?>
