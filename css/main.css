@@ -301,6 +301,36 @@ section {
   font-weight: 500;
   border-bottom: 2px solid #333333; }
 
+nav.pagination {
+  margin-top: 90px; }
+  nav.pagination ul {
+    display: flex;
+    align-items: center; }
+  nav.pagination li {
+    transition: all 0.2s linear;
+    position: relative; }
+    nav.pagination li:not(:first-child) {
+      margin-left: 18px; }
+    nav.pagination li > * {
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 500;
+      user-select: none; }
+      nav.pagination li > *.prev i, nav.pagination li > *.next i {
+        font-weight: normal; }
+      nav.pagination li > *.current {
+        background-color: transparent;
+        border-bottom: 2px solid #9e1260; }
+      nav.pagination li > *:not(.current) {
+        cursor: pointer; }
+        nav.pagination li > *:not(.current):hover {
+          color: #26a2be; }
+
 @font-face {
   font-family: "Visuelt Pro";
   src: url("VisueltPro-Medium.eot");
@@ -404,6 +434,9 @@ header {
     header.home .consult {
       color: #fff;
       border-bottom: 2px solid #fff; }
+      header.home .consult:hover {
+        color: #26a2be;
+        border-bottom: 2px solid #26a2be; }
   header * {
     line-height: 1.3;
     font-weight: 500; }
@@ -414,6 +447,24 @@ header {
     align-items: center;
     padding: 14px 0 20px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2); }
+  header .submenu {
+    position: absolute;
+    z-index: 300;
+    width: max-content;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 32px);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear; }
+    header .submenu a {
+      color: #fff !important; }
+      header .submenu a:hover {
+        color: #26a2be !important; }
   header .fa-chevron-down {
     position: absolute;
     left: 50%;
@@ -442,7 +493,16 @@ header {
     font-size: 20px;
     font-weight: 500;
     position: relative; }
-  header .navigation li:not(:first-child) {
+    header .navigation li > li:not(:first-child) {
+      margin-top: 10px; }
+  header .navigation > li:hover {
+    color: #26a2be; }
+    header .navigation > li:hover > i {
+      color: #26a2be; }
+    header .navigation > li:hover > .submenu {
+      opacity: 1;
+      visibility: visible; }
+  header .navigation > li:not(:first-child) {
     margin-left: 48px; }
   header .right {
     display: flex;
@@ -452,19 +512,32 @@ header {
       width: max-content; }
   header .contact_phone {
     position: relative; }
-    header .contact_phone span {
+    header .contact_phone a {
       font-size: 24px; }
+      header .contact_phone a:hover {
+        color: #26a2be; }
+    header .contact_phone:hover .submenu {
+      opacity: 1;
+      visibility: visible; }
   header .consult {
     margin-left: 48px;
     font-size: 24px;
     padding: 8px 0;
     color: #26a2be;
     border-bottom: 2px solid #26a2be; }
+    header .consult:hover {
+      color: #9e1260;
+      border-bottom: 2px solid #9e1260; }
   header .languages {
     margin-left: 96px;
     position: relative; }
-    header .languages li {
+    header .languages a {
       font-size: 20px; }
+      header .languages a:hover {
+        color: #26a2be; }
+    header .languages:hover .submenu {
+      opacity: 1;
+      visibility: visible; }
 
 section.banner {
   height: 960px;
@@ -557,11 +630,11 @@ section.services .card {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-    section.services .card .links a {
+    section.services .card .links button {
       font-size: 20px;
       font-weight: 500; }
-      section.services .card .links a:last-child {
-        font-size: 18px; }
+    section.services .card .links a {
+      font-size: 18px; }
 
 section.facts {
   background-color: #116f84; }
@@ -775,7 +848,13 @@ section.archive_blog .card {
 
 section.post .thumbnail {
   position: relative;
-  margin: 60px 0; }
+  margin: 60px 0;
+  text-align: center; }
+  section.post .thumbnail > img {
+    max-height: 600px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto; }
 section.post .content {
   width: 66%;
   margin: 0 auto;
@@ -846,6 +925,7 @@ section.folio_post {
       height: 722px;
       overflow: hidden;
       display: inline-flex;
+      align-items: flex-end;
       position: relative; }
       section.folio_post .gallery .big img {
         display: inline-block;
@@ -859,20 +939,27 @@ section.folio_post {
       max-width: 100%;
       overflow: hidden;
       position: relative;
-      display: inline-flex; }
+      display: inline-flex;
+      align-items: center;
+      max-height: 150px;
+      overflow: hidden; }
       section.folio_post .gallery .tape img {
         width: 240px;
-        height: 122px;
+        height: auto;
         cursor: pointer;
         border: 4px solid transparent;
         transition: all 0.2s linear;
-        display: inline-block; }
+        display: inline-block;
+        vertical-align: middle;
+        outline: none; }
         section.folio_post .gallery .tape img:not(:first-child) {
           margin-left: 18px; }
         section.folio_post .gallery .tape img[aria-hidden=true] {
           opacity: 0.5; }
         section.folio_post .gallery .tape img:hover, section.folio_post .gallery .tape img.slick-current {
           border: 4px solid #26a2be; }
+  section.folio_post .navsharing {
+    padding: 60px 250px 0; }
   section.folio_post button.slick-arrow {
     position: absolute;
     z-index: 10;
@@ -1063,11 +1150,19 @@ section.contacts {
 
 footer {
   background-color: #000; }
-  footer .wrapper {
+  footer.show_brands .wrapper {
     padding-top: 120px; }
+  footer.show_brands .clients {
+    display: block; }
+  footer.show_brands nav {
+    padding: 60px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); }
+  footer .wrapper {
+    padding-top: 60px; }
   footer .clients {
     padding-bottom: 60px;
-    position: relative; }
+    position: relative;
+    display: none; }
     footer .clients h2 {
       font-size: 72px;
       font-weight: bold; }
@@ -1093,8 +1188,7 @@ footer {
         font-weight: normal; }
   footer nav {
     display: flex;
-    padding: 60px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 0 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
     footer nav h3 {
       font-size: 24px;
@@ -1164,6 +1258,115 @@ footer {
         width: 48px;
         height: 48px; }
 
+.wpforms-container {
+  width: 60% !important;
+  margin: 0 !important; }
+  .wpforms-container * {
+    font-family: inherit !important; }
+  .wpforms-container .wpforms-field {
+    padding: 0 !important; }
+    .wpforms-container .wpforms-field:not(:first-child) {
+      margin-top: 48px !important; }
+  .wpforms-container input {
+    max-width: unset !important;
+    background-color: transparent !important;
+    padding: 0 0 18px 0 !important;
+    color: #fff !important;
+    font-weight: normal !important;
+    line-height: 1.3 !important;
+    border: none !important;
+    border-bottom: 2px solid #fff !important; }
+    .wpforms-container input::placeholder {
+      color: #fff !important; }
+  .wpforms-container .iti__flag-container {
+    display: none !important; }
+  .wpforms-container .wpforms-submit-container {
+    margin-top: 48px !important;
+    text-align: center !important; }
+  .wpforms-container button {
+    background-color: #fff !important;
+    color: #333333 !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    padding: 18px 36px !important;
+    border: none !important;
+    width: max-content !important; }
+    .wpforms-container button:hover {
+      background-color: #26a2be !important;
+      color: #fff !important; }
+
+.wpforms-confirmation-container-full {
+  background-color: transparent !important;
+  border: transparent !important;
+  color: inherit !important;
+  font-size: 24px !important;
+  text-align: center !important; }
+
+.modalConsult {
+  position: fixed !important;
+  z-index: 900 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border-radius: 5px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s lnear !important;
+  cursor: pointer !important; }
+  .modalConsult * {
+    visibility: hidden !important; }
+  .modalConsult.active {
+    opacity: 1 !important;
+    visibility: visible !important; }
+    .modalConsult.active * {
+      visibility: visible !important; }
+  .modalConsult form {
+    position: absolute !important;
+    z-index: 950 !important;
+    max-width: 50vw !important;
+    max-height: 80vh !important;
+    background-color: #fff !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 30px 50px 50px !important; }
+    .modalConsult form input {
+      background-color: transparent !important;
+      color: #333333 !important;
+      border: none !important;
+      border-bottom: 2px solid #333333 !important; }
+      .modalConsult form input::placeholder {
+        color: #333333 !important; }
+    .modalConsult form .wpforms-container .wpforms-submit-container {
+      margin-top: 32px !important; }
+    .modalConsult form button {
+      background-color: #26a2be !important;
+      color: #fff !important; }
+      .modalConsult form button:hover {
+        background-color: #9e1260 !important; }
+  .modalConsult #wpforms-238-field_4-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(100%, -100%); }
+    .modalConsult #wpforms-238-field_4-container #closeConsult {
+      width: 60px !important;
+      height: 60px;
+      position: relative;
+      background-color: transparent !important;
+      fill: #fff; }
+      .modalConsult #wpforms-238-field_4-container #closeConsult:hover {
+        fill: #26a2be; }
+      .modalConsult #wpforms-238-field_4-container #closeConsult svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+
 @media (max-width: 1800px) {
   section.folio .cards button:nth-of-type(1), section.folio .cards button:nth-of-type(2), section.reviews .cards button:nth-of-type(1), section.reviews .cards button:nth-of-type(2) {
     transform: translate(0, -50%); } }
@@ -1194,15 +1397,13 @@ footer {
     margin: 0 24px;
     width: 48px;
     height: auto; }
-  header .navigation li:not(:first-child) {
+  header .navigation > li:not(:first-child) {
     margin-left: 24px; }
   header .contact_phone span, header .consult {
     font-size: 20px; }
   header .consult, header .languages {
     margin-left: 24px; }
 
-  footer .wrapper {
-    padding-top: 96px; }
   footer .clients h2 {
     font-size: 48px; }
 
@@ -1257,6 +1458,8 @@ footer {
     height: auto; }
   section.folio_post .content .left li span {
     font-size: 20px; }
+  section.folio_post .navsharing {
+    padding: 60px 5% 0; }
 
   section.archive_services p {
     margin-top: 0; }
@@ -1266,7 +1469,10 @@ footer {
     section.contacts .wrapper {
       width: 95%; }
       section.contacts .wrapper > div .left li {
-        font-size: 30px; } }
+        font-size: 30px; }
+
+  section.consult .wrapper .right {
+    padding: 0; } }
 @media (max-width: 1280px) {
   .bg > img {
     width: auto; }
@@ -1288,10 +1494,12 @@ footer {
       width: 156px; }
     header .hamburger {
       width: 36px; }
-    header .navigation li:not(:first-child) {
+    header .navigation > li:not(:first-child) {
       margin-left: 18px; }
     header .consult, header .languages {
       margin-left: 18px; }
+    header .contact_phone a {
+      font-size: 20px; }
 
   footer nav {
     justify-content: space-between; }
@@ -1359,12 +1567,24 @@ footer {
   body:not(.home) {
     padding-top: 80px; }
 
+  nav.pagination li > * {
+    width: 48px;
+    height: 48px;
+    font-size: 20px; }
+
   header .navigation {
     display: none; }
 
   footer nav > div {
     width: auto;
     flex: 1 0 auto; }
+
+  .modalConsult form {
+    width: 100% !important;
+    max-width: 60vw !important; }
+  .modalConsult button[type=submit] {
+    width: auto !important;
+    max-width: 100% !important; }
 
   section.banner {
     overflow: hidden; }
@@ -1490,7 +1710,16 @@ footer {
       section.contacts .wrapper > div .right {
         width: 100vw;
         margin-left: -5vw;
-        margin-top: 72px; } }
+        margin-top: 72px; }
+
+  section.consult .wrapper {
+    flex-direction: column; }
+    section.consult .wrapper .left {
+      width: 100%;
+      padding: 0; }
+    section.consult .wrapper .right {
+      width: 100%;
+      margin-top: 36px; } }
 @media (max-width: 768px) {
   .watch_all_mobile {
     display: inline-block; }
@@ -1520,6 +1749,15 @@ footer {
   body:not(.home) {
     padding-top: 60px; }
 
+  .modalConsult form {
+    max-width: 80vw !important; }
+  .modalConsult #closeConsult {
+    padding: 0 !important;
+    width: 48px !important;
+    height: 48px !important; }
+  .modalConsult .wpforms-container input, .modalConsult .wpforms-container button {
+    font-size: 18px !important; }
+
   section h3 span {
     font-size: 40px; }
   section h3 a {
@@ -1534,6 +1772,14 @@ footer {
 
   footer {
     overflow: hidden; }
+    footer:not(.show_brands) .wrapper {
+      padding-top: 6px; }
+    footer:not(.show_brands) nav {
+      padding: 0; }
+    footer.show_brands .wrapper {
+      padding-top: 96px; }
+    footer.show_brands nav {
+      padding: 0; }
     footer > img {
       width: 2700px !important;
       height: auto !important; }
@@ -1547,8 +1793,7 @@ footer {
         width: 156px;
         height: 86px; }
     footer nav {
-      flex-direction: column;
-      padding: 0; }
+      flex-direction: column; }
       footer nav *:not(h3) {
         font-size: 18px !important; }
       footer nav h3 .expand {
@@ -1714,10 +1959,36 @@ footer {
       line-height: 1.5; }
 
   section.contacts .wrapper > div .left li {
-    font-size: 24px; } }
+    font-size: 24px; }
+
+  section.consult .wrapper .left h4 {
+    font-size: 30px; }
+  section.consult .wrapper .left p {
+    font-size: 16px;
+    line-height: 1.5; }
+  section.consult .wrapper .right .wpforms-container {
+    width: 100% !important; }
+    section.consult .wrapper .right .wpforms-container input {
+      font-size: 16px !important; }
+    section.consult .wrapper .right .wpforms-container button {
+      font-size: 20px !important; } }
 @media (max-width: 480px) {
   body:not(.home)::before {
     transform: translateY(-150px); }
+
+  nav.pagination ul {
+    justify-content: center; }
+    nav.pagination ul li {
+      margin-bottom: 18px; }
+
+  .modalConsult form {
+    max-width: 100vw !important; }
+    .modalConsult form #wpforms-238-field_4-container {
+      transform: translate(-20px, 20px) !important; }
+      .modalConsult form #wpforms-238-field_4-container #closeConsult {
+        fill: #333333 !important; }
+        .modalConsult form #wpforms-238-field_4-container #closeConsult:hover {
+          fill: #26a2be !important; }
 
   section.folio .card .bg {
     height: 208px; }

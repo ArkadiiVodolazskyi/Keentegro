@@ -3,21 +3,19 @@ sass --watch sass/main.sass:css/main.css --sourcemap=none --no-cache
 
 https://fontawesome.com/icons?d=gallery&p=2&q=arrow&m=free
 
-Вопросы:
-1. Ховер состояния для элементов.
-2. header fixed?
-3. reviews - какой из двух вариантов шаблона верстать?
-4. Почему на странице 010 и 012 в footer нет слайдера с компаниями? Так и задумано?
 
-Доделки:
-0. slick_mb banner spans
-1. пагинация на страницах архивов
-2. single-service - form
-3. header navmenu
-4. footer navmenu
-5. header mobile menu
-6. cpt, taxonomies, testimonials
-7. forms: static, popup, validation
+1. Ховер состояния для элементов - самому придумать
+2. header fixed - да
+3. reviews - вроде первый
+
+Todo:
+
+ACF.
+Header menu: output + adaptive styles.
+Footer menu.
+CPTs output.
+Pagination.
+Form header popup consult + styles.
 
 
 Ориентировочные брейкпоинты:
@@ -52,64 +50,29 @@ footer
 
 
 
-1. + + page-main
-	banner
-		mobile - slider
-	services - категория "Сервисы"
-	facts
-		mobile - slider
-	portfolio - категория "Наши работы"/"Портфолио"
-		lg - slider
-	reviews
-		mobile - slider
-	blog - категория Блог
-		mobile - slider
+1. + + + page-main
 
-2-3. + + archive-reviews
-	review text
-	review img - fullscreen
-	pagination
+2. + + + archive-review
 
-4. + + archive-blog
-	pagination
+3. - single-reviews
 
-5. + + single-blog
-	prev/next post
-	share buttons
-	also read - blog
-		mobile - slider
+4. + + + archive-blog
 
-6. + + archive-folio
-	pagination
+5. + + + single-blog
 
-7. + + single-folio
-	gallery
-		mobile - slider
-	prev/next post
-	share buttons
-	also read - folio
-		mobile - slider
+6. + + + archive-folio
 
-8. + +  archive-service
-	pagination
+7. + + + single-folio
+
+8. + + +  archive-service
 
 9. + + archive-service_category
 
-10. + + single-service
-	consult - Форма Консультация Static - Gravity Forms
+10. + + + single-service
 
-11. + + page-about
-	banner
-	history
-		mobile - slider
-	mission
-	history
+11. + + + page-about
 
-12. + + page-contacts
-	map
-	connect with us - Форма Консультация Popup
-
-
+12. + + + page-contacts
 
 
 <?php

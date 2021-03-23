@@ -36,15 +36,13 @@
 			margin: 0 24px
 			width: 48px
 			height: auto
-		.navigation li:not(:first-child)
+		.navigation > li:not(:first-child)
 			margin-left: 24px
 		.contact_phone span, .consult
 			font-size: 20px
 		.consult, .languages
 			margin-left: 24px
 	footer
-		.wrapper
-			padding-top: 96px
 		.clients h2
 			font-size: 48px
 
@@ -98,6 +96,8 @@
 			height: auto
 		.content .left li span
 			font-size: 20px
+		.navsharing
+			padding: 60px 5% 0
 	section.archive_services p
 		margin-top: 0
 	section.contacts
@@ -106,6 +106,8 @@
 			width: 95%
 			> div .left li
 				font-size: 30px
+	section.consult .wrapper .right
+		padding: 0
 
 @media (max-width: 1280px)
 	.bg > img
@@ -126,10 +128,12 @@
 			width: 156px
 		.hamburger
 			width: 36px
-		.navigation li:not(:first-child)
+		.navigation > li:not(:first-child)
 			margin-left: 18px
 		.consult, .languages
 			margin-left: 18px
+		.contact_phone a
+			font-size: 20px
 	footer
 		nav
 			justify-content: space-between
@@ -194,6 +198,10 @@
 			font-size: 21px
 	body:not(.home)
 		padding-top: 80px
+	nav.pagination li > *
+		width: 48px
+		height: 48px
+		font-size: 20px
 
 	header
 		.navigation
@@ -201,6 +209,13 @@
 	footer nav > div
 		width: auto
 		flex: 1 0 auto
+	.modalConsult
+		form
+			width: 100% !important
+			max-width: 60vw !important
+		button[type=submit]
+			width: auto !important
+			max-width: 100% !important
 
 	section.banner
 		overflow: hidden
@@ -324,6 +339,14 @@
 					width: 100vw
 					margin-left: -5vw
 					margin-top: 72px
+	section.consult .wrapper
+		flex-direction: column
+		.left
+			width: 100%
+			padding: 0
+		.right
+			width: 100%
+			margin-top: 36px
 
 @media (max-width: 768px)
 	.watch_all_mobile
@@ -349,6 +372,16 @@
 				margin-top: 4px
 	body:not(.home)
 		padding-top: 60px
+	.modalConsult
+		form
+			max-width: 80vw !important
+		#closeConsult
+			padding: 0 !important
+			width: 48px !important
+			height: 48px !important
+		.wpforms-container
+			input, button
+				font-size: 18px !important
 
 	section
 		h3
@@ -366,6 +399,16 @@
 			display: none
 	footer
 		overflow: hidden
+		&:not(.show_brands)
+			.wrapper
+				padding-top: 6px
+			nav
+				padding: 0
+		&.show_brands
+			.wrapper
+				padding-top: 96px
+			nav
+				padding: 0
 		> img
 			width: 2700px !important
 			height: auto !important
@@ -380,7 +423,6 @@
 				height: 86px
 		nav
 			flex-direction: column
-			padding: 0
 			*:not(h3)
 				font-size: 18px !important
 			h3 .expand
@@ -543,11 +585,35 @@
 				line-height: 1.5
 	section.contacts .wrapper > div .left li
 		font-size: 24px
-
+	section.consult .wrapper
+		.left
+			h4
+				font-size: 30px
+			p
+				font-size: 16px
+				line-height: 1.5
+		.right .wpforms-container
+			width: 100% !important
+			input
+				font-size: 16px !important
+			button
+				font-size: 20px !important
 
 @media (max-width: 480px)
 	body:not(.home)::before
 		transform: translateY(-150px)
+	nav.pagination ul
+		justify-content: center
+		li
+			margin-bottom: 18px
+	.modalConsult form
+		max-width: 100vw !important
+		#wpforms-238-field_4-container
+			transform: translate(-20px, 20px) !important
+			#closeConsult
+				fill: $b !important
+				&:hover
+					fill: $blue !important
 
 	section.folio .card .bg
 		height: 208px

@@ -1,0 +1,112 @@
+.wpforms-container
+	width: 60% !important
+	margin: 0 !important
+	*
+		font-family: inherit !important
+	.wpforms-field-container
+	.wpforms-field
+		padding: 0 !important
+		&:not(:first-child)
+			margin-top: 48px !important
+	input
+		max-width: unset !important
+		background-color: transparent !important
+		padding: 0 0 18px 0 !important
+		color: $w !important
+		// font-size: 20px !important
+		font-weight: normal !important
+		line-height: 1.3 !important
+		border: none !important
+		border-bottom: 2px solid $w !important
+		&::placeholder
+			color: $w !important
+	.iti__flag-container
+		display: none !important
+	.wpforms-submit-container
+		margin-top: 48px !important
+		text-align: center !important
+	button
+		background-color: $w !important
+		color: $b !important
+		// font-size: 24px !important
+		font-weight: 500 !important
+		line-height: 1.3 !important
+		padding: 18px 36px !important
+		border: none !important
+		width: max-content !important
+		&:hover
+			background-color: $blue !important
+			color: $w !important
+.wpforms-confirmation-container-full
+	background-color: transparent !important
+	border: transparent !important
+	color: inherit !important
+	font-size: 24px !important
+	text-align: center !important
+
+// Modal form
+.modalConsult
+	position: fixed !important
+	z-index: 900 !important
+	width: 100vw !important
+	height: 100vh !important
+	left: 0 !important
+	top: 0 !important
+	right: 0 !important
+	bottom: 0 !important
+	background-color: rgba(#000, 0.8) !important
+	border-radius: 5px !important
+	opacity: 0 !important
+	visibility: hidden !important
+	transition: all 0.3s lnear !important
+	cursor: pointer !important
+	*
+		visibility: hidden !important
+	&.active
+		opacity: 1 !important
+		visibility: visible !important
+		*
+			visibility: visible !important
+	form
+		position: absolute !important
+		z-index: 950 !important
+		max-width: 50vw !important
+		max-height: 80vh !important
+		background-color: $w !important
+		left: 50% !important
+		top: 50% !important
+		transform: translate(-50%, -50%) !important
+		padding: 30px 50px 50px !important
+		input
+			background-color: transparent !important
+			color: $b !important
+			border: none !important
+			border-bottom: 2px solid $b !important
+			&::placeholder
+				color: $b !important
+		.wpforms-container .wpforms-submit-container
+			margin-top: 32px !important
+		button
+			background-color: $blue !important
+			color: $w !important
+			&:hover
+				background-color: $pink !important
+	#wpforms-238-field_4-container
+		position: absolute
+		right: 0
+		top: 0
+		transform: translate(100%, -100%)
+		#closeConsult
+			width: 60px !important
+			height: 60px
+			position: relative
+			background-color: transparent !important
+			fill: $w
+			&:hover
+				fill: $blue
+			svg
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+

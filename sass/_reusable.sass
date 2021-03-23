@@ -354,3 +354,33 @@ section
 	font-size: 18px
 	font-weight: 500
 	border-bottom: 2px solid #333333
+
+nav.pagination
+	margin-top: 90px
+	ul
+		display: flex
+		align-items: center
+	li
+		transition: all 0.2s linear
+		position: relative
+		&:not(:first-child)
+			margin-left: 18px
+		> *
+			width: 60px
+			height: 60px
+			background-color: $w
+			display: flex
+			justify-content: center
+			align-items: center
+			font-size: 24px
+			font-weight: 500
+			user-select: none
+			&.prev i, &.next i
+				font-weight: normal
+			&.current
+				background-color: transparent
+				border-bottom: 2px solid $pink
+			&:not(.current)
+				cursor: pointer
+				&:hover
+					color: $blue

@@ -17,6 +17,9 @@ header
 		.consult
 			color: $w
 			border-bottom: 2px solid $w
+			&:hover
+				color: $blue
+				border-bottom: 2px solid $blue
 	*
 		line-height: 1.3
 		font-weight: 500
@@ -27,6 +30,24 @@ header
 		align-items: center
 		padding: 14px 0 20px
 		border-bottom: 2px solid rgba($w, 0.2)
+	.submenu
+		position: absolute
+		z-index: 300
+		width: max-content
+		top: 100%
+		left: 50%
+		transform: translate(-50%, 32px)
+		background-color: rgba(#000, 0.6)
+		padding: 14px 20px
+		display: flex
+		flex-direction: column
+		opacity: 0
+		visibility: hidden
+		transition: all 0.2s linear
+		a
+			color: $w !important
+			&:hover
+				color: $blue !important
 	.fa-chevron-down
 		position: absolute
 		left: 50%
@@ -56,7 +77,16 @@ header
 			font-size: 20px
 			font-weight: 500
 			position: relative
-		li:not(:first-child)
+			> li:not(:first-child)
+				margin-top: 10px
+		> li:hover
+			color: $blue
+			> i
+				color: $blue
+			> .submenu
+				opacity: 1
+				visibility: visible
+		> li:not(:first-child)
 			margin-left: 48px
 	.right
 		display: flex
@@ -66,16 +96,29 @@ header
 			width: max-content
 	.contact_phone
 		position: relative
-		span
+		a
 			font-size: 24px
+			&:hover
+				color: $blue
+		&:hover .submenu
+			opacity: 1
+			visibility: visible
 	.consult
-			margin-left: 48px
-			font-size: 24px
-			padding: 8px 0
-			color: $blue
-			border-bottom: 2px solid $blue
+		margin-left: 48px
+		font-size: 24px
+		padding: 8px 0
+		color: $blue
+		border-bottom: 2px solid $blue
+		&:hover
+			color: $pink
+			border-bottom: 2px solid $pink
 	.languages
 		margin-left: 96px
 		position: relative
-		li
+		a
 			font-size: 20px
+			&:hover
+				color: $blue
+		&:hover .submenu
+				opacity: 1
+				visibility: visible
