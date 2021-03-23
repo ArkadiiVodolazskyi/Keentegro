@@ -29,43 +29,66 @@
 			</h3>
 			<div>
 				<ul class="left">
-					<li>Киев, пер. Куреневский 17Б</li>
-					<li>
-						<a href="tel:+38 044 537 0155">
-							+38 044 537 0155
-						</a>
-					</li>
-					<li>
-						<a href="mailto:sm@keentegro.com">
-							sm@keentegro.com
-						</a>
-					</li>
-					<li>
-						Пн-пт, с 9:00 до 18:00
-					</li>
+
+					<?php
+						$address = get_field('address', 'options');
+						$phones = get_field('phones', 'options');
+						$email = get_field('email', 'options');
+						$working_time = get_field('working_time', 'options');
+						$socials = get_field('socials', 'options');
+					?>
+
+					<?php if ($address) { ?>
+						<li>
+							<?= $address; ?>
+						</li>
+					<?php } ?>
+
+					<?php foreach ($phones as $phone) { ?>
+						<li>
+							<a href="tel:<?= $phone['phone']; ?>">
+								<?= $phone['phone']; ?>
+							</a>
+						</li>
+					<?php } ?>
+
+					<?php if ($email) { ?>
+						<li>
+							<a href="mailto:<?= $email; ?>">
+								<?= $email; ?>
+							</a>
+						</li>
+					<?php } ?>
+
+					<?php if ($working_time) { ?>
+						<li>
+							<?= $working_time; ?>
+						</li>
+					<?php } ?>
+
 					<li>
 						<button>
 							Свяжитесь с нами
 						</button>
 						<div class="socials">
-							<a href="#">
-								<img src="<?= B_IMG_DIR; ?>/icon_facebook.svg" alt="icon_facebook" class="img-svg">
-							</a>
-							<a href="#">
-								<img src="<?= B_IMG_DIR; ?>/icon_linkedin.svg" alt="icon_linkedin" class="img-svg">
-							</a>
+
+							<?php foreach ($socials as $social) { ?>
+								<a href="<?= $social['url']; ?>">
+									<img src="<?= B_IMG_DIR; ?>/icon_<?= $social['social_type']; ?>.svg" alt="icon_facebook" class="img-svg">
+								</a>
+							<?php } ?>
+
 						</div>
 					</li>
 				</ul>
-				<div id="map" class="right">
 
-				</div>
+				<div id="map" class="right"></div>
 			</div>
 		</div>
 	</section>
 
-	<?php wp_footer(); ?>
 	<?php get_footer(); ?>
+	<?php wp_footer(); ?>
 
 	<script>
 		// Use GMaps

@@ -32,129 +32,96 @@
 			</h3>
 			<div class="cards">
 
-				<div class="card">
-					<div class="figure_6"></div>
-					<div class="text">
-						<span class="date">
-							20 декабря 2020
-						</span>
-						<span class="name">
-							Андрей Осадчий, компания URS
-						</span>
-						<p>
-							Мы сотрудничаем с Keentegro уже 3 года, и всегда довольны результатом. Задачи всегда выполняются в срок, а качество на высшем уровне. Занимались реставрацией таможенной площади в Одессе. Рекомендуем всем!
-						</p>
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_5">
-							Показать оригинал
-						</a>
-					</div>
-					<div class="image">
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_1" class="bg">
-							<img src="<?= B_IMG_DIR; ?>/review_doc_1.png" alt="review_doc">
-						</a>
-					</div>
-				</div>
+			<?php
+				wp_reset_query();
+				$my_posts = new WP_Query;
+				$myposts = $my_posts->query([
+					'hide_empty' => false,
+					'post_type' => 'review',
+					'posts_per_page' => get_field('per_page', 'options')['review'],
+					'paged' => get_query_var('paged') ? get_query_var('paged') : 1, // получить посты с текущей страницы, установить текущую страницу в 1, если не определена
+				]);
+
+				foreach( $myposts as $key=>$post ) {
+					setup_postdata($post);
+
+					$date = get_the_date('j F Y', $post->id);
+					$name = get_field('name');
+					$company = get_field('company');
+					$text = get_field('text');
+					$doc = get_field('doc');
+				?>
 
 				<div class="card">
 					<div class="figure_6"></div>
 					<div class="text">
 						<span class="date">
-							15 декабря 2020
+							<?= $date; ?>
 						</span>
 						<span class="name">
-							Андрей Осадчий, компания URS
+							<?= $name; ?>, компания <?= $company; ?>
 						</span>
 						<p>
-							Представляю компанию FLIR в лице управляющего директора, выполняли работы по монтажу металлических конструкций. Работу выполнили на высшем уровне и, самое главное, в срок. Продолжаем сотрудничать.
+							<?= $text; ?>
 						</p>
-						<a href="<?= B_IMG_DIR; ?>/review_doc_2.png" data-lightbox="review_doc_4">
+						<a href="<?= $doc; ?>" data-lightbox="review_doc_<?= $key; ?>">
 							Показать оригинал
 						</a>
 					</div>
 					<div class="image">
-						<a href="<?= B_IMG_DIR; ?>/review_doc_2.png" data-lightbox="review_doc_2" class="bg">
-							<img src="<?= B_IMG_DIR; ?>/review_doc_2.png" alt="review_doc">
+						<a href="<?= $doc; ?>" data-lightbox="review_doc_<?= $key; ?>" class="bg">
+							<img src="<?= $doc; ?>" alt="review_doc">
 						</a>
 					</div>
 				</div>
 
-				<div class="card">
-					<div class="figure_6"></div>
-					<div class="text">
-						<span class="date">
-							20 декабря 2020
-						</span>
-						<span class="name">
-							Андрей Осадчий, компания URS
-						</span>
-						<p>
-							Мы сотрудничаем с Keentegro уже 3 года, и всегда довольны результатом. Задачи всегда выполняются в срок, а качество на высшем уровне. Занимались реставрацией таможенной площади в Одессе. Рекомендуем всем!
-						</p>
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_5">
-							Показать оригинал
-						</a>
-					</div>
-					<div class="image">
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_3" class="bg">
-							<img src="<?= B_IMG_DIR; ?>/review_doc_1.png" alt="review_doc">
-						</a>
-					</div>
-				</div>
-
-				<div class="card">
-					<div class="figure_6"></div>
-					<div class="text">
-						<span class="date">
-							15 декабря 2020
-						</span>
-						<span class="name">
-							Андрей Осадчий, компания URS
-						</span>
-						<p>
-							Представляю компанию FLIR в лице управляющего директора, выполняли работы по монтажу металлических конструкций. Работу выполнили на высшем уровне и, самое главное, в срок. Продолжаем сотрудничать.
-						</p>
-						<a href="<?= B_IMG_DIR; ?>/review_doc_2.png" data-lightbox="review_doc_4">
-							Показать оригинал
-						</a>
-					</div>
-					<div class="image">
-						<a href="<?= B_IMG_DIR; ?>/review_doc_2.png" data-lightbox="review_doc_4" class="bg">
-							<img src="<?= B_IMG_DIR; ?>/review_doc_2.png" alt="review_doc">
-						</a>
-					</div>
-				</div>
-
-				<div class="card">
-					<div class="figure_6"></div>
-					<div class="text">
-						<span class="date">
-							20 декабря 2020
-						</span>
-						<span class="name">
-							Андрей Осадчий, компания URS
-						</span>
-						<p>
-							Мы сотрудничаем с Keentegro уже 3 года, и всегда довольны результатом. Задачи всегда выполняются в срок, а качество на высшем уровне. Занимались реставрацией таможенной площади в Одессе. Рекомендуем всем!
-						</p>
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_5">
-							Показать оригинал
-						</a>
-					</div>
-					<div class="image">
-						<a href="<?= B_IMG_DIR; ?>/review_doc_1.png" data-lightbox="review_doc_5" class="bg">
-							<img src="<?= B_IMG_DIR; ?>/review_doc_1.png" alt="review_doc">
-						</a>
-					</div>
-				</div>
+				<?php }; ?>
 
 			</div>
+
+			<?php
+				function custom_page_navi( $totalpages, $page, $end_size, $mid_size ) {
+					$bignum = 999999999;
+
+					if ( $totalpages <= 1 || $page > $totalpages ) return;
+
+					return paginate_links( array(
+							'base'          => str_replace( $bignum, '%#%', esc_url( get_pagenum_link( $bignum ) ) ),
+							'format'        => '',
+							'current'       => max( 1, $page ),
+							'total'         => $totalpages,
+							'prev_text'    => __('<i class="fas fa-chevron-left"></i>'),
+							'next_text'    => __('<i class="fas fa-chevron-right"></i>'),
+							'type'          => 'list',
+							'show_all'      => false,
+							'end_size'      => $end_size,
+							'mid_size'      => $mid_size
+						)
+					);
+				}
+
+				// Edit:
+				$number   = get_field('per_page', 'options')['review']; // number of terms to display per page
+
+				// Setup:
+				$page         = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+				$totalterms   = wp_count_posts( 'blog' )->publish;
+				$totalpages   = ceil( $totalterms / $number );
+
+				// Show custom page navigation
+				printf( '<nav class="pagination">%s</nav>',
+					custom_page_navi( $totalpages, $page, 1, 5 )
+				);
+
+				?>
+
 		</div>
 	</section>
 
-	<?php wp_footer(); ?>
 	<?php get_footer(); ?>
+	<?php wp_footer(); ?>
 
-	<script src="./js/libs/lightbox/js/lightbox.js"></script>
+	<script src="<?= B_THEME_ROOT; ?>/js/libs/lightbox/js/lightbox.js"></script>
 
 	<script>
 		lightbox.option({

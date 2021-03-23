@@ -191,29 +191,26 @@
 		// Create custom taxonomy - service
 		register_taxonomy('service_type', array('service'), array(
 			'labels' => array(
-					'name'=>'Категории услуг'
+				'name'				=>'Категории услуг',
 			),
-			'hierarchical' => true
+			'hierarchical' => true,
+			'rewrite'			=> array( 'slug' => 'service', 'with_front' => false ),
+			'has_archive'	=> 'service',
 		));
 
 	}
 	add_action('init', 'my_custom_init');
 
-	// services
+	// service
 	## Отфильтруем ЧПУ произвольного типа
 	add_filter('post_type_link', 'services_permalink', 1, 2);
 
 	function services_permalink( $permalink, $post ){
-		// выходим если это не наш тип записи: без холдера %service_type%
 		if( strpos($permalink, '%service_type%') === FALSE )
 			return $permalink;
 
-		// // Получаем элементы таксы
-		// $terms = get_the_terms($post, 'service_type');
-		// $taxonomy_slug = $terms[0]->slug;
-		// return str_replace('%service_type%', $taxonomy_slug, $permalink );
-
 		$terms = get_the_terms($post, 'service_type');
+
 		if( ! is_wp_error($terms) && !empty($terms) && is_object($terms[0]) ) {
 			$taxonomy_slug = $terms[0]->slug;
 			return str_replace('%service_type%', $taxonomy_slug, $permalink );

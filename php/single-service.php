@@ -24,48 +24,56 @@
 		<div class="wrapper">
 			<h3>
 				<span>
-					Монтаж технологического оборудования
+					<?php the_title(); ?>
 				</span>
 			</h3>
 
 			<div class="thumbnail">
-				<img src="<?= B_IMG_DIR; ?>/blog_bg.png" alt="thumbnail">
+				<img src="<?= get_field('banner'); ?>" alt="thumbnail">
 			</div>
 
 			<div class="content">
-				<p class="accent">
-					Японская автомобилестроительная компания Toyota начала строительство прототипа «умного города» у подножья горы Фудзи в центральной Японии.
-				</p>
 
-				<p>
-					Компания планирует разработать систему, которая объединит автомобили, инфраструктуру и жилища с помощью новейших систем связи. Футуристический город, получивший название Woven City, будет возведен на участке площадью 700 тыс. кв м, где когда-то располагалось предприятие компании. В городе будет три типа улиц: для полностью автономных автомобилей, для пешеходов и для людей, пользующихся индивидуальными средствами передвижения.
-				</p>
+				<?php while (have_rows('content')): the_row(); ?>
 
-				<div class="list_block">
-					<h6>
-						Первоначально в новом городе будет жить около 360 человек, в том числе разработчики и пожилые люди. Ожидается, что этот город будет способствовать появлению полезных для общества инноваций.
-					</h6>
-					<ul>
-						<li>
-							Данные о состоянии здоровья жителей, записанные с помощью датчиков
-						</li>
-						<li>
-							Будут изучаться с помощью технологий искусственного интеллекта
-						</li>
-						<li>
-							Роботы будут помогать жителям в повседневной жизни
-						</li>
-					</ul>
-				</div>
+					<?php while (have_rows('par_accent')): the_row(); ?>
+						<p class="accent">
+							<?= get_sub_field('text'); ?>
+						</p>
+					<?php endwhile; ?>
 
-				<p>
-					Компания планирует разработать систему, которая объединит автомобили, инфраструктуру и жилища с помощью новейших систем связи. Футуристический город, получивший название Woven City, будет возведен на участке площадью 700 тыс. кв м, где когда-то располагалось предприятие компании. В городе будет три типа улиц: для полностью автономных автомобилей, для пешеходов и для людей, пользующихся индивидуальными средствами передвижения.
-				</p>
+					<?php while (have_rows('par')): the_row(); ?>
+						<p>
+							<?= get_sub_field('text'); ?>
+						</p>
+					<?php endwhile; ?>
+
+					<?php while (have_rows('list')): the_row(); ?>
+						<div class="list_block">
+
+							<?php if(get_sub_field('title')): ?>
+								<h6>
+									<?= get_sub_field('title'); ?>
+								</h6>
+							<?php endif; ?>
+
+							<ul>
+								<?php while (have_rows('points')): the_row(); ?>
+									<li>
+										<?= get_sub_field('point'); ?>
+									</li>
+								<?php endwhile; ?>
+							</ul>
+						</div>
+					<?php endwhile; ?>
+
+				<?php endwhile; ?>
+
 			</div>
 		</div>
 	</section>
 
-	<section class="consult bg text-w" style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png);">
+	<section id="service_form" class="consult bg text-w" style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png);">
 		<div class="wrapper">
 
 			<div class="left">
@@ -78,16 +86,14 @@
 			</div>
 
 			<div class="right">
-				<form action="">
-					Waiting for WP Forms
-				</form>
+				<?php echo do_shortcode( '[wpforms id="27" title="false"]' ); ?>
 			</div>
 
 		</div>
 	</section>
 
-	<?php wp_footer(); ?>
 	<?php get_footer(); ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>

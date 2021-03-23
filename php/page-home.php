@@ -21,14 +21,16 @@
 		<?php get_header(); ?>
 
     <section class="banner text-w bg">
-      <img src="<?= B_IMG_DIR; ?>/home_banner.png" alt="home_banner" />
+      <img src="<?= get_field('banner')['img']; ?>" alt="home_banner" />
       <div class="wrapper">
-        <h3>Precision engineering and construction</h3>
+        <h3>
+          <?= get_field('banner')['slogan']; ?>
+        </h3>
         <div>
           <span>
-            <span class="active">Идея</span>
-            <span>Решение</span>
-            <span>Результат</span>
+            <span class="active"><?= get_field('banner')['principles']['word_1']; ?></span>
+            <span><?= get_field('banner')['principles']['word_2']; ?></span>
+            <span><?= get_field('banner')['principles']['word_3']; ?></span>
           </span>
         </div>
       </div>
@@ -43,170 +45,174 @@
       <div class="wrapper">
         <h3>
           <span> Наши услуги </span>
-          <a href="#"> Смотреть все услуги </a>
+          <a href="<?= home_url(); ?>/service">Смотреть все услуги </a>
         </h3>
         <div class="cards">
-          <div class="card bg text-w">
-            <a href="#">
-              <img src="<?= B_IMG_DIR; ?>/home_services_1.png" alt="" />
-            </a>
-            <h4 class="title">Строительно-монтажные работы</h4>
-            <div class="links">
-              <a href="#">Консультация</a>
-              <a href="#">Все услуги</a>
-            </div>
-          </div>
 
-          <div class="card bg text-w">
-            <a href="#">
-              <img src="<?= B_IMG_DIR; ?>/home_services_2.png" alt="" />
-            </a>
-            <h4 class="title">Монтаж инженерных систем</h4>
-            <div class="links">
-              <a href="#">Консультация</a>
-              <a href="#">Все услуги</a>
-            </div>
-          </div>
+          <?php
+            $terms = get_terms( [
+              'taxonomy' => 'service_type',
+              'hide_empty' => false,
+            ] );
 
-          <div class="card bg text-w">
-            <a href="#">
-              <img src="<?= B_IMG_DIR; ?>/home_services_3.png" alt="" />
-            </a>
-            <h4 class="title">Интегрированные системы безопасности</h4>
-            <div class="links">
-              <a href="#">Консультация</a>
-              <a href="#">Все услуги</a>
+            foreach( $terms as $term ) {
+              setup_postdata($post);
+
+              $url = get_home_url() . '/service/' . $term->slug;
+              $img = get_field('cat_image', $term);
+              $post_title = $term->name;
+          ?>
+
+            <div class="card bg text-w">
+              <a href="<?= $url; ?>">
+                <img src="<?= $img; ?>" alt="taxonomy_thumbnail">
+              </a>
+              <h4 class="title">
+                <?= $post_title; ?>
+              </h4>
+              <div class="links">
+                <button class="openConsult">Консультация</button>
+                <a href="<?= $url; ?>">Все услуги</a>
+              </div>
             </div>
-          </div>
+
+          <?php } ?>
+
         </div>
 
-        <a href="#" class="watch_all_mobile"> Смотреть все услуги </a>
+        <a href="<?= home_url(); ?>/service" class="watch_all_mobile"> Смотреть все услуги </a>
       </div>
     </section>
 
-    <section
-      class="facts bg text-w"
-      style="background-image: url(<?= B_IMG_DIR; ?>/home_facts_bg.png)"
-    >
-      <div class="wrapper">
-        <h3>
-          <span> Факты о нас </span>
-        </h3>
-        <div class="cards slick_mb">
-          <div class="slide">
-            <div class="card">
-              <div class="figure_2"></div>
-              <img src="<?= B_IMG_DIR; ?>/home_facts_1.png" alt="" />
-              <p>
-                Занимаем лидирующую позицию среди 100 крупнейших предприятий
-                Украины
-              </p>
-            </div>
-            <div class="card">
-              <div class="figure_2"></div>
-              <img src="<?= B_IMG_DIR; ?>/home_facts_2.png" alt="" />
-              <p>
-                Создали команду уникальных специалистов и достигли признания
-                международных партнеров, в том числе и правительственных
-                учреждений
-              </p>
-            </div>
-          </div>
+    <?php
+			$facts = get_field('facts', 'options');
+			if ( !empty($facts) ) {
+		?>
+      <section
+        class="facts bg text-w"
+        style="background-image: url(<?= B_IMG_DIR; ?>/home_facts_bg.png)">
+        <div class="wrapper">
+          <h3>
+            <span>Факты о нас</span>
+          </h3>
+          <div class="cards slick_mb">
 
-          <div class="slide">
-            <div class="card">
-              <div class="figure_2"></div>
-              <img src="<?= B_IMG_DIR; ?>/home_facts_3.png" alt="" />
-              <p>
-                Нашими надежными партнерами являются лидирующие мировые
-                компании-поставщики
-              </p>
-            </div>
-            <div class="card">
-              <div class="figure_2"></div>
-              <img src="<?= B_IMG_DIR; ?>/home_facts_4.png" alt="" />
-              <p>Более 11 лет на рынке</p>
-            </div>
+            <?php
+              $slidesCount = ceil(count($facts) / 2);
+              for ($i = 0; $i < $slidesCount ; $i++) {
+            ?>
+              <div class="slide">
+
+                <?php
+                  for ($j = $i * 2; $j < $i * 2 + 2 ; $j++) {
+                    $icon = $facts[$j]['icon'];
+                    $text = $facts[$j]['text'];
+                ?>
+
+                  <div class="card">
+                    <div class="figure_2"></div>
+                    <img src="<?= $icon; ?>" alt="facts_icon" />
+                    <p>
+                      <?= $text; ?>
+                    </p>
+                  </div>
+
+                <?php } ?>
+
+              </div>
+            <?php } ?>
+
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <?php } ?>
 
     <section class="folio text-b bg-w">
       <div class="wrapper">
         <h3>
           <span> Наши работы </span>
-          <a href="#"> Смотреть все работы </a>
+          <a href="<?= home_url(); ?>/folio"> Смотреть все работы </a>
         </h3>
         <div class="cards slick_lg">
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_folio_1.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">Пост охраны ОБСЕ</h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_folio_2.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">Пост охраны ОБСЕ</h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_folio_3.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">Пост охраны ОБСЕ</h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
+
+          <?php
+            // Show 3 other posts from folio, except current
+            $posts = get_posts( [
+              'post_type' => 'folio',
+              'numberposts' => 3,
+
+            ] );
+
+            foreach( $posts as $post ) {
+              setup_postdata($post);
+
+              $url = get_permalink();
+              $img = get_field('gallery')[0];
+              $date = get_the_date('j F Y', $post->id);
+              $post_title = $post->post_title;
+          ?>
+
+            <a href="<?= $url; ?>" class="card">
+              <div class="bg" style="background-image: url(<?= $img ?>);">
+                <div class="figure_3"></div>
+              </div>
+              <h4 class="title">
+                <?= $post_title; ?>
+              </h4>
+              <span class="date">
+                <?= $date; ?>
+              </span>
+            </a>
+
+          <?php }; wp_reset_postdata(); ?>
+
         </div>
 
-        <a href="#" class="watch_all_mobile"> Смотреть все работы </a>
+        <a href="<?= home_url(); ?>/folio" class="watch_all_mobile"> Смотреть все работы </a>
       </div>
     </section>
 
     <section
       class="reviews bg text-w"
-      style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png)"
-    >
+      style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png)">
       <div class="wrapper">
         <h3>
           <span> Нас рекомендуют </span>
-          <a href="#"> Смотреть все отзывы </a>
+          <a href="<?= home_url(); ?>/review"> Смотреть все отзывы </a>
         </h3>
         <div class="cards slick_lg">
-          <div class="card">
-            <div class="figure_4"></div>
-            <span class="date">20 декабря 2020</span>
-            <span class="name">Андрей Осадчий, компания URS</span>
-            <p>
-              Мы сотрудничаем с Keentegro уже 3 года, и всегда довольны
-              результатом. Задачи всегда выполняются в срок, а качество на
-              высшем уровне. Занимались реставрацией таможенной площади в
-              Одессе. Рекомендуем всем!
-            </p>
-          </div>
-          <div class="card">
-            <div class="figure_4"></div>
-            <span class="date">20 декабря 2020</span>
-            <span class="name">Андрей Осадчий, компания URS</span>
-            <p>
-              Мы сотрудничаем с Keentegro уже 3 года, и всегда довольны
-              результатом. Задачи всегда выполняются в срок, а качество на
-              высшем уровне. Занимались реставрацией таможенной площади в
-              Одессе. Рекомендуем всем!
-            </p>
-          </div>
+
+          <?php
+              // Show 4 other posts from folio, except current
+              $posts = get_posts( [
+                'post_type' => 'review',
+                'numberposts' => 4,
+              ] );
+
+              foreach( $posts as $post ) {
+                setup_postdata($post);
+
+                $date = get_the_date('j F Y', $post->id);
+                $name = get_field('name');
+                $company = get_field('company');
+                $text = get_field('text');
+            ?>
+
+            <div class="card">
+              <div class="figure_4"></div>
+              <span class="date">
+                <?= $date; ?>
+              </span>
+              <span class="name">
+                <?= $name; ?>, компания <?= $company; ?>
+              </span>
+              <p>
+                <?= $text; ?>
+              </p>
+            </div>
+
+          <?php }; wp_reset_postdata(); ?>
+
         </div>
 
         <a href="#" class="watch_all_mobile"> Смотреть все отзывы </a>
@@ -217,56 +223,49 @@
       <div class="wrapper">
         <h3>
           <span> Полезная информация </span>
-          <a href="#"> Читать все статьи </a>
+          <a href="<?= home_url(); ?>/blog"> Читать все статьи </a>
         </h3>
         <div class="cards slick_mb">
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_blog_1.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">
-              3 важных шага перед постройкой дома
-              <i class="fas fa-chevron-right"></i>
-            </h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_blog_2.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">
-              Оптоволоконные технологии, 10 важных фактов
-              <i class="fas fa-chevron-right"></i>
-            </h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
-          <a href="#" class="card">
-            <div
-              class="bg"
-              style="background-image: url(<?= B_IMG_DIR; ?>/home_blog_3.png)"
-            >
-              <div class="figure_3"></div>
-            </div>
-            <h4 class="title">
-              Интегрированные системы безопасности
-              <i class="fas fa-chevron-right"></i>
-            </h4>
-            <span class="date"> 28 октября 2020 </span>
-          </a>
+
+          <?php
+            // Show 3 other posts from blog
+            $posts = get_posts( [
+              'post_type' => 'blog',
+              'numberposts' => 3,
+            ] );
+
+            foreach( $posts as $key=>$post ) {
+              setup_postdata($post);
+
+              $url = get_permalink();
+              $img = get_field('banner');
+              $date = get_the_date('j F Y', $post->id);
+              $post_title = $post->post_title;
+          ?>
+
+            <a href="<?= $url; ?>" class="card">
+              <div class="bg" style="background-image: url(<?= $img ?>);">
+                <div class="figure_3"></div>
+              </div>
+              <h4 class="title">
+                <?= $post_title; ?>
+                <i class="fas fa-chevron-right"></i>
+              </h4>
+              <span class="date">
+                <?= $date; ?>
+              </span>
+            </a>
+
+          <?php }; wp_reset_postdata(); ?>
+
         </div>
 
-        <a href="#" class="watch_all_mobile"> Читать все статьи </a>
+        <a href="<?= home_url(); ?>/blog" class="watch_all_mobile"> Читать все статьи </a>
       </div>
     </section>
 
-    <?php wp_footer(); ?>
     <?php get_footer(); ?>
+    <?php wp_footer(); ?>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

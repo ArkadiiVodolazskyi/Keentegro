@@ -24,19 +24,19 @@
 		<div class="wrapper">
 			<h3>
 				<span>
-					Пост охраны ОБСЕ
+					<?php the_title(); ?>
 				</span>
 			</h3>
 
 			<div class="gallery">
 				<div class="big slick_lg"></div>
 				<div class="tape slick_lg">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_1.png">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_2.png">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_3.png">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_1.png">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_2.png">
-					<img src="<?= B_IMG_DIR; ?>/home_folio_3.png">
+					<?php
+						$images = get_field('gallery');
+						foreach( $images as $image ) {
+					?>
+						<img src="<?= $image; ?>" alt="project_image" class="nolazy">
+					<?php } ?>
 				</div>
 			</div>
 
@@ -46,82 +46,138 @@
 						Что и где
 					</h4>
 					<ul>
-						<li>
-							<img src="<?= B_IMG_DIR; ?>/icon_reconstruction.svg" alt="icon_reconstruction" class="img-svg">
-							<span>
-								Реконструкция
-							</span>
-						</li>
-						<li>
-							<img src="<?= B_IMG_DIR; ?>/icon_map.svg" alt="icon_map" class="img-svg">
-							<span>
-								Украина, Одесса
-							</span>
-						</li>
-						<li>
-							<img src="<?= B_IMG_DIR; ?>/icon_clock.svg" alt="icon_clock" class="img-svg">
-							<span>
-								Выполнено за 2 месяца
-							</span>
-						</li>
+
+						<?php
+							$works_type = get_field('about_project')['works_type'];
+							$place = get_field('about_project')['place'];
+							$duration = get_field('about_project')['duration'];
+						?>
+
+						<?php if ($works_type): ?>
+							<li>
+								<img src="<?= B_IMG_DIR; ?>/icon_reconstruction.svg" alt="icon_reconstruction" class="img-svg">
+								<span>
+									<?= $works_type; ?>
+								</span>
+							</li>
+						<?php endif; ?>
+
+						<?php if ($place): ?>
+							<li>
+								<img src="<?= B_IMG_DIR; ?>/icon_map.svg" alt="icon_map" class="img-svg">
+								<span>
+									<?= $place; ?>
+								</span>
+							</li>
+						<?php endif; ?>
+
+						<?php if ($duration): ?>
+							<li>
+								<img src="<?= B_IMG_DIR; ?>/icon_clock.svg" alt="icon_clock" class="img-svg">
+								<span>
+									<?= $duration; ?>
+								</span>
+							</li>
+						<?php endif; ?>
+
 					</ul>
+
 				</div>
 				<div class="right">
 					<h4>
 						Описание проекта
 					</h4>
 
-					<p>
-						Компания планирует разработать систему, которая объединит автомобили, инфраструктуру и жилища с помощью новейших систем связи. Футуристический город, получивший название Woven City, будет возведен на участке площадью 700 тыс. кв м, где когда-то располагалось предприятие компании. В городе будет три типа улиц: для полностью автономных автомобилей, для пешеходов и для людей, пользующихся индивидуальными средствами передвижения.
-					</p>
+						<?php while (have_rows('content')): the_row(); ?>
 
-					<p>
-						Первоначально в новом городе будет жить около 360 человек, в том числе разработчики и пожилые люди. Ожидается, что этот город будет способствовать появлению полезных для общества инноваций.
-					</p>
+							<?php while (have_rows('par_accent')): the_row(); ?>
+								<p class="accent">
+									<?= get_sub_field('text'); ?>
+								</p>
+							<?php endwhile; ?>
 
-					<div class="list_block">
-						<h6>
-							Что именно сделали:
-						</h6>
-						<ul>
-							<li>
-								Данные о состоянии здоровья жителей, записанные с помощью датчиков
-							</li>
-							<li>
-								Будут изучаться с помощью технологий искусственного интеллекта
-							</li>
-							<li>
-								Роботы будут помогать жителям в повседневной жизни
-							</li>
-						</ul>
+							<?php while (have_rows('par')): the_row(); ?>
+								<p>
+									<?= get_sub_field('text'); ?>
+								</p>
+							<?php endwhile; ?>
+
+							<?php while (have_rows('list')): the_row(); ?>
+								<div class="list_block">
+
+									<?php if(get_sub_field('title')): ?>
+										<h6>
+											<?= get_sub_field('title'); ?>
+										</h6>
+									<?php endif; ?>
+
+									<ul>
+										<?php while (have_rows('points')): the_row(); ?>
+											<li>
+												<?= get_sub_field('point'); ?>
+											</li>
+										<?php endwhile; ?>
+									</ul>
+								</div>
+							<?php endwhile; ?>
+
+						<?php endwhile; ?>
+
 					</div>
 				</div>
 			</div>
 
+			<?php
+				$prevPost = get_previous_post()->guid;
+				$nextPost = get_next_post()->guid;
+			?>
+
 			<div class="navsharing">
-				<a href="#" class="prev">
+
+				<a
+					href="<?= $prevPost; ?>"
+					class="prev"
+					<?php if ( !$prevPost ) {
+						echo "style = 'opacity: 0; visibility: hidden;'";
+					} ?>
+				>
 					<i class="fas fa-chevron-left"></i>
 					Предыдущая
 				</a>
+
+				<?php
+					$url = urlencode(get_permalink());
+					$title = urlencode(get_the_title());
+
+					$fbLink = 'https://www.facebook.com/sharer/sharer.php?u=' . $url;
+					$liLink = 'https://www.linkedin.com/shareArticle?mini=true&url=' . $url . '&title=' . $title;
+				?>
 
 				<div class="share">
 					<span>
 						Понравилась статья? Поделитесь:
 					</span>
 					<div class="buttons">
-						<button>
+						<button class="shareFacebook">
 							<img src="<?= B_IMG_DIR; ?>/icon_facebook.svg" alt="icon_facebook" class="img-svg">
 						</button>
-						<button>
+						<button class="shareLinkedin">
 							<img src="<?= B_IMG_DIR; ?>/icon_linkedin.svg" alt="icon_linkedin" class="img-svg">
 						</button>
 					</div>
 				</div>
 
-				<a href="#" class="next">
+				<a
+					href="<?= $nextPost; ?>"
+					class="next"
+					<?php if ( !$nextPost ) {
+							echo "style = 'opacity: 0; visibility: hidden;'";
+					} ?>
+				>
 					Следующая
 					<i class="fas fa-chevron-right"></i>
 				</a>
+
 			</div>
 		</div>
 	</section>
@@ -135,35 +191,43 @@
 			</h3>
 			<div class="cards slick_mb">
 
-				<a href="#" class="card">
-					<div class="bg" style="background-image: url(<?= B_IMG_DIR; ?>/home_folio_1.png);">
-						<div class="figure_3"></div>
-					</div>
-					<h4 class="title">
-						Пост охраны ОБСЕ
-					</h4>
-					<span class="date">
-						28 октября 2020
-					</span>
-				</a>
-				<a href="#" class="card">
-					<div class="bg" style="background-image: url(<?= B_IMG_DIR; ?>/home_folio_2.png);">
-						<div class="figure_3"></div>
-					</div>
-					<h4 class="title">
-						Пост охраны ОБСЕ
-					</h4>
-					<span class="date">
-						28 октября 2020
-					</span>
-				</a>
+				<?php
+					// Show 2 other posts from folio, except current
+					$posts = get_posts( [
+						'post_type' => 'folio',
+						'numberposts' => 2,
+						'exclude' => url_to_postid(get_permalink())
+					] );
+
+					foreach( $posts as $key=>$post ) {
+						setup_postdata($post);
+
+						$url = get_permalink();
+						$img = get_field('gallery')[0];
+						$date = get_the_date('j F Y', $post->id);
+						$post_title = $post->post_title;
+				?>
+
+					<a href="<?= $url; ?>" class="card">
+						<div class="bg" style="background-image: url(<?= $img ?>);">
+							<div class="figure_3"></div>
+						</div>
+						<h4 class="title">
+							<?= $post_title; ?>
+						</h4>
+						<span class="date">
+							<?= $date; ?>
+						</span>
+					</a>
+
+				<?php }; wp_reset_postdata(); ?>
 
 			</div>
 		</div>
 	</section>
 
-	<?php wp_footer(); ?>
 	<?php get_footer(); ?>
+	<?php wp_footer(); ?>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
@@ -292,6 +356,17 @@
 			}
 		});
 
+		$(document).ready(function() {
+			document.querySelector(".shareFacebook").addEventListener("click", () => {
+			window.open('<?= $fbLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+			return false;
+			});
+
+			document.querySelector(".shareLinkedin").addEventListener("click", () => {
+				window.open('<?= $liLink; ?>','popUpWindow','height=400, width=600, left=10, top=10, , scrollbars=yes, menubar=no');
+				return false;
+			});
+		});
 	</script>
 </body>
 </html>

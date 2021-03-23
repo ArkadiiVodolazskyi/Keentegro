@@ -54,82 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   }
   // })();
 
-  // Footer clients slick_lg
-  $("footer .clients .slick_lg").not('.slick-initialized').slick({
-    arrows: true,
-    draggable: true,
-    focusOnSelect: false,
-    infinite: false,
-    autoplay: false,
-    dots: false,
-    variableWidth: true,
-    vertical: false,
-    verticalSwiping: false,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    prevArrow: `
-      <button type="button">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-    `,
-    nextArrow: `
-      <button type="button">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    `,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          arrows: true,
-          draggable: true,
-          touchThreshold: 300,
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          draggable: true,
-          touchThreshold: 300,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: false,
-          draggable: true,
-          touchThreshold: 300,
-        }
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: false,
-          draggable: true,
-          touchThreshold: 300,
-        }
-      },
-      {
-        breakpoint: 350,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          draggable: true,
-          touchThreshold: 300,
-        }
-      },
-    ]
-  });
+
 });
 
 window.addEventListener("load", () => {
@@ -161,5 +86,39 @@ window.addEventListener("load", () => {
       }
     })();
   }
+
+  // Disallow search indexes
+  const nofollow = document.querySelector('meta[name="robots"]');
+  if (nofollow) {
+    nofollow.setAttribute("content", "noindex, nofollow");
+  } else {
+    document.querySelector('head').innerHTML += `<meta name="robots" content="noindex, nofollow" />`;
+  }
+
+  // Open/close openConsults
+  (function() {
+    const openConsults = document.querySelectorAll('.openConsult');
+    const consult = document.querySelector('.modalConsult');
+    const closeConsult = document.querySelector('#closeConsult');
+
+    if (openConsults.length && consult && closeConsult) {
+
+      for (let i = 0; i < openConsults.length; i++) {
+        openConsults[i].addEventListener('click', () => {
+          consult.classList.add('active');
+        });
+      }
+
+      closeConsult.addEventListener('click', () => {
+        consult.classList.remove('active');
+      });
+      consult.addEventListener('click', (e) => {
+        if (e.target == consult) {
+          consult.classList.remove('active');
+        }
+      });
+
+    }
+  })();
 
 });
