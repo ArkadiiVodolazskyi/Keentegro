@@ -3,19 +3,19 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
+b, u, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: "Visuelt Pro", sans-serif;
+  font-family: "Visuelt Pro", sans-serif !important;
   vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
@@ -44,14 +44,17 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  padding: 0; }
+  padding: 0;
+  outline: none; }
 
 li, a, span {
-  display: inline-block; }
+  display: inline-block;
+  outline: none; }
 
 img {
   width: 100%;
-  user-select: none; }
+  user-select: none;
+  outline: none; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
@@ -116,6 +119,10 @@ svg {
     height: 12px;
     left: 24px;
     top: 24px; }
+  .figure_1.over:before {
+    animation: figure_1_before 2s linear forwards; }
+  .figure_1.over:after {
+    animation: figure_1_after_v1 2s linear forwards; }
 
 .figure_2 {
   position: absolute; }
@@ -128,6 +135,8 @@ svg {
     left: 0;
     top: 0;
     transform: translate(-100%, -100%); }
+  .figure_2.over::before {
+    animation: figure_2_before_v_1 2s linear; }
 
 .figure_3 {
   position: absolute;
@@ -149,6 +158,10 @@ svg {
     height: 24px;
     left: 48px;
     bottom: 48px; }
+  .figure_3.over::before {
+    animation: figure_3_before 1.5s linear forwards; }
+  .figure_3.over::after {
+    animation: figure_3_after 1.5s linear forwards; }
 
 .figure_4 {
   position: absolute;
@@ -170,6 +183,10 @@ svg {
     height: 24px;
     left: 72px;
     top: 0; }
+  .figure_4.over:before {
+    animation: figure_4_before 0.9s linear forwards; }
+  .figure_4.over:after {
+    animation: figure_4_after 0.9s linear forwards; }
 
 .figure_6 {
   position: absolute;
@@ -275,7 +292,8 @@ section {
     display: flex;
     position: relative; }
   section .card {
-    position: relative; }
+    position: relative;
+    outline: none; }
 
 .wrapper {
   width: 1416px;
@@ -555,34 +573,58 @@ header .hamburger:hover svg path.gradient {
   0% {
     left: 0;
     bottom: 0; }
-  25% {
+  13% {
     left: 0;
     bottom: 0; }
-  50% {
+  26% {
     left: 24px;
     bottom: 0; }
-  75% {
+  39% {
     left: 24px;
+    bottom: 0; }
+  52% {
+    left: 24px;
+    bottom: 24px; }
+  65% {
+    left: 24px;
+    bottom: 0; }
+  78% {
+    left: 24px;
+    bottom: 0; }
+  91% {
+    left: 0;
     bottom: 0; }
   100% {
-    left: 24px;
-    bottom: 24px; } }
+    left: 0;
+    bottom: 0; } }
 @keyframes figure_3_after {
   0% {
     left: 48px;
     bottom: 48px; }
-  25% {
+  13% {
     left: 0px;
     bottom: 48px; }
-  50% {
+  26% {
     left: 0px;
     bottom: 48px; }
-  75% {
+  39% {
     left: 0px;
     bottom: 0px; }
-  100% {
+  52% {
     left: 0px;
-    bottom: 0px; } }
+    bottom: 0px; }
+  65% {
+    left: 0px;
+    bottom: 0px; }
+  78% {
+    left: 0px;
+    bottom: 48px; }
+  91% {
+    left: 0px;
+    bottom: 48px; }
+  100% {
+    left: 48px;
+    bottom: 48px; } }
 @keyframes figure_4_before {
   0% {
     left: 0;
@@ -591,8 +633,8 @@ header .hamburger:hover svg path.gradient {
     left: 12px;
     top: 12px; }
   100% {
-    left: 6px;
-    top: 18px; } }
+    left: 0;
+    top: 24px; } }
 @keyframes figure_4_after {
   0% {
     left: 72px;
@@ -601,8 +643,8 @@ header .hamburger:hover svg path.gradient {
     left: 60px;
     top: 12px; }
   100% {
-    left: 66px;
-    top: 6px; } }
+    left: 72px;
+    top: 0; } }
 header.mobile {
   display: flex;
   flex-direction: column;
@@ -875,7 +917,6 @@ header:not(.mobile):not(.desktop) {
   header:not(.mobile):not(.desktop) .submenu {
     position: absolute;
     z-index: 300;
-    width: max-content;
     max-width: 300px;
     min-width: 100%;
     top: 100%;
@@ -1118,14 +1159,6 @@ section.facts {
     width: calc( 100% / 2 - 24px );
     margin: 0 12px;
     padding: 24px 0 0 24px; }
-    section.facts .card:nth-of-type(1):hover .figure_2:before {
-      animation-play-state: running; }
-    section.facts .card:nth-of-type(1) .figure_2:before {
-      animation: figure_2_before_v_1 2s linear forwards infinite paused; }
-    section.facts .card:nth-of-type(2):hover .figure_2:before {
-      animation-play-state: running; }
-    section.facts .card:nth-of-type(2) .figure_2:before {
-      animation: figure_2_before_v_1 2s linear forwards infinite paused; }
     section.facts .card img {
       background-color: #fff;
       padding: 12px;
@@ -1161,14 +1194,6 @@ section.folio .card {
     section.folio .card:hover .title > i {
       transform: translate(0, -50%);
       opacity: 1; }
-  section.folio .card:hover .figure_3:before {
-    animation-play-state: running; }
-  section.folio .card:hover .figure_3:after {
-    animation-play-state: running; }
-  section.folio .card .figure_3:before {
-    animation: figure_3_before 0.7s linear forwards paused; }
-  section.folio .card .figure_3:after {
-    animation: figure_3_after 0.7s linear forwards paused; }
   section.folio .card .bg {
     height: 480px; }
   section.folio .card .title {
@@ -1219,13 +1244,8 @@ section.reviews {
     margin: 0 60px;
     padding: 36px 0 0 120px;
     display: inline-flex;
-    flex-direction: column; }
-    section.reviews .card:hover .figure_4:before, section.reviews .card:hover .figure_4:after {
-      animation-play-state: running; }
-    section.reviews .card .figure_4:before {
-      animation: figure_4_before 0.6s linear forwards paused; }
-    section.reviews .card .figure_4:after {
-      animation: figure_4_after 0.6s linear forwards paused; }
+    flex-direction: column;
+    transition: all 0.2s linear; }
     section.reviews .card[aria-hidden=true] {
       opacity: 0.5; }
     section.reviews .card .date {
@@ -1249,14 +1269,6 @@ section.blog .card {
     section.blog .card:hover .title > i {
       transform: translate(0, -50%);
       opacity: 1; }
-  section.blog .card:hover .figure_3:before {
-    animation-play-state: running; }
-  section.blog .card:hover .figure_3:after {
-    animation-play-state: running; }
-  section.blog .card .figure_3:before {
-    animation: figure_3_before 0.7s linear forwards paused; }
-  section.blog .card .figure_3:after {
-    animation: figure_3_after 0.7s linear forwards paused; }
   section.blog .card .bg {
     height: 360px; }
   section.blog .card .title {
@@ -1868,27 +1880,9 @@ footer {
       position: relative; }
       footer nav > div:nth-child(1) {
         width: 25%; }
-        footer nav > div:nth-child(1) .figure_1:before {
-          animation: figure_1_before 4s linear infinite forwards paused; }
-        footer nav > div:nth-child(1) .figure_1:after {
-          animation: figure_1_after_v1 3.4s linear infinite forwards paused; }
-        footer nav > div:nth-child(1):hover .figure_1:before, footer nav > div:nth-child(1):hover .figure_1:after {
-          animation-play-state: running; }
       footer nav > div:nth-child(2) {
         width: 42%;
         padding: 48px 18% 0 36px; }
-        footer nav > div:nth-child(2) .figure_1:before {
-          animation: figure_1_before 4s linear infinite forwards paused; }
-        footer nav > div:nth-child(2) .figure_1:after {
-          animation: figure_1_after_v2 4s linear infinite forwards paused; }
-        footer nav > div:nth-child(2):hover .figure_1:before, footer nav > div:nth-child(2):hover .figure_1:after {
-          animation-play-state: running; }
-      footer nav > div:nth-child(3) .figure_1:before {
-        animation: figure_1_before 4s linear infinite forwards paused; }
-      footer nav > div:nth-child(3) .figure_1:after {
-        animation: figure_1_after_v1 3.7s linear infinite forwards paused; }
-      footer nav > div:nth-child(3):hover .figure_1:before, footer nav > div:nth-child(3):hover .figure_1:after {
-        animation-play-state: running; }
       footer nav > div:nth-child(3) ul {
         margin-top: 0; }
       footer nav > div:nth-child(3) li, footer nav > div:nth-child(3) a {
@@ -1946,7 +1940,8 @@ footer {
     font-weight: normal !important;
     line-height: 1.3 !important;
     border: none !important;
-    border-bottom: 2px solid #fff !important; }
+    border-bottom: 2px solid #fff !important;
+    border-radius: 0 !important; }
     .wpforms-container input::placeholder {
       color: #fff !important; }
   .wpforms-container .iti__flag-container {
@@ -2700,11 +2695,6 @@ footer {
     section.consult .wrapper .right .wpforms-container button {
       font-size: 20px !important; }
 
-  section.certificates .card {
-    width: 100%; }
-    section.certificates .card:not(:first-child) {
-      margin-top: 24px; }
-
   section.clients .card {
     width: calc( 100% / 3 - 24px ); }
 
@@ -2782,4 +2772,9 @@ footer {
     width: calc( 100% / 2 - 24px ); }
 
   section.vacancies .card {
-    padding: 24px; } }
+    padding: 24px; }
+
+  section.certificates .card {
+    width: 100%; }
+    section.certificates .card:not(:first-child) {
+      margin-top: 24px; } }

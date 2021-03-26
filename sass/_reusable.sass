@@ -4,19 +4,19 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
+b, u, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video
+time, mark, audio, video, button
 	margin: 0
 	padding: 0
 	border: 0
 	font-size: 100%
-	font-family: 'Visuelt Pro', sans-serif
+	font-family: 'Visuelt Pro', sans-serif !important
 	vertical-align: baseline
 
 /* HTML5 display-role reset for older browsers */
@@ -47,11 +47,14 @@ button
 	background-color: transparent
 	cursor: pointer
 	padding: 0
+	outline: none
 li, a, span
 	display: inline-block
+	outline: none
 img
 	width: 100%
 	user-select: none
+	outline: none
 h1, h2, h3, h4, h5, h6
 	font-weight: bold
 svg
@@ -126,6 +129,10 @@ $blue: 	#26a2be
 		height: 12px
 		left: 24px
 		top: 24px
+	&.over:before
+		animation: figure_1_before 2s linear forwards
+	&.over:after
+		animation: figure_1_after_v1 2s linear forwards
 
 .figure_2
 	position: absolute
@@ -138,6 +145,8 @@ $blue: 	#26a2be
 		left: 0
 		top: 0
 		transform: translate(-100%, -100%)
+	&.over::before
+		animation: figure_2_before_v_1 2s linear
 
 .figure_3
 	position: absolute
@@ -159,6 +168,10 @@ $blue: 	#26a2be
 		height: 24px
 		left: 48px
 		bottom: 48px
+	&.over::before
+		animation: figure_3_before 1.5s linear forwards
+	&.over::after
+		animation: figure_3_after 1.5s linear forwards
 
 .figure_4
 	position: absolute
@@ -180,6 +193,10 @@ $blue: 	#26a2be
 		height: 24px
 		left: 72px
 		top: 0
+	&.over:before
+		animation: figure_4_before 0.9s linear forwards
+	&.over:after
+		animation: figure_4_after 0.9s linear forwards
 
 .figure_6
 	position: absolute
@@ -313,6 +330,7 @@ section
 		position: relative
 	.card
 		position: relative
+		outline: none
 .wrapper
 	width: 1416px // 74%
 	height: 100%

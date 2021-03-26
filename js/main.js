@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (wows.length) {
       for (let i = 0; i < wows.length; i++) {
-        wows[i].setAttribute("data-wow-duration", "0.8s");
+        wows[i].setAttribute("data-wow-duration", "0.5s");
       }
     }
   })();
@@ -365,5 +365,34 @@ window.addEventListener("load", () => {
       container.onmouseenter = onMouseEnterHandler;
     })();
   }
+
+  // Figures animation mouseover/mouseout
+  (function() {
+    const cards = document.querySelectorAll('.card');
+
+    if (cards.length) {
+
+      for (let i = 0; i < cards.length; i++) {
+
+        const figure = cards[i].querySelector('.figure_1, .figure_2, .figure_3, .figure_4, .figure_5');
+
+        if (figure) {
+          cards[i].addEventListener('mouseover', (e) => {
+            e.stopPropagation();
+            if (e.target == figure) {
+              figure.style.pointerEvents = 'none';
+              figure.classList.add('over');
+              setTimeout(() => {
+                figure.classList.remove('over');
+                figure.style.pointerEvents = 'auto';
+              }, 2000);
+            }
+          }, true);
+        }
+
+      }
+
+    }
+  })();
 
 });

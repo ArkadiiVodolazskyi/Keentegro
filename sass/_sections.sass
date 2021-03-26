@@ -140,16 +140,12 @@ section.facts
 		width: calc( 100% / 2 - 24px )
 		margin: 0 12px
 		padding: 24px 0 0 24px
-		&:nth-of-type(1)
-			&:hover .figure_2:before
-				animation-play-state: running
-			.figure_2:before
-				animation: figure_2_before_v_1 2s linear forwards infinite paused
-		&:nth-of-type(2)
-			&:hover .figure_2:before
-				animation-play-state: running
-			.figure_2:before
-				animation: figure_2_before_v_1 2s linear forwards infinite paused
+		// &:hover .figure_2:before
+		// 	animation: figure_2_before_v_1 2s linear infinite
+		// &:not(:hover) .figure_2:before
+		// 	animation: figure_2_before_v_1 2s linear reverse backwards
+		// .figure_2:before
+		// 	transition: all 2s linear
 		img
 			background-color: $w
 			padding: 12px
@@ -190,14 +186,6 @@ section.folio
 				> i
 					transform: translate(0, -50%)
 					opacity: 1
-			.figure_3:before
-				animation-play-state: running
-			.figure_3:after
-				animation-play-state: running
-		.figure_3:before
-			animation: figure_3_before 0.7s linear forwards paused
-		.figure_3:after
-			animation: figure_3_after 0.7s linear forwards paused
 		.bg
 			height: 480px
 		.title
@@ -250,13 +238,7 @@ section.reviews
 		padding: 36px 0 0 120px
 		display: inline-flex
 		flex-direction: column
-		&:hover
-			.figure_4:before, .figure_4:after
-				animation-play-state: running
-		.figure_4:before
-			animation: figure_4_before 0.6s linear forwards paused
-		.figure_4:after
-			animation: figure_4_after 0.6s linear forwards paused
+		transition: all 0.2s linear
 		&[aria-hidden=true]
 			opacity: 0.5
 		.date
@@ -282,14 +264,6 @@ section.blog
 				> i
 					transform: translate(0, -50%)
 					opacity: 1
-			.figure_3:before
-				animation-play-state: running
-			.figure_3:after
-				animation-play-state: running
-		.figure_3:before
-			animation: figure_3_before 0.7s linear forwards paused
-		.figure_3:after
-			animation: figure_3_after 0.7s linear forwards paused
 		.bg
 			height: 360px
 		.title

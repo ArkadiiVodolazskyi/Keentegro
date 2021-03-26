@@ -16,7 +16,7 @@
 
 <!-- footer start -->
 <footer class="bg text-w <?= $show_brands ? 'show_brands' : ''; ?>">
-	<img src="<?= B_IMG_DIR; ?>/footer_bg.png" alt="footer_bg">
+	<img src="<?= B_IMG_DIR; ?>/footer_bg.png" alt="footer_bg" class="nolazy">
 	<div class="wrapper">
 
 		<?php
@@ -28,7 +28,7 @@
 				<div class="slick_lg">
 
 					<?php foreach ($clients as $key=>$client) { ?>
-						<a href="<?= $client['link']['url']; ?>" class="wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
+						<a href="<?= $client['link']['url']; ?>" class="wow fadeIn" data-wow-delay="<?= $key*0.1 ?>s">
 							<img src="<?= $client['img']; ?>" alt="client" />
 						</a>
 					<?php } ?>
@@ -41,7 +41,7 @@
 
 			<?php while(have_rows('footer_nav', 'options')): the_row(); ?>
 
-				<div>
+				<div class="card">
 					<div class="figure_1 wow fadeIn"></div>
 					<h3 class="wow fadeInUp">
 						<?= get_sub_field('title'); ?>
@@ -51,7 +51,7 @@
 					</h3>
 					<ul>
 						<?php while(have_rows('links', 'options')): the_row(); ?>
-							<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.1 + 0.1 ?>s">
+							<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.1 ?>s">
 								<a href="<?= get_sub_field('link')['url']; ?>">
 									<?= get_sub_field('link')['title']; ?>
 								</a>
@@ -62,7 +62,7 @@
 
 			<?php endwhile; ?>
 
-			<div>
+			<div class="card">
 				<div class="figure_1 wow fadeIn"></div>
 				<ul>
 
@@ -105,7 +105,7 @@
 						<?php if (count($socials)) { ?>
 							<li class="wow fadeInUp">
 								<?php foreach ($socials as $key=>$social) { ?>
-									<a href="<?= $social['url']; ?>" class="wow fadeInUp" data-wow-delay="<?= $key*0.1 + 0.4 ?>s">
+									<a href="<?= $social['url']; ?>" class="wow fadeInUp" data-wow-delay="<?= $key*0.1 ?>s">
 										<img src="<?= B_IMG_DIR; ?>/icon_<?= $social['social_type']; ?>.svg" alt="icon_facebook" class="img-svg">
 									</a>
 								<?php } ?>
@@ -121,7 +121,7 @@
 			<span class="wow fadeInUp" data-wow-delay="0.4s">
 				<?= get_field('footer_slogan', 'options'); ?>
 			</span>
-			<a href="https://devpro.agency/" class="development wow fadeInUp" data-wow-delay="0.6s">
+			<a href="https://devpro.agency/" class="development wow fadeInUp" data-wow-delay="0.4s">
 				<span class="textAppear">Создание сайта — </span>
 				<img src="<?= B_IMG_DIR ?>/devpro.svg" class="img-svg native">
 			</a>

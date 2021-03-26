@@ -21,9 +21,9 @@
 		<?php get_header(); ?>
 
     <section class="banner text-w bg">
-      <img src="<?= get_field('banner')['img']; ?>" alt="home_banner" />
+      <img src="<?= get_field('banner')['img']; ?>" alt="home_banner" class="nolazy" />
       <div class="wrapper">
-        <h3 class="wow fadeIn" data-wow-delay="0.4s">
+        <h3 class="wow fadeIn" data-wow-delay="0.3s">
           <?= get_field('banner')['slogan']; ?>
         </h3>
         <div>
@@ -34,7 +34,7 @@
           </span>
         </div>
       </div>
-      <a href="#services" class="next wow fadeIn" data-wow-delay="0.4s">
+      <a href="#services" class="next wow fadeIn" data-wow-delay="0.3s">
         Посмотреть наши услуги
         <i class="fas fa-chevron-down"></i>
         <i class="fas fa-chevron-down"></i>
@@ -63,7 +63,7 @@
               $post_title = $term->name;
           ?>
 
-            <div class="card bg text-w wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
+            <div class="card bg text-w wow zoomIn" data-wow-delay="<?= $key*0.1 ?>s">
               <a href="<?= $url; ?>">
                 <img src="<?= $img; ?>" alt="taxonomy_thumbnail">
               </a>
@@ -112,7 +112,7 @@
                     $text = $facts[$j]['text'];
                 ?>
 
-                  <div class="card wow fadeIn" data-wow-delay="<?= $j*0.2 ?>s">
+                  <div class="card wow zoomIn" data-wow-delay="<?= $j*0.1 ?>s">
                     <div class="figure_2"></div>
                     <img src="<?= $icon; ?>" alt="facts_icon" />
                     <p>
@@ -155,7 +155,7 @@
               $post_title = $post->post_title;
           ?>
 
-            <a href="<?= $url; ?>" class="card">
+            <a href="<?= $url; ?>" class="card <?= $key == 0 || $key == 1 ? 'wow zoomIn' : '' ?>">
               <div class="bg" style="background-image: url(<?= $img ?>);">
                 <div class="figure_3"></div>
               </div>
@@ -202,7 +202,7 @@
                 $text = get_field('text');
             ?>
 
-            <div class="card" data-wow-delay="<?= $key*0.2 ?>s">
+            <div class="card <?= $key == 0 ? 'wow zoomIn' : '' ?>" data-wow-delay="<?= $key*0.1 ?>s">
               <div class="figure_4"></div>
               <span class="date">
                 <?= $date; ?>
@@ -247,7 +247,7 @@
               $post_title = $post->post_title;
           ?>
 
-            <a href="<?= $url; ?>" class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
+            <a href="<?= $url; ?>" class="card wow zoomIn" data-wow-delay="<?= $key*0.1 ?>s">
               <div class="bg" style="background-image: url(<?= $img ?>);">
                 <div class="figure_3"></div>
               </div>
