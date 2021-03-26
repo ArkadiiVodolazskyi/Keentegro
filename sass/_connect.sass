@@ -4,16 +4,19 @@
 	*
 		font-family: inherit !important
 	.wpforms-field-container
+		border: none !important
 	.wpforms-field
 		padding: 0 !important
+		border: none !important
 		&:not(:first-child)
-			margin-top: 48px !important
+			margin-top: 36px !important
 	input
 		max-width: unset !important
 		background-color: transparent !important
-		padding: 0 0 18px 0 !important
+		padding: 18px 0 !important
+		height: 100% !important
 		color: $w !important
-		// font-size: 20px !important
+		font-size: 20px !important
 		font-weight: normal !important
 		line-height: 1.3 !important
 		border: none !important
@@ -28,7 +31,7 @@
 	button
 		background-color: $w !important
 		color: $b !important
-		// font-size: 24px !important
+		font-size: 24px !important
 		font-weight: 500 !important
 		line-height: 1.3 !important
 		padding: 18px 36px !important
@@ -47,7 +50,7 @@
 // Modal form
 .modalConsult
 	position: fixed !important
-	z-index: 900 !important
+	z-index: 1600 !important
 	width: 100vw !important
 	height: 100vh !important
 	left: 0 !important
@@ -69,7 +72,7 @@
 			visibility: visible !important
 	form
 		position: absolute !important
-		z-index: 950 !important
+		z-index: 1650 !important
 		max-width: 50vw !important
 		max-height: 80vh !important
 		background-color: $w !important
@@ -77,6 +80,7 @@
 		top: 50% !important
 		transform: translate(-50%, -50%) !important
 		padding: 30px 50px 50px !important
+		cursor: default
 		input
 			background-color: transparent !important
 			color: $b !important
@@ -104,9 +108,20 @@
 			fill: $w
 			&:hover
 				fill: $blue
+			&.closing
+				animation: closeBtn 0.2s linear
 			svg
 				position: absolute
 				left: 50%
 				top: 50%
 				transform: translate(-50%, -50%)
 
+.wpforms-confirmation-container-full
+	position: fixed
+	z-index: 1000
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	color: black !important
+	background-color: white !important
+	animation: fadeOut 1.5s 2s forwards

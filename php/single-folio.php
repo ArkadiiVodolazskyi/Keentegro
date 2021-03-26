@@ -22,7 +22,7 @@
 
 	<section class="post folio_post text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeLeft">
 				<span>
 					<?php the_title(); ?>
 				</span>
@@ -35,14 +35,16 @@
 						$images = get_field('gallery');
 						foreach( $images as $image ) {
 					?>
-						<img src="<?= $image; ?>" alt="project_image" class="nolazy">
+						<div class="bg">
+							<img src="<?= $image; ?>" alt="project_image" class="nolazy">
+						</div>
 					<?php } ?>
 				</div>
 			</div>
 
 			<div class="content">
 				<div class="left">
-					<h4>
+					<h4 class="wow fadeInUp">
 						Что и где
 					</h4>
 					<ul>
@@ -54,7 +56,7 @@
 						?>
 
 						<?php if ($works_type): ?>
-							<li>
+							<li class="wow fadeInUp" data-wow-delay="0.1s">
 								<img src="<?= B_IMG_DIR; ?>/icon_reconstruction.svg" alt="icon_reconstruction" class="img-svg">
 								<span>
 									<?= $works_type; ?>
@@ -63,7 +65,7 @@
 						<?php endif; ?>
 
 						<?php if ($place): ?>
-							<li>
+							<li class="wow fadeInUp" data-wow-delay="0.2s">
 								<img src="<?= B_IMG_DIR; ?>/icon_map.svg" alt="icon_map" class="img-svg">
 								<span>
 									<?= $place; ?>
@@ -72,7 +74,7 @@
 						<?php endif; ?>
 
 						<?php if ($duration): ?>
-							<li>
+							<li class="wow fadeInUp" data-wow-delay="0.3s">
 								<img src="<?= B_IMG_DIR; ?>/icon_clock.svg" alt="icon_clock" class="img-svg">
 								<span>
 									<?= $duration; ?>
@@ -84,20 +86,20 @@
 
 				</div>
 				<div class="right">
-					<h4>
+					<h4 class="wow fadeInUp">
 						Описание проекта
 					</h4>
 
 						<?php while (have_rows('content')): the_row(); ?>
 
 							<?php while (have_rows('par_accent')): the_row(); ?>
-								<p class="accent">
+								<p class="accent wow fadeInUp">
 									<?= get_sub_field('text'); ?>
 								</p>
 							<?php endwhile; ?>
 
 							<?php while (have_rows('par')): the_row(); ?>
-								<p>
+								<p class="wow fadeInUp">
 									<?= get_sub_field('text'); ?>
 								</p>
 							<?php endwhile; ?>
@@ -106,14 +108,14 @@
 								<div class="list_block">
 
 									<?php if(get_sub_field('title')): ?>
-										<h6>
+										<h6 class="wow fadeInUp">
 											<?= get_sub_field('title'); ?>
 										</h6>
 									<?php endif; ?>
 
 									<ul>
 										<?php while (have_rows('points')): the_row(); ?>
-											<li>
+											<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2 ?>s">
 												<?= get_sub_field('point'); ?>
 											</li>
 										<?php endwhile; ?>
@@ -136,7 +138,7 @@
 
 				<a
 					href="<?= $prevPost; ?>"
-					class="prev"
+					class="prev wow fadeLeft"
 					<?php if ( !$prevPost ) {
 						echo "style = 'opacity: 0; visibility: hidden;'";
 					} ?>
@@ -154,14 +156,14 @@
 				?>
 
 				<div class="share">
-					<span>
+					<span class="wow fadeIn">
 						Понравилась статья? Поделитесь:
 					</span>
 					<div class="buttons">
-						<button class="shareFacebook">
+						<button class="shareFacebook wow fadeInUp">
 							<img src="<?= B_IMG_DIR; ?>/icon_facebook.svg" alt="icon_facebook" class="img-svg">
 						</button>
-						<button class="shareLinkedin">
+						<button class="shareLinkedin wow fadeInUp">
 							<img src="<?= B_IMG_DIR; ?>/icon_linkedin.svg" alt="icon_linkedin" class="img-svg">
 						</button>
 					</div>
@@ -169,7 +171,7 @@
 
 				<a
 					href="<?= $nextPost; ?>"
-					class="next"
+					class="next wow fadeRight"
 					<?php if ( !$nextPost ) {
 							echo "style = 'opacity: 0; visibility: hidden;'";
 					} ?>
@@ -177,14 +179,14 @@
 					Следующая
 					<i class="fas fa-chevron-right"></i>
 				</a>
-
 			</div>
+
 		</div>
 	</section>
 
 	<section class="folio other text-b bg-w">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeInUp">
 				<span>
 					Смотрите другие проекты
 				</span>
@@ -208,12 +210,13 @@
 						$post_title = $post->post_title;
 				?>
 
-					<a href="<?= $url; ?>" class="card">
+					<a href="<?= $url; ?>" class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 						<div class="bg" style="background-image: url(<?= $img ?>);">
 							<div class="figure_3"></div>
 						</div>
 						<h4 class="title">
 							<?= $post_title; ?>
+							<i class="fas fa-chevron-right"></i>
 						</h4>
 						<span class="date">
 							<?= $date; ?>
@@ -243,10 +246,15 @@
 
 				if (tapeImgs.length && big) {
 					for (let i = 0; i < tapeImgs.length; i++) {
+						let div = document.createElement('div');
+						div.classList.add('bg');
+
 						let clonedImg = document.createElement('img');
 						clonedImg.src = tapeImgs[i].src;
 						clonedImg.alt = tapeImgs[i].alt;
-						big.appendChild(clonedImg);
+						div.appendChild(clonedImg);
+
+						big.appendChild(div);
 					}
 				}
 			})();
@@ -312,9 +320,29 @@
 				`,
 				responsive: [
 					{
-						breakpoint: 1440,
+						breakpoint: 1700,
 						settings: {
 							slidesToShow: 4,
+							slidesToScroll: 1,
+							arrows: true,
+							draggable: true,
+							touchThreshold: 300,
+						},
+					},
+					{
+						breakpoint: 1170,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1,
+							arrows: true,
+							draggable: true,
+							touchThreshold: 300,
+						},
+					},
+					{
+						breakpoint: 880,
+						settings: {
+							slidesToShow: 2,
 							slidesToScroll: 1,
 							arrows: true,
 							draggable: true,
@@ -326,13 +354,15 @@
 
 			// Click on slide
 			$(".gallery .tape.slick_lg .slick-slide").click(function(e) {
-				$('.gallery .tape.slick_lg').slick('slickGoTo', parseInt(e.target.getAttribute('data-slick-index')));
+
+				$('.gallery .tape.slick_lg').slick('slickGoTo', parseInt(e.currentTarget.getAttribute('data-slick-index')));
 
 				$(".gallery .tape.slick_lg .slick-slide").removeClass('slick-current');
-				e.target.classList.add('slick-current');
+				e.currentTarget.classList.add('slick-current');
 
 				// Link big slider
-				$(".gallery .big.slick_lg").slick('slickGoTo', parseInt(e.target.getAttribute('data-slick-index')));
+				$(".gallery .big.slick_lg").slick('slickGoTo', parseInt(e.currentTarget.getAttribute('data-slick-index')));
+
 			});
 
 			// Adaptive slick

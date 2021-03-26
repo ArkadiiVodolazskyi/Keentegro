@@ -1,0 +1,148 @@
+@keyframes fadeIn
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+@keyframes fadeOut
+	0%
+		opacity: 1
+	100%
+		opacity: 0
+		visibility: hidden
+
+@keyframes closeBtn
+	0%
+		opacity: 1
+		transform: scale(1) rotate(0)
+	50%
+		opacity: 0.8
+		transform: scale(1.1) rotate(30deg)
+	100%
+		opacity: 0
+		transform: scale(0.5) rotate(60deg)
+
+@keyframes figure_1_before
+	0%
+		background-color: $pink
+	33%
+		background-color: darken($pink, 10%)
+	66%
+		background-color: darken($pink, 10%)
+	100%
+		background-color: $pink
+
+@keyframes figure_1_after_v1
+	0%
+		left: 24px
+		top: 24px
+		background-color: $w
+	25%
+		left: 24px
+		top: -12px
+		background-color: darken($w, 20%)
+	50%
+		left: -12px
+		top: -12px
+		background-color: darken($w, 20%)
+	75%
+		left: 24px
+		top: -12px
+		background-color: darken($w, 20%)
+	100%
+		left: 24px
+		top: 24px
+		background-color: $w
+
+@keyframes figure_1_after_v2
+	0%
+		left: 24px
+		top: 24px
+		background-color: $w
+	25%
+		left: -12px
+		top: 24px
+		background-color: darken($w, 20%)
+	50%
+		left: -12px
+		top: -12px
+		background-color: darken($w, 20%)
+	75%
+		left: -12px
+		top: 24px
+		background-color: darken($w, 20%)
+	100%
+		left: 24px
+		top: 24px
+		background-color: $w
+
+@keyframes figure_2_before_v_1
+	0%
+		left: 0
+		top: 0
+	25%
+		left: 96px
+		top: 0
+	50%
+		left: 96px
+		top: 96px
+	75%
+		left: 96px
+		top: 0
+	100%
+		left: 0
+		top: 0
+
+@keyframes figure_3_before
+	0%
+		left: 0
+		bottom: 0
+	25%
+		left: 0
+		bottom: 0
+	50%
+		left: 24px
+		bottom: 0
+	75%
+		left: 24px
+		bottom: 0
+	100%
+		left: 24px
+		bottom: 24px
+
+@keyframes figure_3_after
+	0%
+		left: 48px
+		bottom: 48px
+	25%
+		left: 0px
+		bottom: 48px
+	50%
+		left: 0px
+		bottom: 48px
+	75%
+		left: 0px
+		bottom: 0px
+	100%
+		left: 0px
+		bottom: 0px
+
+@keyframes figure_4_before
+	0%
+		left: 0
+		top: 24px
+	50%
+		left: 12px
+		top: 12px
+	100%
+		left: 6px
+		top: 18px
+@keyframes figure_4_after
+	0%
+		left: 72px
+		top: 0
+	50%
+		left: 60px
+		top: 12px
+	100%
+		left: 66px
+		top: 6px

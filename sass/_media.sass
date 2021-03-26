@@ -9,7 +9,7 @@
 @media (max-width: 1600px)
 	.wrapper
 		width: 90%
-	header
+	header:not(.mobile):not(.desktop)
 		.hamburger
 			margin: 0 36px
 		.consult, .languages
@@ -28,7 +28,7 @@
 		h3 span
 			font-size: 48px
 
-	header
+	header:not(.mobile):not(.desktop)
 		.logo
 			width: 205px
 			height: auto
@@ -93,7 +93,7 @@
 			font-size: 36px
 	section.folio_post
 		.gallery .big
-			height: auto
+			height: 500px
 		.content .left li span
 			font-size: 20px
 		.navsharing
@@ -116,13 +116,13 @@
 		padding: 72px 0
 		.cards
 			margin-top: 36px
-	body:not(.home)::before
-		transform: translateY(-85px)
+	body:not(.home) .logo_bg
+		height: 250px
 
 	.figure_4
 		transform: scale(0.75)
 
-	header
+	header:not(.mobile):not(.desktop)
 		height: auto
 		.logo
 			width: 156px
@@ -134,6 +134,8 @@
 			margin-left: 18px
 		.contact_phone a
 			font-size: 20px
+	header.desktop > div
+		flex: 1 1 auto
 	footer
 		nav
 			justify-content: space-between
@@ -173,7 +175,7 @@
 					font-size: 16px
 	section.folio_post .wrapper
 		width: 83vw
-		.gallery .big img
+		.gallery .big .bg
 			width: 83vw
 	section.archive_services
 		.cards
@@ -187,6 +189,13 @@
 			width: 40%
 		.right
 			width: 60%
+	section.certificates .card
+		width: calc( 100% / 3 - 24px )
+	section.clients .card
+		width: calc( 100% / 5 - 24px )
+		margin: 12px
+	section.vacancies .card .title
+		font-size: 30px
 
 @media (max-width: 1024px)
 	section:not(.banner) .cards
@@ -198,14 +207,28 @@
 			font-size: 21px
 	body:not(.home)
 		padding-top: 80px
+		.logo_bg
+			height: 200px
 	nav.pagination li > *
 		width: 48px
 		height: 48px
 		font-size: 20px
 
-	header
+	header:not(.mobile):not(.desktop)
 		.navigation
 			display: none
+	header.desktop
+		padding: 72px 36px 36px
+		.closeHamb
+			right: 24px
+			top: 24px
+		> div
+			padding: 0
+			.figure_1
+				display: none
+			&:nth-child(3)
+				li, a
+					font-size: 20px
 	footer nav > div
 		width: auto
 		flex: 1 0 auto
@@ -219,20 +242,12 @@
 
 	section.banner
 		overflow: hidden
-		.wrapper > div
-			width: 120vw
+		.wrapper span.principles
+			flex-wrap: wrap
+			justify-content: center
+			margin-top: 36px
 			> span
-				width: min-content
-				position: relative
-				> span
-					&:nth-child(1)
-						position: absolute
-						left: -36px
-						transform: translate(-100%, 0)
-					&:nth-child(3)
-						position: absolute
-						right: -36px
-						transform: translate(100%, 0)
+				padding: 10px 20px
 	section.services .card
 		width: calc( 100% / 2 - 24px)
 		margin: 12px
@@ -339,6 +354,7 @@
 					width: 100vw
 					margin-left: -5vw
 					margin-top: 72px
+					height: 550px
 	section.consult .wrapper
 		flex-direction: column
 		.left
@@ -347,21 +363,27 @@
 		.right
 			width: 100%
 			margin-top: 36px
+	section.certificates .card
+		width: calc( 100% / 2 - 24px )
+	section.clients .card
+		width: calc( 100% / 4 - 24px )
+	section.vacancies .cards
+		width: 90%
 
 @media (max-width: 768px)
 	.watch_all_mobile
 		display: inline-block
 	.figure_4
 		transform: scale(0.5)
-	body:not(.home)::before
-		transform: translateY(-130px)
+	body:not(.home) .logo_bg
+		height: 150px
 	.figure_5 > span
 		font-size: 16px
 	.list_block
 		ul
 			margin-top: 12px
 		h6
-			font-size: 16px
+			font-size: 16px !important
 			line-height: 1.5
 		li
 			font-size: 16px
@@ -382,6 +404,8 @@
 		.wpforms-container
 			input, button
 				font-size: 18px !important
+	.wpforms-confirmation-container-full
+		width: 90vw
 
 	section
 		h3
@@ -390,13 +414,15 @@
 			a
 				display: none
 
-	header
+	header:not(.mobile):not(.desktop)
 		.wrapper
 			padding: 14px 0 10px
 		.left
 			width: 100%
 		.right
 			display: none
+		.hamburger
+			margin: 0
 	footer
 		overflow: hidden
 		&:not(.show_brands)
@@ -464,8 +490,13 @@
 
 	section.banner
 		.wrapper
-			h3, > div > span > span
+			h3
 				font-size: 36px
+			span.principles
+				margin-top: 0
+				> span
+					font-size: 36px
+					padding: 0 5px
 		.next
 			font-size: 14px
 	section.services
@@ -542,7 +573,7 @@
 				margin-top: 36px
 				.tape
 					display: none
-				.big img
+				.big .bg
 					width: 100vw
 			button.slick-arrow > i
 				padding: 12px 16px
@@ -583,8 +614,11 @@
 			p
 				font-size: 16px
 				line-height: 1.5
-	section.contacts .wrapper > div .left li
-		font-size: 24px
+	section.contacts .wrapper > div
+		.left li
+			font-size: 24px
+		.right
+			height: 360px
 	section.consult .wrapper
 		.left
 			h4
@@ -598,10 +632,28 @@
 				font-size: 16px !important
 			button
 				font-size: 20px !important
+	section.certificates .card
+		width: 100%
+		&:not(:first-child)
+			margin-top: 24px
+	section.clients .card
+		width: calc( 100% / 3 - 24px )
+	section.vacancies
+		.cards
+			width: 100%
+		.card
+			padding: 30px 36px
+			.content .email
+				margin-top: 16px
+				padding-top: 16px
+				font-size: 18px
+				a
+					margin-top: 6px
+					font-size: 20px
 
 @media (max-width: 480px)
-	body:not(.home)::before
-		transform: translateY(-150px)
+	body:not(.home) .logo_bg
+		height: 100px
 	nav.pagination ul
 		justify-content: center
 		li
@@ -624,6 +676,8 @@
 			flex: 0 0 60%
 		.buttons
 			flex: 0 0 40%
+	section.folio_post .gallery .big
+		height: 400px
 	section.archive_services
 		.cards
 			margin: 30px 0
@@ -652,3 +706,7 @@
 				font-size: 20px
 			button
 				font-size: 18px
+	section.clients .card
+		width: calc( 100% / 2 - 24px )
+	section.vacancies .card
+		padding: 24px

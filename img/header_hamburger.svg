@@ -1,8 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="33" viewBox="0 0 60 33">
-    <g transform="translate(.198)">
-        <path d="M0 0H60V3H0z" transform="translate(-.198)"/>
-        <path d="M0 0H44V3H0z" transform="translate(15.802 15)"/>
-        <path d="M0 0H12V3H0z" transform="translate(-.198 15)"/>
-        <path d="M0 0H60V3H0z" transform="translate(-.198 30)"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 0 57 33">
+     <defs>
+        <linearGradient id="logo_gradient" x1="0%" y1="50%" x2="100%" y2="50%" >
+            <stop offset="0%" stop-color="#26a2be">
+                <animate attributeName="stop-color" values="##26a2be; #9e1260; #26a2be" dur="3s" repeatCount="indefinite"></animate>
+            </stop>
+
+            <stop offset="100%" stop-color="#9e1260">
+                <animate attributeName="stop-color" values="#9e1260; #26a2be; #9e1260" dur="3s" repeatCount="indefinite"></animate>
+            </stop>
+
+        </linearGradient>
+    </defs>
+
+    <path fill="#fff" class="white" d="M0 0H60V3H0z"/>
+    <path fill="#fff" class="white" d="M0 0H44V3H0z" transform="translate(15 15)"/>
+    <path fill="#fff" class="white" d="M0 0H12V3H0z" transform="translate(0 15)"/>
+    <path fill="#fff" class="white" d="M0 0H60V3H0z" transform="translate(0 30)"/>
+
+    <path fill="url(#logo_gradient)" class="gradient" d="M0 0H60V3H0z" opacity="0" />
+    <path fill="url(#logo_gradient)" class="gradient" d="M0 0H44V3H0z" transform="translate(15 15)" opacity="0" />
+    <path fill="url(#logo_gradient)" class="gradient" d="M0 0H12V3H0z" transform="translate(0 15)" opacity="0" />
+    <path fill="url(#logo_gradient)" class="gradient" d="M0 0H60V3H0z" transform="translate(0 30)" opacity="0" />
 </svg>

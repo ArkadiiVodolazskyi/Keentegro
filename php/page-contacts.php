@@ -22,7 +22,7 @@
 
 	<section class="contacts text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeInUp">
 				<span>
 					Контакты
 				</span>
@@ -39,13 +39,13 @@
 					?>
 
 					<?php if ($address) { ?>
-						<li>
+						<li class="wow fadeInUp">
 							<?= $address; ?>
 						</li>
 					<?php } ?>
 
 					<?php foreach ($phones as $phone) { ?>
-						<li>
+						<li class="wow fadeInUp" data-wow-delay="0.1s">
 							<a href="tel:<?= $phone['phone']; ?>">
 								<?= $phone['phone']; ?>
 							</a>
@@ -53,7 +53,7 @@
 					<?php } ?>
 
 					<?php if ($email) { ?>
-						<li>
+						<li class="wow fadeInUp" data-wow-delay="0.2s">
 							<a href="mailto:<?= $email; ?>">
 								<?= $email; ?>
 							</a>
@@ -61,13 +61,13 @@
 					<?php } ?>
 
 					<?php if ($working_time) { ?>
-						<li>
+						<li class="wow fadeInUp" data-wow-delay="0.3s">
 							<?= $working_time; ?>
 						</li>
 					<?php } ?>
 
-					<li>
-						<button>
+					<li class="wow fadeInUp" data-wow-delay="0.4s">
+						<button class="openConsult">
 							Свяжитесь с нами
 						</button>
 						<div class="socials">
@@ -82,7 +82,7 @@
 					</li>
 				</ul>
 
-				<div id="map" class="right"></div>
+				<div id="map" class="right wow fadeRight"></div>
 			</div>
 		</div>
 	</section>
@@ -94,8 +94,8 @@
 		// Use GMaps
 		function initMap() {
 			const coordinates = {
-				lat: 50.49117878739162,
-				lng: 30.47556155622631
+				lat: <?= get_field('coords')['lat']; ?>,
+				lng: <?= get_field('coords')['lng']; ?>
 			};
 			const map = new google.maps.Map(document.querySelector("#map"), {
 				center: coordinates,
@@ -106,7 +106,7 @@
 			const marker = new google.maps.Marker({
 				position: coordinates,
 				map: map,
-				icon: '<?= B_IMG_DIR; ?>/marker.svg'
+				icon: '<?= get_field('marker'); ?>'
 			});
 		}
 	</script>

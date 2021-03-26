@@ -26,7 +26,7 @@
 	<section class="archive_reviews text-b">
 		<div class="wrapper">
 			<h3>
-				<span>
+				<span class="wow fadeLeft">
 					Отзывы
 				</span>
 			</h3>
@@ -52,7 +52,7 @@
 					$doc = get_field('doc');
 				?>
 
-				<div class="card">
+				<div class="card wow fadeInUp" data-wow-delay="<?= $key*0.2 ?>s">
 					<div class="figure_6"></div>
 					<div class="text">
 						<span class="date">
@@ -109,7 +109,7 @@
 				$totalpages   = ceil( $totalterms / $number );
 
 				// Show custom page navigation
-				printf( '<nav class="pagination">%s</nav>',
+				printf( '<nav class="pagination wow fadeInLeft">%s</nav>',
 					custom_page_navi( $totalpages, $page, 1, 5 )
 				);
 

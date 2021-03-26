@@ -1,14 +1,5 @@
 <?php
 
-	// SVG support
-	function codeless_file_types_to_uploads($file_types){
-		$new_filetypes = array();
-		$new_filetypes['svg'] = 'image/svg+xml';
-		$file_types = array_merge($file_types, $new_filetypes );
-		return $file_types;
-	}
-	add_filter('upload_mimes', 'codeless_file_types_to_uploads');
-
 	// Add options for header/footer ACF
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page(array(
@@ -41,11 +32,13 @@
 		wp_deregister_script('jquery');
 		wp_register_script( 'jquery', B_JS_DIR . "/libs/jquery-3.5.1.min.js", array(), date("h:i:s"), false);
 		wp_register_script( 'slick', B_JS_DIR . "/libs/slick.min.js", array(), date("h:i:s"), false );
+		wp_register_script( 'maskedinput', B_JS_DIR . "/libs/jquery.maskedinput.min.js", array(), null, false );
 		wp_register_script( 'wowjs', B_JS_DIR . "/libs/wow.min.js", array(), null, true );
 		wp_register_script( 'mainjs', B_JS_DIR . "/main.js", array(), date("h:i:s"), true );
 
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'slick' );
+		wp_enqueue_script( 'maskedinput' );
 		wp_enqueue_script( 'wowjs' );
 		wp_enqueue_script( 'mainjs' );
 	}

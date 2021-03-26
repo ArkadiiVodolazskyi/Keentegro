@@ -30,7 +30,7 @@
 
 	<section class="service_banner bg text-w" style="background-image: url(<?= $img; ?>);">
 		<div class="wrapper">
-			<h2>
+			<h2 class="wow fadeLeft">
 				<?= $term->name; ?>
 			</h2>
 		</div>
@@ -39,7 +39,7 @@
 	<section class="services archive_services text-b">
 		<div class="wrapper">
 
-			<p>
+			<p class="wow fadeInUp">
 				<?= $descr; ?>
 			</p>
 
@@ -47,14 +47,20 @@
 
 				<?php
 					wp_reset_query();
-					$my_posts = new WP_Query;
-					$myposts = $my_posts->query([
-						'hide_empty' => false,
-						'post_type' => 'service',
-						'service' => $term->slug
-					]);
 
-					foreach( $posts as $post ) {
+					$myposts  = get_posts( [
+						'posts_per_page' => -1,
+						'post_type' => 'service',
+						'tax_query' => [
+							[
+								'taxonomy' => 'service_type',
+								'field' => 'slug',
+								'terms' => $term->slug,
+							]
+						],
+					] );
+
+					foreach( $myposts as $post ) {
 						setup_postdata($post);
 
 						$url = get_permalink();
@@ -63,12 +69,15 @@
 						$post_title = $post->post_title;
 				?>
 
-					<div class="card bg text-w">
+					<div class="card bg text-w wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 						<a href="<?= $url; ?>">
 							<img src="<?= $img ?>" alt="thumbnail">
 						</a>
 						<h4 class="title">
-							<?= $post_title; ?>
+							<a href="<?= $url; ?>">
+								<?= $post_title; ?>
+							</a>
+							<i class="fas fa-chevron-right"></i>
 						</h4>
 						<div class="links">
 							<a href="<?= $url; ?>">Подробнее</a>

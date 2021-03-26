@@ -22,15 +22,15 @@
 
 	<section class="post text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeIn">
 				<span>
 					<?php the_title(); ?>
 				</span>
 			</h3>
 
-			<div class="thumbnail">
+			<div class="thumbnail wow fadeIn">
 				<img src="<?= B_IMG_DIR; ?>/blog_bg.png" alt="thumbnail">
-				<div class="figure_5">
+				<div class="figure_5 wow fadeIn">
 					<span class="date">
 						<?= get_the_date(); ?>
 					</span>
@@ -42,13 +42,13 @@
 				<?php while (have_rows('content')): the_row(); ?>
 
 					<?php while (have_rows('par_accent')): the_row(); ?>
-						<p class="accent">
+						<p class="accent wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
 
 					<?php while (have_rows('par')): the_row(); ?>
-						<p>
+						<p class="wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
@@ -57,14 +57,14 @@
 						<div class="list_block">
 
 							<?php if(get_sub_field('title')): ?>
-								<h6>
+								<h6 class="wow fadeInUp">
 									<?= get_sub_field('title'); ?>
 								</h6>
 							<?php endif; ?>
 
 							<ul>
 								<?php while (have_rows('points')): the_row(); ?>
-									<li>
+									<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2 ?>s">
 										<?= get_sub_field('point'); ?>
 									</li>
 								<?php endwhile; ?>
@@ -85,7 +85,7 @@
 
 				<a
 					href="<?= $prevPost; ?>"
-					class="prev"
+					class="prev wow fadeLeft"
 					<?php if ( !$prevPost ) {
 						echo "style = 'opacity: 0; visibility: hidden;'";
 					} ?>
@@ -103,14 +103,14 @@
 				?>
 
 				<div class="share">
-					<span>
+					<span class="wow fadeIn">
 						Понравилась статья? Поделитесь:
 					</span>
 					<div class="buttons">
-						<button class="shareFacebook">
+						<button class="shareFacebook wow fadeInUp">
 							<img src="<?= B_IMG_DIR; ?>/icon_facebook.svg" alt="icon_facebook" class="img-svg">
 						</button>
-						<button class="shareLinkedin">
+						<button class="shareLinkedin wow fadeInUp">
 							<img src="<?= B_IMG_DIR; ?>/icon_linkedin.svg" alt="icon_linkedin" class="img-svg">
 						</button>
 					</div>
@@ -118,7 +118,7 @@
 
 				<a
 					href="<?= $nextPost; ?>"
-					class="next"
+					class="next wow fadeRight"
 					<?php if ( !$nextPost ) {
 							echo "style = 'opacity: 0; visibility: hidden;'";
 					} ?>
@@ -132,7 +132,7 @@
 
 	<section class="blog bg-w text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeInUp">
 				<span>
 					Читайте также
 				</span>
@@ -156,7 +156,7 @@
 						$post_title = $post->post_title;
 				?>
 
-					<a href="<?= $url; ?>" class="card">
+					<a href="<?= $url; ?>" class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 						<div class="bg" style="background-image: url(<?= $img ?>);">
 							<div class="figure_3"></div>
 						</div>

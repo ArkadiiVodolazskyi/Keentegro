@@ -22,13 +22,13 @@
 
 	<section class="post text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeLeft">
 				<span>
 					<?php the_title(); ?>
 				</span>
 			</h3>
 
-			<div class="thumbnail">
+			<div class="thumbnail wow fadeIn">
 				<img src="<?= get_field('banner'); ?>" alt="thumbnail">
 			</div>
 
@@ -37,13 +37,13 @@
 				<?php while (have_rows('content')): the_row(); ?>
 
 					<?php while (have_rows('par_accent')): the_row(); ?>
-						<p class="accent">
+						<p class="accent wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
 
 					<?php while (have_rows('par')): the_row(); ?>
-						<p>
+						<p class="wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
@@ -52,14 +52,14 @@
 						<div class="list_block">
 
 							<?php if(get_sub_field('title')): ?>
-								<h6>
+								<h6 class="wow fadeInUp">
 									<?= get_sub_field('title'); ?>
 								</h6>
 							<?php endif; ?>
 
 							<ul>
 								<?php while (have_rows('points')): the_row(); ?>
-									<li>
+									<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2 ?>s">
 										<?= get_sub_field('point'); ?>
 									</li>
 								<?php endwhile; ?>
@@ -77,15 +77,15 @@
 		<div class="wrapper">
 
 			<div class="left">
-				<h4>
+				<h4 class="wow fadeLeft">
 					Получите консультацию
 				</h4>
-				<p>
+				<p class="wow fadeLeft">
 					Заполните короткую форму, и наш специалист свяжется с вами в ближайшее время, чтобы ответить на все вопросы, и помочь принять решение
 				</p>
 			</div>
 
-			<div class="right">
+			<div class="right wow fadeInRight">
 				<?php echo do_shortcode( '[wpforms id="27" title="false"]' ); ?>
 			</div>
 
@@ -94,6 +94,15 @@
 
 	<?php get_footer(); ?>
 	<?php wp_footer(); ?>
+
+	<script>
+		$('#wpforms-27-field_2').click(function() {
+			$(this).setCursorPosition(5);
+		}).mask(
+			"+38 (999) 999-9999",
+			{autoclear: false}
+		);
+	</script>
 
 </body>
 </html>

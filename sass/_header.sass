@@ -1,4 +1,230 @@
-header
+
+header.mobile
+	display: flex
+	flex-direction: column
+	position: fixed
+	z-index: 1500
+	top: 0
+	left: 0
+	right: 0
+	width: 100%
+	transition: all 0.2s linear
+	opacity: 0
+	visibility: hidden
+	*
+		visibility: hidden
+	&.active
+		opacity: 1
+		visibility: visible
+		*
+			visibility: visible
+	.up
+		.wrapper
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding: 18px 0 9px
+		.logo
+			width: 50%
+			max-width: 205px
+		.closeHamb
+			fill: $w
+			outline: none
+			&:hover
+				fill: $blue
+			&.closing
+				animation: closeBtn 0.2s linear
+	.down
+		.wrapper
+			display: flex
+			justify-content: space-between
+			transition: all 0.3s linear
+			transform: translateX(0)
+			&.showSublinks
+				transform: translateX(-100%)
+				.mainMenu
+					opacity: 0
+					visibility: hidden
+				.subMenus
+					opacity: 1
+					visibility: visible
+		.mainMenu
+			flex: 1 0 100%
+			transition: all 0.2s linear
+			.mainLinks
+				padding: 36px 60px
+				border-top: 1px solid rgba($w, 0.2)
+				li
+					display: flex
+					align-items: center
+					justify-content: space-between
+					cursor: pointer
+					&:hover
+						color: $blue
+					&:not(:first-child)
+						margin-top: 24px
+					&.current
+						color: $pink
+						&:hover
+							color: $blue
+					a
+						font-size: 20px
+						font-weight: 500
+			.contact
+				padding: 36px 60px
+				border-top: 1px solid rgba($w, 0.2)
+				text-align: center
+				.contact_phone
+					li
+						font-size: 24px
+						font-weight: 500
+						&:hover
+							color: $blue
+				.consult
+					margin-top: 18px
+					font-size: 24px
+					font-weight: 500
+					padding: 8px 0
+					color: $w
+					border-bottom: 2px solid $w
+					&:hover
+						color: $blue
+						border-color: $blue
+				.languages
+					margin-top: 36px
+					display: flex
+					justify-content: center
+					align-items: center
+					li
+						font-size: 20px
+						font-weight: 500
+						&:not(.currentLang):hover
+							color: $blue
+						&:not(:first-child)
+							margin-left: 36px
+						&.currentLang
+							opacity: 0.3
+							cursor: default
+		.subMenus
+			flex: 1 0 100%
+			opacity: 0
+			visibility: hidden
+			transition: all 0.2s linear
+			border-top: 1px solid rgba($w, 0.2)
+			padding: 36px 60px
+			ul
+				opacity: 0
+				visibility: hidden
+				max-height: 0
+				&.active
+					opacity: 1
+					visibility: visible
+					max-height: 1000px
+				li.title
+					font-size: 20px
+					font-weight: 500
+					position: relative
+					margin-bottom: 8px
+					color: $w
+					.back
+						position: absolute
+						z-index: inherit
+						top: 50%
+						left: 0
+						transform: translate(-24px, -50%)
+						font-weight: normal
+				li
+					font-size: 18px
+					color: #bcbcbc
+					margin-top: 18px
+					display: block
+					cursor: pointer
+					transition: all 0.2s linear
+					&:hover
+						color: $blue
+
+header.desktop
+	display: flex
+	position: fixed
+	z-index: 1500
+	top: 0
+	left: 0
+	right: 0
+	width: 100%
+	background-color: $b
+	padding: 36px
+	transition: all 0.2s linear
+	opacity: 0
+	visibility: hidden
+	*
+		visibility: hidden
+	&.active
+		opacity: 1
+		visibility: visible
+		*
+			visibility: visible
+	.closeHamb
+		position: absolute
+		z-index: 1550
+		right: 36px
+		top: 36px
+		fill: $w
+		outline: none
+		&:hover
+			fill: $blue
+		&.closing
+				animation: closeBtn 0.2s linear
+	h3
+		font-size: 24px
+		font-weight: 500
+		line-height: 1.25
+		display: flex
+		justify-content: space-between
+		align-items: center
+		color: $w
+	.expand
+		display: none
+		padding: 5px
+		&:hover
+			color: $blue
+		i
+			font-weight: normal
+	ul
+		margin-top: 24px
+	li
+		display: flex
+		align-items: center
+		&:not(:first-child)
+			margin-top: 16px
+	a
+		font-size: 20px
+		line-height: 1.3
+		color: #bcbcbc
+		&:hover
+			color: $blue
+	> div
+		flex: 1 0 auto
+		padding: 48px 0 0 36px
+		position: relative
+		&:nth-child(3)
+			ul
+				margin-top: 0
+			li, a
+				color: $w
+				font-size: 24px
+				font-weight: 500
+				line-height: 1.25
+				fill: $w
+			a:hover
+				color: $blue
+				fill: $blue
+			li:last-child a:not(:first-child)
+				margin-left: 18px
+		.figure_1
+			left: 0
+			top: 0
+
+header:not(.mobile):not(.desktop)
 	position: fixed
 	z-index: 50
 	left: 0
@@ -11,7 +237,6 @@ header
 	&.home
 		background-color: transparent
 		box-shadow: none
-		position: absolute
 		.hamburger svg
 			fill: $w
 		.consult
@@ -20,6 +245,25 @@ header
 			&:hover
 				color: $blue
 				border-bottom: 2px solid $blue
+	&.fixed
+		background-color: $w
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06)
+		*
+			color: $b
+			fill: $b
+		.hamburger
+			transition: all 0.2s linear
+			&:hover
+				svg, path
+					fill: $blue
+		.navigation li:hover a
+			color: $blue
+		.consult
+			color: $blue
+			border-bottom: 2px solid $blue
+			&:hover
+				color: $pink
+				border-bottom: 2px solid $pink
 	*
 		line-height: 1.3
 		font-weight: 500
@@ -28,30 +272,34 @@ header
 		display: flex
 		justify-content: space-between
 		align-items: center
-		padding: 14px 0 20px
 		border-bottom: 2px solid rgba($w, 0.2)
 	.submenu
 		position: absolute
 		z-index: 300
 		width: max-content
+		max-width: 300px
+		min-width: 100%
 		top: 100%
 		left: 50%
-		transform: translate(-50%, 32px)
-		background-color: rgba(#000, 0.6)
-		padding: 14px 20px
+		transform: translate(-50%, 0)
+		background-color: rgba(#000, 0.9)
+		padding: 20px
 		display: flex
 		flex-direction: column
 		opacity: 0
 		visibility: hidden
 		transition: all 0.2s linear
+		li:not(:first-child)
+			margin-top: 18px
 		a
 			color: $w !important
+			line-height: 1
 			&:hover
 				color: $blue !important
 	.fa-chevron-down
 		position: absolute
 		left: 50%
-		bottom: -19px
+		bottom: 0
 		transform: translate(-50%, 0)
 		font-size: 16px
 		font-weight: normal
@@ -68,15 +316,13 @@ header
 		width: 60px
 		height: 33px
 		margin: 0 48px 0 95px
-		&:hover svg
-			fill: $blue
-		svg
-			fill: $b
+		fill: $b
 	.navigation
-		li
+		> li
 			font-size: 20px
 			font-weight: 500
 			position: relative
+			padding: 14px 0 20px
 			> li:not(:first-child)
 				margin-top: 10px
 		> li:hover
@@ -86,12 +332,19 @@ header
 			> .submenu
 				opacity: 1
 				visibility: visible
+				&:hover
+					opacity: 1
+					visibility: visible
 		> li:not(:first-child)
 			margin-left: 48px
+		> li.current a
+			color: $pink
+			&:hover
+				color: $blue
 	.right
 		display: flex
 		justify-content: space-between
-		align-items: center
+		align-items: flex-start
 		> *
 			width: max-content
 	.contact_phone
@@ -100,13 +353,15 @@ header
 			font-size: 24px
 			&:hover
 				color: $blue
+		> a
+			padding: 14px 0 20px
 		&:hover .submenu
 			opacity: 1
 			visibility: visible
 	.consult
 		margin-left: 48px
 		font-size: 24px
-		padding: 8px 0
+		padding: 14px 0 8px
 		color: $blue
 		border-bottom: 2px solid $blue
 		&:hover
@@ -119,6 +374,8 @@ header
 			font-size: 20px
 			&:hover
 				color: $blue
+		> a
+			padding: 14px 0 20px
 		&:hover .submenu
 				opacity: 1
 				visibility: visible

@@ -22,7 +22,7 @@
 
 	<section class="services archive_services text-b">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeLeft">
 				<span>
 					Услуги
 				</span>
@@ -43,12 +43,15 @@
 						$post_title = $term->name;
 				?>
 
-					<div class="card bg text-w">
+					<div class="card bg text-w wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 						<a href="<?= $url; ?>">
 							<img src="<?= $img; ?>" alt="taxonomy_thumbnail">
 						</a>
 						<h4 class="title">
-							<?= $post_title; ?>
+							<a href="<?= $url; ?>">
+								<?= $post_title; ?>
+							</a>
+							<i class="fas fa-chevron-right"></i>
 						</h4>
 						<div class="links">
 							<button class="openConsult">Консультация</button>

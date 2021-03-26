@@ -23,14 +23,14 @@
 	<section class="banner about_banner text-w bg">
 		<img src="<?= get_field('banner')['img']; ?>" alt="home_banner">
 		<div class="wrapper">
-			<h3>
+			<h3 class="wow fadeInUp">
 				<?= get_field('banner')['slogan']; ?>
 			</h3>
 			<div>
-				<span class="slick_mb">
-					<span class="active"><?= get_field('banner')['principles']['word_1']; ?></span>
-					<span><?= get_field('banner')['principles']['word_2']; ?></span>
-					<span><?= get_field('banner')['principles']['word_3']; ?></span>
+				<span class="principles">
+					<span class="principle"><?= get_field('banner')['principles']['word_1']; ?></span>
+					<span class="principle"><?= get_field('banner')['principles']['word_2']; ?></span>
+					<span class="principle"><?= get_field('banner')['principles']['word_3']; ?></span>
 				</span>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 			<div class="wrapper">
 
 				<?php if(get_field('block_1')['title']): ?>
-					<h2>
+					<h2 class="wow fadeInUp">
 						<?= get_field('block_1')['title']; ?>
 					</h2>
 				<?php endif; ?>
@@ -49,13 +49,13 @@
 				<?php while (have_rows('content')): the_row(); ?>
 
 					<?php while (have_rows('par_accent')): the_row(); ?>
-						<p class="accent">
+						<p class="accent wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
 
 					<?php while (have_rows('par')): the_row(); ?>
-						<p>
+						<p class="wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
@@ -64,14 +64,14 @@
 						<div class="list_block">
 
 							<?php if(get_sub_field('title')): ?>
-								<h6>
+								<h6 class="wow fadeInUp">
 									<?= get_sub_field('title'); ?>
 								</h6>
 							<?php endif; ?>
 
 							<ul>
 								<?php while (have_rows('points')): the_row(); ?>
-									<li>
+									<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2 ?>s">
 										<?= get_sub_field('point'); ?>
 									</li>
 								<?php endwhile; ?>
@@ -92,13 +92,13 @@
 		<div class="wrapper">
 
 			<div class="left">
-				<h3>
+				<h3 class="wow fadeInUp">
 					<?= $achievs['title']; ?>
 				</h3>
 				<div class="cards slick_mb">
 
-					<?php foreach($cards as $card) { ?>
-						<div class="card">
+					<?php foreach($cards as $key=>$card) { ?>
+						<div  class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 							<div class="figure_2"></div>
 							<img src="<?= $card['icon']; ?>" alt="card_icon">
 							<p>
@@ -111,10 +111,10 @@
 			</div>
 
 			<div class="right">
-				<h3>
+				<h3 class="wow fadeRight">
 					<?= get_field('block_2')['mission']['title']; ?>
 				</h3>
-				<p>
+				<p class="wow fadeRight">
 					<?= get_field('block_2')['mission']['text']; ?>
 				</p>
 			</div>
@@ -127,7 +127,7 @@
 			<div class="wrapper">
 
 				<?php if(get_field('block_3')['title']): ?>
-					<h2>
+					<h2 class="wow fadeInUp">
 						<?= get_field('block_3')['title']; ?>
 					</h2>
 				<?php endif; ?>
@@ -135,13 +135,13 @@
 				<?php while (have_rows('content')): the_row(); ?>
 
 					<?php while (have_rows('par_accent')): the_row(); ?>
-						<p class="accent">
+						<p class="accent wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
 
 					<?php while (have_rows('par')): the_row(); ?>
-						<p>
+						<p class="wow fadeInUp">
 							<?= get_sub_field('text'); ?>
 						</p>
 					<?php endwhile; ?>
@@ -150,14 +150,14 @@
 						<div class="list_block">
 
 							<?php if(get_sub_field('title')): ?>
-								<h6>
+								<h6 class="wow fadeInUp">
 									<?= get_sub_field('title'); ?>
 								</h6>
 							<?php endif; ?>
 
 							<ul>
 								<?php while (have_rows('points')): the_row(); ?>
-									<li>
+									<li class="wow fadeInUp" data-wow-delay="<?= get_row_index()*0.2 ?>s">
 										<?= get_sub_field('point'); ?>
 									</li>
 								<?php endwhile; ?>
@@ -176,6 +176,25 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
+
+			// Principles animation
+			(function() {
+				const principles = [...document.querySelectorAll('section.banner span.principle')];
+
+				if (principles.length) {
+					let counter = -1;
+					setInterval(() => {
+						counter++;
+						if (counter > 2) {
+							counter = 0;
+						}
+						for (let i = 0; i < principles.length; i++) {
+							principles[i].classList.remove('active');
+						}
+						principles[counter].classList.add('active');
+					}, 2000);
+				}
+			})();
 
 			$("section.folio .slick_lg").not('.slick-initialized').slick({
 				arrows: true,
@@ -226,21 +245,6 @@
 			});
 
 			if (window.innerWidth <= 480) {
-
-				// $("section.about_banner .slick_mb").not('.slick-initialized').slick({
-				// 	arrows: false,
-				// 	draggable: true,
-				// 	touchThreshold: 300,
-				// 	focusOnSelect: false,
-				// 	infinite: false,
-				// 	autoplay: false,
-				// 	dots: false,
-				// 	variableWidth: true,
-				// 	vertical: false,
-				// 	verticalSwiping: false,
-				// 	slidesToShow: 1,
-				// 	slidesToScroll: 1,
-				// });
 
 				$("section.mission .slick_mb").not('.slick-initialized').slick({
 					arrows: false,

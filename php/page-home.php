@@ -23,18 +23,18 @@
     <section class="banner text-w bg">
       <img src="<?= get_field('banner')['img']; ?>" alt="home_banner" />
       <div class="wrapper">
-        <h3>
+        <h3 class="wow fadeIn" data-wow-delay="0.4s">
           <?= get_field('banner')['slogan']; ?>
         </h3>
         <div>
-          <span>
-            <span class="active"><?= get_field('banner')['principles']['word_1']; ?></span>
-            <span><?= get_field('banner')['principles']['word_2']; ?></span>
-            <span><?= get_field('banner')['principles']['word_3']; ?></span>
+          <span class="principles">
+            <span class="principle"><?= get_field('banner')['principles']['word_1']; ?></span>
+            <span class="principle"><?= get_field('banner')['principles']['word_2']; ?></span>
+            <span class="principle"><?= get_field('banner')['principles']['word_3']; ?></span>
           </span>
         </div>
       </div>
-      <a href="#services" class="next">
+      <a href="#services" class="next wow fadeIn" data-wow-delay="0.4s">
         Посмотреть наши услуги
         <i class="fas fa-chevron-down"></i>
         <i class="fas fa-chevron-down"></i>
@@ -44,8 +44,8 @@
     <section id="services" class="services text-b bg-w">
       <div class="wrapper">
         <h3>
-          <span> Наши услуги </span>
-          <a href="<?= home_url(); ?>/service">Смотреть все услуги </a>
+          <span class="wow fadeInLeft"> Наши услуги </span>
+          <a href="<?= home_url(); ?>/service" class="wow fadeInRight">Смотреть все услуги </a>
         </h3>
         <div class="cards">
 
@@ -55,7 +55,7 @@
               'hide_empty' => false,
             ] );
 
-            foreach( $terms as $term ) {
+            foreach( $terms as $key=>$term ) {
               setup_postdata($post);
 
               $url = get_home_url() . '/service/' . $term->slug;
@@ -63,12 +63,15 @@
               $post_title = $term->name;
           ?>
 
-            <div class="card bg text-w">
+            <div class="card bg text-w wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
               <a href="<?= $url; ?>">
                 <img src="<?= $img; ?>" alt="taxonomy_thumbnail">
               </a>
               <h4 class="title">
-                <?= $post_title; ?>
+                <a href="<?= $url; ?>">
+                  <?= $post_title; ?>
+                </a>
+                <i class="fas fa-chevron-right"></i>
               </h4>
               <div class="links">
                 <button class="openConsult">Консультация</button>
@@ -80,7 +83,7 @@
 
         </div>
 
-        <a href="<?= home_url(); ?>/service" class="watch_all_mobile"> Смотреть все услуги </a>
+        <a href="<?= home_url(); ?>/service" class="watch_all_mobile wow fadeInUp"> Смотреть все услуги </a>
       </div>
     </section>
 
@@ -93,7 +96,7 @@
         style="background-image: url(<?= B_IMG_DIR; ?>/home_facts_bg.png)">
         <div class="wrapper">
           <h3>
-            <span>Факты о нас</span>
+            <span class="wow fadeLeft">Факты о нас</span>
           </h3>
           <div class="cards slick_mb">
 
@@ -109,7 +112,7 @@
                     $text = $facts[$j]['text'];
                 ?>
 
-                  <div class="card">
+                  <div class="card wow fadeIn" data-wow-delay="<?= $j*0.2 ?>s">
                     <div class="figure_2"></div>
                     <img src="<?= $icon; ?>" alt="facts_icon" />
                     <p>
@@ -130,8 +133,8 @@
     <section class="folio text-b bg-w">
       <div class="wrapper">
         <h3>
-          <span> Наши работы </span>
-          <a href="<?= home_url(); ?>/folio"> Смотреть все работы </a>
+          <span class="wow fadeLeft"> Наши работы </span>
+          <a href="<?= home_url(); ?>/folio" class="wow fadeRight"> Смотреть все работы </a>
         </h3>
         <div class="cards slick_lg">
 
@@ -143,102 +146,11 @@
 
             ] );
 
-            foreach( $posts as $post ) {
-              setup_postdata($post);
-
-              $url = get_permalink();
-              $img = get_field('gallery')[0];
-              $date = get_the_date('j F Y', $post->id);
-              $post_title = $post->post_title;
-          ?>
-
-            <a href="<?= $url; ?>" class="card">
-              <div class="bg" style="background-image: url(<?= $img ?>);">
-                <div class="figure_3"></div>
-              </div>
-              <h4 class="title">
-                <?= $post_title; ?>
-              </h4>
-              <span class="date">
-                <?= $date; ?>
-              </span>
-            </a>
-
-          <?php }; wp_reset_postdata(); ?>
-
-        </div>
-
-        <a href="<?= home_url(); ?>/folio" class="watch_all_mobile"> Смотреть все работы </a>
-      </div>
-    </section>
-
-    <section
-      class="reviews bg text-w"
-      style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png)">
-      <div class="wrapper">
-        <h3>
-          <span> Нас рекомендуют </span>
-          <a href="<?= home_url(); ?>/review"> Смотреть все отзывы </a>
-        </h3>
-        <div class="cards slick_lg">
-
-          <?php
-              // Show 4 other posts from folio, except current
-              $posts = get_posts( [
-                'post_type' => 'review',
-                'numberposts' => 4,
-              ] );
-
-              foreach( $posts as $post ) {
-                setup_postdata($post);
-
-                $date = get_the_date('j F Y', $post->id);
-                $name = get_field('name');
-                $company = get_field('company');
-                $text = get_field('text');
-            ?>
-
-            <div class="card">
-              <div class="figure_4"></div>
-              <span class="date">
-                <?= $date; ?>
-              </span>
-              <span class="name">
-                <?= $name; ?>, компания <?= $company; ?>
-              </span>
-              <p>
-                <?= $text; ?>
-              </p>
-            </div>
-
-          <?php }; wp_reset_postdata(); ?>
-
-        </div>
-
-        <a href="#" class="watch_all_mobile"> Смотреть все отзывы </a>
-      </div>
-    </section>
-
-    <section class="blog bg-w">
-      <div class="wrapper">
-        <h3>
-          <span> Полезная информация </span>
-          <a href="<?= home_url(); ?>/blog"> Читать все статьи </a>
-        </h3>
-        <div class="cards slick_mb">
-
-          <?php
-            // Show 3 other posts from blog
-            $posts = get_posts( [
-              'post_type' => 'blog',
-              'numberposts' => 3,
-            ] );
-
             foreach( $posts as $key=>$post ) {
               setup_postdata($post);
 
               $url = get_permalink();
-              $img = get_field('banner');
+              $img = get_field('gallery')[0];
               $date = get_the_date('j F Y', $post->id);
               $post_title = $post->post_title;
           ?>
@@ -260,7 +172,99 @@
 
         </div>
 
-        <a href="<?= home_url(); ?>/blog" class="watch_all_mobile"> Читать все статьи </a>
+        <a href="<?= home_url(); ?>/folio" class="watch_all_mobile wow fadeInUp"> Смотреть все работы </a>
+      </div>
+    </section>
+
+    <section
+      class="reviews bg text-w"
+      style="background-image: url(<?= B_IMG_DIR; ?>/home_reviews_bg.png)">
+      <div class="wrapper">
+        <h3>
+          <span class="wow fadeLeft"> Нас рекомендуют </span>
+          <a href="<?= home_url(); ?>/review" class="wow fadeRight"> Смотреть все отзывы </a>
+        </h3>
+        <div class="cards slick_lg">
+
+          <?php
+              // Show 4 other posts from folio, except current
+              $posts = get_posts( [
+                'post_type' => 'review',
+                'numberposts' => 4,
+              ] );
+
+              foreach( $posts as $key=>$post ) {
+                setup_postdata($post);
+
+                $date = get_the_date('j F Y', $post->id);
+                $name = get_field('name');
+                $company = get_field('company');
+                $text = get_field('text');
+            ?>
+
+            <div class="card" data-wow-delay="<?= $key*0.2 ?>s">
+              <div class="figure_4"></div>
+              <span class="date">
+                <?= $date; ?>
+              </span>
+              <span class="name">
+                <?= $name; ?>, компания <?= $company; ?>
+              </span>
+              <p>
+                <?= $text; ?>
+              </p>
+            </div>
+
+          <?php }; wp_reset_postdata(); ?>
+
+        </div>
+
+        <a href="#" class="watch_all_mobile wow fadeInUp"> Смотреть все отзывы </a>
+      </div>
+    </section>
+
+    <section class="blog bg-w text-b">
+      <div class="wrapper">
+        <h3>
+          <span class="wow fadeLeft"> Полезная информация </span>
+          <a href="<?= home_url(); ?>/blog" class="wow fadeRight"> Читать все статьи </a>
+        </h3>
+        <div class="cards slick_mb">
+
+          <?php
+            // Show 3 other posts from blog
+            $posts = get_posts( [
+              'post_type' => 'blog',
+              'numberposts' => 3,
+            ] );
+
+            foreach( $posts as $key=>$post ) {
+              setup_postdata($post);
+
+              $url = get_permalink();
+              $img = get_field('banner');
+              $date = get_the_date('j F Y', $post->id);
+              $post_title = $post->post_title;
+          ?>
+
+            <a href="<?= $url; ?>" class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
+              <div class="bg" style="background-image: url(<?= $img ?>);">
+                <div class="figure_3"></div>
+              </div>
+              <h4 class="title">
+                <?= $post_title; ?>
+                <i class="fas fa-chevron-right"></i>
+              </h4>
+              <span class="date">
+                <?= $date; ?>
+              </span>
+            </a>
+
+          <?php }; wp_reset_postdata(); ?>
+
+        </div>
+
+        <a href="<?= home_url(); ?>/blog" class="watch_all_mobile wow fadeInUp"> Читать все статьи </a>
       </div>
     </section>
 
@@ -269,11 +273,32 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+
+        // Principles animation
+        (function() {
+          const principles = [...document.querySelectorAll('section.banner span.principle')];
+
+          if (principles.length) {
+            let counter = -1;
+            setInterval(() => {
+              counter++;
+              if (counter > 2) {
+                counter = 0;
+              }
+              for (let i = 0; i < principles.length; i++) {
+                principles[i].classList.remove('active');
+              }
+              principles[counter].classList.add('active');
+            }, 2000);
+          }
+        })();
+
         $("section.folio .slick_lg")
           .not(".slick-initialized")
           .slick({
             arrows: true,
             draggable: true,
+            touchThreshold: 300,
             focusOnSelect: false,
             infinite: false,
             autoplay: false,
@@ -322,6 +347,7 @@
           .slick({
             arrows: true,
             draggable: true,
+            touchThreshold: 300,
             focusOnSelect: false,
             infinite: false,
             autoplay: false,

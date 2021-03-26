@@ -22,7 +22,7 @@
 	<section class="blog archive_blog text-b">
 		<div class="wrapper">
 			<h3>
-				<span>
+				<span class="wow fadeLeft">
 					Блог
 				</span>
 			</h3>
@@ -48,7 +48,7 @@
 						$post_title = $post->post_title;
 				?>
 
-					<a href="<?= $url; ?>" class="card">
+					<a href="<?= $url; ?>" class="card wow fadeIn" data-wow-delay="<?= $key*0.2 ?>s">
 						<div class="bg" style="background-image: url(<?= $img ?>);">
 							<div class="figure_3"></div>
 						</div>
@@ -97,7 +97,7 @@
 				$totalpages   = ceil( $totalterms / $number );
 
 				// Show custom page navigation
-				printf( '<nav class="pagination text-b">%s</nav>',
+				printf( '<nav class="pagination text-b wow fadeLeft">%s</nav>',
 					custom_page_navi( $totalpages, $page, 1, 5 )
 				);
 

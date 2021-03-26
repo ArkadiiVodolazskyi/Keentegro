@@ -1,6 +1,7 @@
 footer
 	// background-image: url('../img/footer_bg.png')
 	background-color: #000
+	overflow: hidden
 	&.show_brands
 		.wrapper
 			padding-top: 120px
@@ -35,9 +36,14 @@ footer
 				transform: translate(-78px, -50%)
 			&:nth-of-type(2)
 				transform: translate(0,-50%)
+			&:hover i
+				color: $blue
+			&[aria-disabled=true]
+				opacity: 0
 			i
 				font-size: 36px
 				font-weight: normal
+				transition: all 0.2s linear
 	nav
 		display: flex
 		padding: 0 0 60px
@@ -74,10 +80,31 @@ footer
 			position: relative
 			&:nth-child(1)
 				width: 25%
+				.figure_1:before
+					animation: figure_1_before 4s linear infinite forwards paused
+				.figure_1:after
+					animation: figure_1_after_v1 3.4s linear infinite forwards paused
+				&:hover
+					.figure_1:before, .figure_1:after
+						animation-play-state: running
 			&:nth-child(2)
 				width: 42%
 				padding: 48px 18% 0 36px
+				.figure_1:before
+					animation: figure_1_before 4s linear infinite forwards paused
+				.figure_1:after
+					animation: figure_1_after_v2 4s linear infinite forwards paused
+				&:hover
+					.figure_1:before, .figure_1:after
+						animation-play-state: running
 			&:nth-child(3)
+				.figure_1:before
+					animation: figure_1_before 4s linear infinite forwards paused
+				.figure_1:after
+					animation: figure_1_after_v1 3.7s linear infinite forwards paused
+				&:hover
+					.figure_1:before, .figure_1:after
+						animation-play-state: running
 				ul
 					margin-top: 0
 				li, a
@@ -108,6 +135,8 @@ footer
 		a
 			display: flex
 			align-items: center
+			&:hover
+				color: $blue
 			> svg
 				width: 48px
 				height: 48px
