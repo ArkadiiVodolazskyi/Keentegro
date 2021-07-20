@@ -95,10 +95,17 @@ header.mobile
 					display: flex
 					justify-content: center
 					align-items: center
+					ul.languages
+						margin: 0 !important
+						> li
+							display: flex
+							align-items: center
+							.sub-menu
+								margin-left: 36px
 					li
 						font-size: 20px
 						font-weight: 500
-						&:not(.currentLang):hover
+						&:not(.currentLang):hover > a
 							color: $blue
 						&:not(:first-child)
 							margin-left: 36px
@@ -173,7 +180,7 @@ header.desktop
 		&:hover
 			fill: $blue
 		&.closing
-				animation: closeBtn 0.2s linear
+			animation: closeBtn 0.2s linear
 	h3
 		font-size: 24px
 		font-weight: 500
@@ -273,7 +280,7 @@ header:not(.mobile):not(.desktop)
 		justify-content: space-between
 		align-items: center
 		border-bottom: 2px solid rgba($w, 0.2)
-	.submenu
+	.submenu, .sub-menu
 		position: absolute
 		z-index: 300
 		max-width: 300px
@@ -343,7 +350,7 @@ header:not(.mobile):not(.desktop)
 	.right
 		display: flex
 		justify-content: space-between
-		align-items: flex-start
+		align-items: center
 		> *
 			width: max-content
 	.contact_phone
@@ -360,7 +367,7 @@ header:not(.mobile):not(.desktop)
 	.consult
 		margin-left: 48px
 		font-size: 24px
-		padding: 14px 0 8px
+		padding: 0 0 8px
 		color: $blue
 		border-bottom: 2px solid $blue
 		&:hover
@@ -373,8 +380,8 @@ header:not(.mobile):not(.desktop)
 			font-size: 20px
 			&:hover
 				color: $blue
-		> a
-			padding: 14px 0 20px
-		&:hover .submenu
-				opacity: 1
-				visibility: visible
+		> ul > li:hover .sub-menu
+			opacity: 1
+			visibility: visible
+		ul.languages
+			margin: 0 !important
